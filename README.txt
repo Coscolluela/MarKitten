@@ -1,0 +1,1 @@
+This is a project focused on web-based Customer Relationship Management System in CS 128.1.
