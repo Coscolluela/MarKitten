@@ -1,0 +1,23 @@
+.beige {
+  background-color: beige;
+}
+
+#spaced-up-mid {
+  padding-top: 100px;
+}
+
+#spaced-up-large {
+  padding-top: 75px;
+}
+
+#padded-bot {
+  margin-bottom: 90px;
+}
+
+.vertical-center {
+  margin: 0;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
