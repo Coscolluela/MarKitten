@@ -21,3 +21,9 @@
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+
+#curvedButton {
+  padding: 4px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+}
