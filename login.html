@@ -28,35 +28,41 @@
             <div class="col-lg-6" id="spaced-up-large">
                 <h1 id="slide-in-left">Log In</h1>
                 <br>
-                <div class="mb-3 row" id="fade-in">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                    <br>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="staticEmail" value="email@example.com">
+                <form>
+                    <div class="mb-3">
+                        <div class="d-grid gap-2 col-10 d-md-block">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required>
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3 row" id="fade-in">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                    <br>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword">
+                    <div class="mb-3">
+                        <div class="d-grid gap-2 col-10 d-md-block">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" required>
+                        </div>
                     </div>
-                </div>
-                <a href="#" id="fade-in" style="text-decoration: none; color: inherit;">
-                    <h6>Forgot Password?</h6>
-                </a>
+                    <h6>
+                        <a href="#" class="simpleLink">
+                            Forgot Password?
+                        </a>
+                    </h6>
+                    <div class="d-grid gap-2 col-2 mx-auto">
+                        <button type="submit" class="btn btn-primary">
+                            <a href="Home.html" class="simpleLink">
+                                Log In
+                            </a>
+                        </button>
+                    </div>
+                </form>
                 <br>
                 <span id="fade-in">
-                    <button class="vertical-center" id="curvedButton">
-                        <a href="Home.html" style="text-decoration: none; color: inherit;">
-                            Log In
-                        </a>
-                    </button>
                     <div class="span" id="padded-bot">
                         <br>
                         New User?
-                        <a href="signUp.html" style="text-decoration: none; ">
-                            Sign Up Here!
+                        <a href="signUp.html" class="simpleLink">
+                            <b>Sign Up Here!</b>
                         </a>
                     </div>
                 </span>

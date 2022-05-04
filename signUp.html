@@ -28,21 +28,31 @@
             <div class="col-lg-6" id="spaced-up-large" style="border-color: red;">
                 <h1 id="slide-in-left">Sign Up</h1>
                 <br>
-
-                <span id="fade-in">
-                    <label for="inputName" class="col-form-label">Name</label>
-                    <input type="text" class="form-control" id="inputName">
-
-                    <label for="staticEmail" class="col-form-label">Email</label>
-                    <input type="text" class="form-control" id="staticEmail" value="email@example.com">
-
-                    <label for="inputPassword" class="col-form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword">
-
-                    <label for="confirmPassword" class="col-form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword">
-                    <br>
-
+                <form>
+                    <div class="mb-3">
+                        <div class="d-grid gap-2 col-11 d-md-block">
+                            <label for="inputName" class="col-form-label">Name</label>
+                            <input type="text" class="form-control" id="inputName" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-grid gap-2 col-11 d-md-block">
+                            <label for="staticEmail" class="col-form-label">Email</label>
+                            <input type="text" class="form-control" id="staticEmail" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-grid gap-2 col-11 d-md-block">
+                            <label for="inputPassword" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" id="inputPassword" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-grid gap-2 col-11 d-md-block">
+                            <label for="confirmPassword" class="col-form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                    </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
@@ -50,15 +60,16 @@
                         </label>
                     </div>
                     <br>
-                    <button class="vertical-center" id="curvedButton">
-                        <a href="#"></a>
-                        Sign Up
-                    </button>
+                    <div class="d-grid gap-2 col-2 mx-auto">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </div>
+                </form>
+                <span id="fade-in">
                     <div class="span" id="padded-bot">
                         <br>
                         Already a user?
-                        <a href="login.html" style="text-decoration: none; ">
-                            Log in here!
+                        <a href="login.html" class="simpleLink">
+                            <b>Log in here!</b>
                         </a>
                     </div>
                 </span>
