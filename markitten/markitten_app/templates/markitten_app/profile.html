@@ -47,10 +47,6 @@
                 <img src="{% static 'images/sampleProfile.png' %}" alt="">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
-                    <h6 style="text-align: center">Bio</h6>
-                    <p class="card-text" style="text-align: justify;">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus tempora amet
-                        placeat mollitia esse tempore pariatur? Rem quod dolore iusto. </p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" style="text-align: center;">
@@ -73,58 +69,60 @@
                             </a>
                         </a>
                     </li>
-
                 </ul>
                 <!-- <div class="card-body">
                     <a href="Home.html" class="card-link simpleLink">
                         < View Monthly Catalog</a>
                 </div> -->
             </div>
+            <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;">
         </div>
         <div class="col-lg-7">
-            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
-                <div>
-                    <button class="btn btn-primary" role="button" style="float: right; ">
-                        <a href="{% url 'editprofile' %}" class="simpleLink">Edit
-                            Details</a>
-                    </button>
-                    <h5 class="card-header">Personal Information</h5>
-                </div>
+            <form action="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
+                    <div>
+                        <!-- <button class="btn btn-primary" role="button" style="float: right; ">
+                            <a href="{% url 'editprofile' %}" class="simpleLink">Edit
+                                Details</a>
+                        </button> -->
+                        <h5 class="card-header">Personal Information</h5>
+                    </div>
 
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Special title treatment</h5> -->
-                    <div class="row pt-1">
-                        <div class="col-6 mb-2">
-                            <h6 style="display: inline;">Full Name: </h6>
-                            <p class="text-muted" style="display: inline;">{{user.name}}</p>
-                        </div>
-                        <div class="col-2 mb-2">
-                            <h6 style="display: inline;">Sex: </h6>
-                            <p class="text-muted" style="display: inline;">{{user.sex}}</p>
-                        </div>
-                        <div class="col-4 mb-2">
-                            <h6 style="display: inline;">Nationality: </h6>
-                            <p class="text-muted" style="display: inline;">{{user.nationality}}</p>
-                        </div>
-                        <div class="col-6">
-                            <h6 style="display: inline;">Birthday: </h6>
-                            <p class="text-muted" style="display: inline;">{{user.birthday}}</p>
-                        </div>
-                        <div class="col-6">
-                            <h6 style="display: inline;">Citizenship: </h6>
-                            <p class="text-muted" style="display: inline;">{{user.citizenship}}</p>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5                                           > -->
+                        <div class="row pt-1">
+                            <div class="col-6 mb-2">
+                                <label for="inputEmail4" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.username}}">
+                            </div>
+                            <div class="col-2 mb-2">
+                                <label for="inputEmail4" class="form-label">Sex</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.sex}}">
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label for="inputEmail4" class="form-label">Nationality</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.nationality}}">
+                            </div>
+                            <div class="col-6">
+                                <label for="inputEmail4" class="form-label">Birthday</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.birthday}}">
+                            </div>
+                            <div class="col-6">
+                                <label for="inputEmail4" class="form-label">Citizenship</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.citizenship}}">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                <div>
-                    <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button> -->
-                    <h5 class="card-header">Addresses</h5>
-                </div>
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Special title treatment</h5> -->
-                    <div class="col-12 mb-2">
+                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                    <div>
+                        <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button> -->
+                        <h5 class="card-header">Addresses</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <!-- <div class="col-12 mb-2">
                         <h6 style="display: inline;">Present: </h6>
                         <p class="text-muted" style="display: inline;">{{user.present_address}}</p>
                     </div>
@@ -143,58 +141,80 @@
                     <div class="col-12">
                         <h6 style="display: inline;">Office: </h6>
                         <p class="text-muted" style="display: inline;">{{user.office_address}}</p>
+                    </div> -->
+                        <div class="col-12 mb-2">
+                            <label for="inputEmail4" class="form-label">Present</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.present_address}}">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="inputEmail4" class="form-label">Permanent</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.permanent_address}}">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="inputEmail4" class="form-label">Billing</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.billing_address}}">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="inputEmail4" class="form-label">Shopping</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.shopping_address}}">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                        <div>
-                            <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                            <div>
+                                <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
                                 Details</button> -->
-                            <h5 class="card-header">Contact Information</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row pt-1">
-                                <div class="col-12 mb-2">
-                                    <h6 style="display: inline;">Mobile Number: </h6>
-                                    <p class="text-muted" style="display: inline;">{{user.mobile_number}}</p>
-                                </div>
-                                <div class="col-12 mb-2">
-                                    <h6 style="display: inline;">Landline Number: </h6>
-                                    <p class="text-muted" style="display: inline;">{{user.landline_number}}</p>
-                                </div>
-                                <div class="col-12">
-                                    <h6 style="display: inline;">Office Number: </h6>
-                                    <p class="text-muted" style="display: inline;">{{user.office_number}}</p>
+                                <h5 class="card-header">Contact Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row pt-1">
+                                    <div class="col-12 mb-2">
+                                        <label for="inputEmail4" class="form-label">Mobile Number</label>
+                                        <input type="text" class="form-control" id="inputEmail4"
+                                            value="{{user.mobile_number}}">
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label for="inputEmail4" class="form-label">Landline Number</label>
+                                        <input type="text" class="form-control" id="inputEmail4"
+                                            value="{{user.landline_number}}">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="inputEmail4" class="form-label">Office Number</label>
+                                        <input type="text" class="form-control" id="inputEmail4"
+                                            value="{{user.office_number}}">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                        <div>
-                            <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                    <div class="col-md-5">
+                        <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                            <div>
+                                <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
                                 Details</button> -->
-                            <h5 class="card-header">Subscription</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    This box is checked if you signed up for subscription to view our monthly catalog.
-                                    Please modify this option if necessary.
-                                </label>
+                                <h5 class="card-header">Subscription</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        This box is checked if you signed up for subscription to view our monthly
+                                        catalog.
+                                        Please modify this option if necessary.
+                                    </label>
+                                </div>
                             </div>
                         </div>
+                        <button class="btn btn-primary" type="submit" href="#" role="button"
+                            style="float: right; ">Save</button>
                     </div>
                 </div>
-            </div>
 
         </div>
     </div>
-
+    </form>
     <!-- SCROLL ANIMATION -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

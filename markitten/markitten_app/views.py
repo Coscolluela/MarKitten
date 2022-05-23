@@ -8,6 +8,7 @@ def productdetails(request):
     return render(request, 'markitten_app/productDetails.html')
 
 def profile(request):
+    
     return render(request, 'markitten_app/profile.html')
 
 def editprofile(request):
