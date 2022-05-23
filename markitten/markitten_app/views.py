@@ -14,6 +14,9 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'markitten_app/Home.html')
 
+def adminpanel(request):
+    return render(request, 'markitten_app/adminPanel.html')
+
 def productdetails(request):
     return render(request, 'markitten_app/productDetails.html')
 
