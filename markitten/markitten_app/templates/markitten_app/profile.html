@@ -46,7 +46,7 @@
             <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
                 <img src="{% static 'images/sampleProfile.png' %}" alt="">
                 <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">Hello, {user.username}!</h5>
+                    <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
                     <h6 style="text-align: center">Bio</h6>
                     <p class="card-text" style="text-align: justify;">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus tempora amet
@@ -96,23 +96,23 @@
                     <div class="row pt-1">
                         <div class="col-6 mb-2">
                             <h6 style="display: inline;">Full Name: </h6>
-                            <p class="text-muted" style="display: inline;">Ayato Yae Kamisato</p>
+                            <p class="text-muted" style="display: inline;">{{user.name}}</p>
                         </div>
                         <div class="col-2 mb-2">
                             <h6 style="display: inline;">Sex: </h6>
-                            <p class="text-muted" style="display: inline;">Male</p>
+                            <p class="text-muted" style="display: inline;">{{user.sex}}</p>
                         </div>
                         <div class="col-4 mb-2">
                             <h6 style="display: inline;">Nationality: </h6>
-                            <p class="text-muted" style="display: inline;">Filipino</p>
+                            <p class="text-muted" style="display: inline;">{{user.nationality}}</p>
                         </div>
                         <div class="col-6">
                             <h6 style="display: inline;">Birthday: </h6>
-                            <p class="text-muted" style="display: inline;">January 01, 2003</p>
+                            <p class="text-muted" style="display: inline;">{{user.birthday}}</p>
                         </div>
                         <div class="col-6">
                             <h6 style="display: inline;">Citizenship: </h6>
-                            <p class="text-muted" style="display: inline;">Filipino</p>
+                            <p class="text-muted" style="display: inline;">{{user.citizenship}}</p>
                         </div>
                     </div>
                 </div>
@@ -126,23 +126,23 @@
                     <!-- <h5 class="card-title">Special title treatment</h5> -->
                     <div class="col-12 mb-2">
                         <h6 style="display: inline;">Present: </h6>
-                        <p class="text-muted" style="display: inline;">123 Liyue Village, Mihoyo Company</p>
+                        <p class="text-muted" style="display: inline;">{{user.present_address}}</p>
                     </div>
                     <div class="col-12 mb-2">
                         <h6 style="display: inline;">Permanent: </h6>
-                        <p class="text-muted" style="display: inline;">123 Liyue Village, Mihoyo Company</p>
+                        <p class="text-muted" style="display: inline;">{{user.permanent_address}}</p>
                     </div>
                     <div class="col-12 mb-2">
                         <h6 style="display: inline;">Billing: </h6>
-                        <p class="text-muted" style="display: inline;">123 Liyue Village, Mihoyo Company</p>
+                        <p class="text-muted" style="display: inline;">{{user.billing_address}}</p>
                     </div>
                     <div class="col-12 mb-2">
                         <h6 style="display: inline;">Shopping: </h6>
-                        <p class="text-muted" style="display: inline;">123 Liyue Village, Mihoyo Company</p>
+                        <p class="text-muted" style="display: inline;">{{user.shopping_address}}</p>
                     </div>
                     <div class="col-12">
                         <h6 style="display: inline;">Office: </h6>
-                        <p class="text-muted" style="display: inline;">123 Liyue Village, Mihoyo Company</p>
+                        <p class="text-muted" style="display: inline;">{{user.office_address}}</p>
                     </div>
                 </div>
             </div>
@@ -158,15 +158,15 @@
                             <div class="row pt-1">
                                 <div class="col-12 mb-2">
                                     <h6 style="display: inline;">Mobile Number: </h6>
-                                    <p class="text-muted" style="display: inline;">09457325869</p>
+                                    <p class="text-muted" style="display: inline;">{{user.mobile_number}}</p>
                                 </div>
                                 <div class="col-12 mb-2">
                                     <h6 style="display: inline;">Landline Number: </h6>
-                                    <p class="text-muted" style="display: inline;">09457325869</p>
+                                    <p class="text-muted" style="display: inline;">{{user.landline_number}}</p>
                                 </div>
                                 <div class="col-12">
                                     <h6 style="display: inline;">Office Number: </h6>
-                                    <p class="text-muted" style="display: inline;">09457325869</p>
+                                    <p class="text-muted" style="display: inline;">{{user.office_number}}</p>
                                 </div>
                             </div>
                         </div>

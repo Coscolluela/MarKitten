@@ -41,167 +41,120 @@
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col-lg-4" id="fade-in" style="margin-left: 60px;">
-            <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
-                <img src="{% static 'images/sampleProfile.png' %}" alt="">
-                <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">Hello, Customer!</h5>
-                    <h6 style="text-align: center">Bio</h6>
-                    <p class="card-text" style="text-align: justify;">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus tempora amet
-                        placeat mollitia esse tempore pariatur? Rem quod dolore iusto. </p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" style="text-align: center;">
-                        <a href="changePassword.html" class="simpleLink">
-                            <i class="bi bi-file-earmark-lock"></i>
-                            Change Password
-                        </a>
-                    </li>
-                    <li class="list-group-item" style="text-align: center;">
-                        <a href="leaveReview.html" class="simpleLink">
-                            <i class="bi bi-star-half"></i>
-                            Submit a Review
-                        </a>
-                    </li>
-                    <li class="list-group-item" style="text-align: center;">
-                        <a href="leaveReview.html" class="simpleLink">
-                            <i class="bi bi-exclamation-diamond-fill"></i>
-                            <a href="leaveComplaint.html" class="simpleLink">
-                                Submit a Complaint
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
+                    <div>
+                        <button class="btn btn-primary" href="#" role="button"
+                            style="float: right; margin-left: 5px;">Save
+                            Changes</button>
+                        <button class="btn btn-primary" role="button" style="float: right; ">
+                            <a href="{% url 'profile' %}" class="simpleLink">
+                                Cancel
                             </a>
-                        </a>
-                    </li>
+                        </button>
+                        <h5 class="card-header">Personal Information</h5>
+                    </div>
 
-                </ul>
-                <!-- <div class="card-body">
-                    <a href="Home.html" class="card-link simpleLink">
-                        < View Monthly Catalog</a>
-                </div> -->
-            </div>
-        </div>
-        <div class="col-lg-7">
-            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
-                <div>
-                    <button class="btn btn-primary" href="#" role="button" style="float: right; margin-left: 5px;">Save
-                        Changes</button>
-                    <button class="btn btn-primary" role="button" style="float: right; ">
-                        <a href="{% url 'profile' %}" class="simpleLink">
-                            Cancel
-                        </a>
-                    </button>
-                    <h5 class="card-header">Personal Information</h5>
-                </div>
-
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Special title treatment</h5> -->
-                    <div class="row pt-1">
-                        <div class="col-6 mb-2">
-                            <label for="inputEmail4" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="Ayato">
-                        </div>
-                        <div class="col-2 mb-2">
-                            <label for="inputEmail4" class="form-label">Sex</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="Male">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label for="inputEmail4" class="form-label">Nationality</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="Filipino">
-                        </div>
-                        <div class="col-6">
-                            <label for="inputEmail4" class="form-label">Birthday</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="January 01, 2003">
-                        </div>
-                        <div class="col-6">
-                            <label for="inputEmail4" class="form-label">Citizenship</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="Filipino">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                <div>
-                    <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button>
-                    <h5 class="card-header">Addresses</h5>
-                </div>
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Special title treatment</h5> -->
-                    <div class="col-12 mb-2">
-                        <label for="inputEmail4" class="form-label">Present</label>
-                        <input type="text" class="form-control" id="inputEmail4"
-                            value="123 Liyue Village, Mihoyo Company">
-                    </div>
-                    <div class="col-12 mb-2">
-                        <label for="inputEmail4" class="form-label">Permanent</label>
-                        <input type="text" class="form-control" id="inputEmail4"
-                            value="123 Liyue Village, Mihoyo Company">
-                    </div>
-                    <div class="col-12 mb-2">
-                        <label for="inputEmail4" class="form-label">Billing</label>
-                        <input type="text" class="form-control" id="inputEmail4"
-                            value="123 Liyue Village, Mihoyo Company">
-                    </div>
-                    <div class="col-12 mb-2">
-                        <label for="inputEmail4" class="form-label">Shopping</label>
-                        <input type="text" class="form-control" id="inputEmail4"
-                            value="123 Liyue Village, Mihoyo Company">
-                    </div>
-                    <div class="col-12">
-                        <label for="inputEmail4" class="form-label">Office</label>
-                        <input type="text" class="form-control" id="inputEmail4"
-                            value="123 Liyue Village, Mihoyo Company">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                        <div>
-                            <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
-                                Details</button>
-                            <h5 class="card-header">Contact Information</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="row pt-1">
-                                <div class="col-12 mb-2">
-                                    <label for="inputEmail4" class="form-label">Mobile Number</label>
-                                    <input type="text" class="form-control" id="inputEmail4" value="09457325869">
-                                </div>
-                                <div class="col-12 mb-2">
-                                    <label for="inputEmail4" class="form-label">Landline Number</label>
-                                    <input type="text" class="form-control" id="inputEmail4" value="09457325869">
-                                </div>
-                                <div class="col-12">
-                                    <label for="inputEmail4" class="form-label">Office Number</label>
-                                    <input type="text" class="form-control" id="inputEmail4" value="09457325869">
-                                </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <div class="row pt-1">
+                            <div class="col-6 mb-2">
+                                <label for="inputEmail4" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.username}}">
+                            </div>
+                            <div class="col-2 mb-2">
+                                <label for="inputEmail4" class="form-label">Sex</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.sex}}">
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label for="inputEmail4" class="form-label">Nationality</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.nationality}}">
+                            </div>
+                            <div class="col-6">
+                                <label for="inputEmail4" class="form-label">Birthday</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.birthday}}">
+                            </div>
+                            <div class="col-6">
+                                <label for="inputEmail4" class="form-label">Citizenship</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.citizenship}}">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                        <div>
-                            <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
-                                Details</button>
-                            <h5 class="card-header">Subscription</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    This box is checked if you signed up for subscription to view our monthly catalog.
-                                    Please modify this option if necessary.
-                                </label>
+                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                    <div>
+                        <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                            Details</button> -->
+                        <h5 class="card-header">Contact Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row pt-1">
+                            <div class="col-12 mb-2">
+                                <label for="inputEmail4" class="form-label">Mobile Number</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.mobile_number}}">
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="inputEmail4" class="form-label">Landline Number</label>
+                                <input type="text" class="form-control" id="inputEmail4"
+                                    value="{{user.landline_number}}">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputEmail4" class="form-label">Office Number</label>
+                                <input type="text" class="form-control" id="inputEmail4" value="{{user.office_number}}">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div class="col-lg-6">
+                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                    <div>
+                        <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button> -->
+                        <h5 class="card-header">Addresses</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <div class="col-12 mb-2">
+                            <label for="inputEmail4" class="form-label">Present</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.present_address}}">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="inputEmail4" class="form-label">Permanent</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.permanent_address}}">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="inputEmail4" class="form-label">Billing</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.billing_address}}">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="inputEmail4" class="form-label">Shopping</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.shopping_address}}">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputEmail4" class="form-label">Office</label>
+                            <input type="text" class="form-control" id="inputEmail4" value="{{user.office_address}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="slide-in-left" style="background-color: beige;">
+                    <div>
+                        <h5 class="card-header">Subscription</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Put a check on the box to subscribe to monthly catalog.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 
     <!-- SCROLL ANIMATION -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
