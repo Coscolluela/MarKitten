@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css '%}">
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -41,182 +42,191 @@
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col-lg-4" id="fade-in" style="margin-left: 60px;">
-            <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
-                <img src="{% static 'images/sampleProfile.png' %}" alt="">
-                <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" style="text-align: center;">
-                        <a href="{% url 'changepassword' %}" class="simpleLink">
-                            <i class="bi bi-file-earmark-lock"></i>
-                            Change Password
-                        </a>
-                    </li>
-                    <li class="list-group-item" style="text-align: center;">
-                        <a href="{% url 'leavereview' %}" class="simpleLink">
-                            <i class="bi bi-star-half"></i>
-                            Submit a Review
-                        </a>
-                    </li>
-                    <li class="list-group-item" style="text-align: center;">
-                        <a href="leaveReview.html" class="simpleLink">
-                            <i class="bi bi-exclamation-diamond-fill"></i>
+    <div class="container" style="margin-top: 80px;">
+        <div class="row">
+            <div class="col-lg-4" id="fade-in">
+                <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
+                    <img src="{% static 'images/sampleProfile.png' %}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'editprofile' %}" class="simpleLink">
+                                <i class="fa fa-edit"></i>
+                                Edit Profile
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'changepassword' %}" class="simpleLink">
+                                <i class="bi bi-file-earmark-lock"></i>
+                                Change Password
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'leavereview' %}" class="simpleLink">
+                                <i class="bi bi-star-half"></i>
+                                Submit a Review
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="text-align: center;">
                             <a href="{% url 'leavecomplaint' %}" class="simpleLink">
+                                <i class="bi bi-exclamation-diamond-fill"></i>
                                 Submit a Complaint
                             </a>
-                        </a>
-                    </li>
-                </ul>
-                <!-- <div class="card-body">
-                    <a href="Home.html" class="card-link simpleLink">
-                        < View Monthly Catalog</a>
-                </div> -->
-            </div>
-            <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;">
-        </div>
-        <div class="col-lg-7">
-            <form action="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
-                    <div>
-                        <!-- <button class="btn btn-primary" role="button" style="float: right; ">
-                            <a href="{% url 'editprofile' %}" class="simpleLink">Edit
-                                Details</a>
-                        </button> -->
-                        <h5 class="card-header">Personal Information</h5>
-                    </div>
-
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5                                           > -->
-                        <div class="row pt-1">
-                            <div class="col-6 mb-2">
-                                <label for="inputEmail4" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="inputEmail4" value="{{user.username}}">
-                            </div>
-                            <div class="col-2 mb-2">
-                                <label for="inputEmail4" class="form-label">Sex</label>
-                                <input type="text" class="form-control" id="inputEmail4" value="{{user.sex}}">
-                            </div>
-                            <div class="col-4 mb-2">
-                                <label for="inputEmail4" class="form-label">Nationality</label>
-                                <input type="text" class="form-control" id="inputEmail4" value="{{user.nationality}}">
-                            </div>
-                            <div class="col-6">
-                                <label for="inputEmail4" class="form-label">Birthday</label>
-                                <input type="text" class="form-control" id="inputEmail4" value="{{user.birthday}}">
-                            </div>
-                            <div class="col-6">
-                                <label for="inputEmail4" class="form-label">Citizenship</label>
-                                <input type="text" class="form-control" id="inputEmail4" value="{{user.citizenship}}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                    <div>
-                        <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button> -->
-                        <h5 class="card-header">Addresses</h5>
-                    </div>
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <!-- <div class="col-12 mb-2">
-                        <h6 style="display: inline;">Present: </h6>
-                        <p class="text-muted" style="display: inline;">{{user.present_address}}</p>
-                    </div>
-                    <div class="col-12 mb-2">
-                        <h6 style="display: inline;">Permanent: </h6>
-                        <p class="text-muted" style="display: inline;">{{user.permanent_address}}</p>
-                    </div>
-                    <div class="col-12 mb-2">
-                        <h6 style="display: inline;">Billing: </h6>
-                        <p class="text-muted" style="display: inline;">{{user.billing_address}}</p>
-                    </div>
-                    <div class="col-12 mb-2">
-                        <h6 style="display: inline;">Shopping: </h6>
-                        <p class="text-muted" style="display: inline;">{{user.shopping_address}}</p>
-                    </div>
-                    <div class="col-12">
-                        <h6 style="display: inline;">Office: </h6>
-                        <p class="text-muted" style="display: inline;">{{user.office_address}}</p>
+                        </li>
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'logout' %}" class="simpleLink">
+                                <i class="fa fa-sign-out"></i>
+                                Logout
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <!-- <div class="card-body">
+                        <a href="Home.html" class="card-link simpleLink">
+                            < View Monthly Catalog</a>
                     </div> -->
-                        <div class="col-12 mb-2">
-                            <label for="inputEmail4" class="form-label">Present</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="{{user.present_address}}">
+                </div>
+                <!-- <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;"> -->
+            </div>
+            <div class="col-lg-8">
+                <form action="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
+                        <div>
+                            <!-- <button class="btn btn-primary" role="button" style="float: right; ">
+                                <a href="{% url 'editprofile' %}" class="simpleLink">Edit
+                                    Details</a>
+                            </button> -->
+                            <h5 class="card-header">Personal Information</h5>
                         </div>
-                        <div class="col-12 mb-2">
-                            <label for="inputEmail4" class="form-label">Permanent</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="{{user.permanent_address}}">
-                        </div>
-                        <div class="col-12 mb-2">
-                            <label for="inputEmail4" class="form-label">Billing</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="{{user.billing_address}}">
-                        </div>
-                        <div class="col-12 mb-2">
-                            <label for="inputEmail4" class="form-label">Shopping</label>
-                            <input type="text" class="form-control" id="inputEmail4" value="{{user.shopping_address}}">
+    
+                        <div class="card-body">
+                            <!-- <h5 class="card-title">Special title treatment</h5                                           > -->
+                            <div class="row pt-1">
+                                <div class="col-6 mb-2">
+                                    <label for="floating-input" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="floating-input" value="{{user.username}}" disabled readonly>
+                                </div>
+                                <div class="col-2 mb-2">
+                                    <label for="floating-input" class="form-label">Sex</label>
+                                    <input type="text" class="form-control" id="floating-input" value="{{user.sex}}" disabled readonly>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <label for="floating-input" class="form-label">Nationality</label>
+                                    <input type="text" class="form-control" id="floating-input" value="{{user.nationality}}" disabled readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label for="floating-input" class="form-label">Birthday</label>
+                                    <input type="text" class="form-control" id="floating-input" value="{{user.birthday}}" disabled readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label for="floating-input" class="form-label">Citizenship</label>
+                                    <input type="text" class="form-control" id="floating-input" value="{{user.citizenship}}" disabled readonly>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                            <div>
-                                <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
-                                Details</button> -->
-                                <h5 class="card-header">Contact Information</h5>
+                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                        <div>
+                            <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button> -->
+                            <h5 class="card-header">Addresses</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- <h5 class="card-title">Special title treatment</h5> -->
+                            <!-- <div class="col-12 mb-2">
+                            <h6 style="display: inline;">Present: </h6>
+                            <p class="text-muted" style="display: inline;">{{user.present_address}}</p>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <h6 style="display: inline;">Permanent: </h6>
+                            <p class="text-muted" style="display: inline;">{{user.permanent_address}}</p>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <h6 style="display: inline;">Billing: </h6>
+                            <p class="text-muted" style="display: inline;">{{user.billing_address}}</p>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <h6 style="display: inline;">Shopping: </h6>
+                            <p class="text-muted" style="display: inline;">{{user.shopping_address}}</p>
+                        </div>
+                        <div class="col-12">
+                            <h6 style="display: inline;">Office: </h6>
+                            <p class="text-muted" style="display: inline;">{{user.office_address}}</p>
+                        </div> -->
+                            <div class="col-12 mb-2">
+                                <label for="floating-input" class="form-label">Present</label>
+                                <input type="text" class="form-control" id="floating-input" value="{{user.present_address}}" disabled readonly>
                             </div>
-                            <div class="card-body">
-                                <div class="row pt-1">
-                                    <div class="col-12 mb-2">
-                                        <label for="inputEmail4" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control" id="inputEmail4"
-                                            value="{{user.mobile_number}}">
+                            <div class="col-12 mb-2">
+                                <label for="floating-input" class="form-label">Permanent</label>
+                                <input type="text" class="form-control" id="floating-input" value="{{user.permanent_address}}" disabled readonly>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="floating-input" class="form-label">Billing</label>
+                                <input type="text" class="form-control" id="floating-input" value="{{user.billing_address}}" disabled readonly>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="floating-input" class="form-label">Shopping</label>
+                                <input type="text" class="form-control" id="floating-input" value="{{user.shopping_address}}" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                                <div>
+                                    <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                                    Details</button> -->
+                                    <h5 class="card-header">Contact Information</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row pt-1">
+                                        <div class="col-12 mb-2">
+                                            <label for="floating-input" class="form-label">Mobile Number</label>
+                                            <input type="text" class="form-control" id="floating-input"
+                                                value="{{user.mobile_number}}" disabled readonly>
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <label for="floating-input" class="form-label">Landline Number</label>
+                                            <input type="text" class="form-control" id="floating-input"
+                                                value="{{user.landline_number}}" disabled readonly>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="floating-input" class="form-label">Office Number</label>
+                                            <input type="text" class="form-control" id="floating-input"
+                                                value="{{user.office_number}}" disabled readonly>
+                                        </div>
                                     </div>
-                                    <div class="col-12 mb-2">
-                                        <label for="inputEmail4" class="form-label">Landline Number</label>
-                                        <input type="text" class="form-control" id="inputEmail4"
-                                            value="{{user.landline_number}}">
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="inputEmail4" class="form-label">Office Number</label>
-                                        <input type="text" class="form-control" id="inputEmail4"
-                                            value="{{user.office_number}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                                <div>
+                                    <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                                    Details</button> -->
+                                    <h5 class="card-header">Subscription</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled readonly>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            This box is checked if you signed up for subscription to view our monthly
+                                            catalog.
+                                            Please modify this option if necessary.
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                            <div>
-                                <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
-                                Details</button> -->
-                                <h5 class="card-header">Subscription</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        This box is checked if you signed up for subscription to view our monthly
-                                        catalog.
-                                        Please modify this option if necessary.
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" type="submit" href="#" role="button"
-                            style="float: right; ">Logout</button>
-                        <button class="btn btn-primary" type="submit" href="#" role="button"
-                            style="float: right; ">Save</button>
-                    </div>
-                </div>
-
+                </form>
+            </div>
         </div>
     </div>
-    </form>
+    
     <!-- SCROLL ANIMATION -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

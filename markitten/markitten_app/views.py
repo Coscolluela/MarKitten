@@ -48,10 +48,10 @@ def signup(request):
 
 def signin(request):
     if(request.method == "POST"):
-        email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = authenticate(request, email = email, password = password)
+        user = authenticate(request, username = username, password = password)
         if user is not None:
             login(request, user)
             print("Login was successful")
@@ -59,11 +59,12 @@ def signin(request):
         else:
             print("Login failed")
             messages.error(request, "Incorrect password or email.")
+
     return render(request, 'markitten_app/login.html')
 
 def signout(request):
     logout(request)
-    return redirect('login')
+    return redirect('/')
 
 def faq(request):
     return render(request, 'markitten_app/faq.html')

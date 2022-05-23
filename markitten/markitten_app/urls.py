@@ -14,6 +14,7 @@ urlpatterns = [
     path('leavereview/', views.leavereview, name="leavereview"),
     path('login/', views.signin, name="login"),
     path('signup/', views.signup, name="signup"),
+    path('logout/', views.signout, name="logout"),
     path('productdetails/', views.productdetails, name="productdetails"),
     path('changepassword/', views.changepassword, name="changepassword"),
     path('faq/', views.faq, name="faq"),
