@@ -23,11 +23,9 @@ def productdetails(request):
 
 @login_required(login_url='/login')
 def profile(request):
-    u_form = UserUpdateForm(instance=request.user)
-    p_form = ProfileUpdateForm(instance=request.user.profile)
+    p_form = Profile.objects.get(user=request.user)
     
     context = {
-        'u_form': u_form,
         'p_form': p_form
     }
     return render(request, 'markitten_app/profile.html', context)

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-{% load crispy_forms_tags %}
 <html lang="en">
 
 <head>
@@ -163,23 +162,23 @@
                             <div class="row pt-1">
                                 <div class="col-5 mb-2">
                                     <label for="floating-input" class="form-label">Full Name</label>
-                                    {{u_form.username}}
+                                    <input class="form-control" type="text" value="{{user.username}}" placeholder="Full Name" aria-label="Disabled input example" disabled readonly>
                                 </div>
                                 <div class="col-3 mb-2">
                                     <label for="floating-input" class="form-label">Sex</label>
-                                    <p class="text-muted">{{p_form.sex}}</p>
+                                    <input class="form-control" type="text" value="{{p_form.sex}}" placeholder="Sex" aria-label="Disabled input example" disabled readonly>
                                 </div>
                                 <div class="col-4 mb-2">
                                     <label for="floating-input" class="form-label">Nationality</label>
-                                    {{p_form.nationality}}
+                                    <input class="form-control" type="text" value="{{p_form.nationality}}" placeholder="Nationality" aria-label="Disabled input example" disabled readonly>
                                 </div>
                                 <div class="col-6">
                                     <label for="floating-input" class="form-label">Birthday</label>
-                                    {{p_form.birthday}}
+                                    <input class="form-control" type="text" value="{{p_form.birthday}}" placeholder="Birthday" aria-label="Disabled input example" disabled readonly>
                                 </div>
                                 <div class="col-6">
                                     <label for="floating-input" class="form-label">Citizenship</label>
-                                    {{p_form.citizenship}}
+                                    <input class="form-control" type="text" value="{{p_form.citizenship}}" placeholder="Citizenship" aria-label="Disabled input example" disabled readonly>
                                 </div>
                             </div>
                         </div>
@@ -215,21 +214,21 @@
                                 <div class="col-md-6">
                                     <div class="col-12 mb-2">
                                         <label for="floating-input" class="form-label">Present</label>
-                                        {{p_form.present_address}}
+                                        <input class="form-control" type="text" value="{{p_form.present_address}}" aria-label="Disabled input example" disabled readonly>
                                     </div>
                                     <div class="col-12 mb-2">
                                         <label for="floating-input" class="form-label">Permanent</label>
-                                        {{p_form.permanent_address}}
+                                        <input class="form-control" type="text" value="{{p_form.permanent_address}}" aria-label="Disabled input example" disabled readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="col-12 mb-2">
                                         <label for="floating-input" class="form-label">Billing</label>
-                                        {{p_form.billing_address}}
+                                        <input class="form-control" type="text" value="{{p_form.billing_address}}" aria-label="Disabled input example" disabled readonly>
                                     </div>
                                     <div class="col-12 mb-2">
                                         <label for="floating-input" class="form-label">Shopping</label>
-                                        {{p_form.shopping_address}}
+                                        <input class="form-control" type="text" value="{{p_form.shopping_address}}" aria-label="Disabled input example" disabled readonly>
                                     </div>
                                 </div>
                             </div>
@@ -247,15 +246,15 @@
                                     <div class="row pt-1">
                                         <div class="col-md-4">
                                             <label for="floating-input" class="form-label">Mobile Number</label>
-                                            {{p_form.mobile_number}}
+                                            <input class="form-control" type="text" value="{{p_form.mobile_number}}" aria-label="Disabled input example" disabled readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="floating-input" class="form-label">Landline Number</label>
-                                            {{p_form.landline_number}}
+                                            <input class="form-control" type="text" value="{{p_form.landline_number}}" aria-label="Disabled input example" disabled readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="floating-input" class="form-label">Office Number</label>
-                                            {{p_form.office_number}}
+                                            <input class="form-control" type="text" value="{{p_form.office_number}}" aria-label="Disabled input example" disabled readonly>
                                         </div>
                                     </div>
                                 </div>
