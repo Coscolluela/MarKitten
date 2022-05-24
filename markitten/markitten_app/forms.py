@@ -1,7 +1,7 @@
 from ast import Pass
 from tkinter import DISABLED
-from django.forms import ModelForm, TextInput, PasswordInput, CharField, HiddenInput, NumberInput, widgets
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.forms import ModelForm, TextInput, PasswordInput, CharField, EmailInput, HiddenInput, NumberInput, widgets
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
 
 from django.contrib.auth.models import User
 from .models import *
@@ -60,3 +60,20 @@ class MyPasswordChangeForm(PasswordChangeForm):
         
         for fieldname in ['old_password', 'new_password1', 'new_password2']:
             self.fields[fieldname].widget=PasswordInput(attrs=attrs)
+
+class MyPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'required' : True ,}
+        
+        for fieldname in ['email']:
+            self.fields[fieldname].widget=EmailInput(attrs=attrs)
+            
+class MyPasswordSentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'required' : True ,}
+        
+        for fieldname in ['new_password1', 'new_password2']:
+            self.fields[fieldname].widget=PasswordInput(attrs=attrs)
+      

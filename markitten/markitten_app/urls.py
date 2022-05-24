@@ -1,3 +1,4 @@
+from re import template
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -5,7 +6,7 @@ from django.urls import path, include, reverse_lazy
 from . import views
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import PasswordChangeView
-from .forms import MyPasswordChangeForm
+from .forms import MyPasswordChangeForm, MyPasswordResetForm, MyPasswordSentForm
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -24,6 +25,16 @@ urlpatterns = [
 			success_url = reverse_lazy('profile'),
 			form_class = MyPasswordChangeForm
         ), name="changepassword"),
+    path('forgotpassword/', auth_views.PasswordResetView.as_view(
+        template_name = 'markitten_app/passchange.html',
+		form_class = MyPasswordResetForm
+	), name = 'reset_password'),
+    path('forgotpassword_sent/', auth_views.PasswordResetDoneView.as_view(
+        template_name = ('markitten_app/forgotsent.html')), name = 'password_reset_done'),
+    path('forgotpassword/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
+        template_name = 'markitten_app/passconfirm.html',
+        form_class = MyPasswordSentForm), name = 'password_reset_confirm'),
+    path('forgotpassword_complete/', auth_views.PasswordResetCompleteView.as_view(), name = 'password_reset_complete'),
     path('faq/', views.faq, name="faq"),
     path('about/', views.about, name="about"),
     path('customersearch/', views.customersearch, name="customersearch"),
