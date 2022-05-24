@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from .forms import *
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -20,12 +21,37 @@ def adminpanel(request):
 def productdetails(request):
     return render(request, 'markitten_app/productDetails.html')
 
+@login_required(login_url='/login')
 def profile(request):
+    u_form = UserUpdateForm(instance=request.user)
+    p_form = ProfileUpdateForm(instance=request.user.profile)
     
-    return render(request, 'markitten_app/profile.html')
+    context = {
+        'u_form': u_form,
+        'p_form': p_form
+    }
+    return render(request, 'markitten_app/profile.html', context)
 
 def editprofile(request):
-    return render(request, 'markitten_app/editprofile.html')
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form
+    }
+
+    return render(request, 'markitten_app/editprofile.html', context)
 
 def leavecomplaint(request):
     return render(request, 'markitten_app/leaveComplaint.html')

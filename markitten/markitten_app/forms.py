@@ -1,8 +1,10 @@
+from tkinter import DISABLED
 from django.forms import ModelForm, TextInput, PasswordInput, CharField, HiddenInput, NumberInput, widgets
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.models import User
 from .models import *
+from django import forms
 
 class UserForm(UserCreationForm):
     attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Password', 'required' : True ,}
@@ -17,4 +19,35 @@ class UserForm(UserCreationForm):
             'last_name' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Last Name', 'required' : True ,}),
             'username' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'username', 'placeholder' : 'Enter Username', 'required' : True ,}),
             'email' : TextInput(attrs = { 'type' : 'email' , 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'email', 'placeholder' : 'Enter Email', 'required' : True ,})
+            }
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'email']
+        widgets = {
+            'first_name' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter First Name', 'required' : True ,}),
+            'last_name' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Last Name', 'required' : True ,}),
+            'username' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'username', 'placeholder' : 'Enter Username', 'required' : True ,}),
+            'email' : TextInput(attrs = { 'type' : 'email' , 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'email', 'placeholder' : 'Enter Email', 'required' : True ,})
+            }
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image', 'sex', 'birthday', 'nationality', 'citizenship', 
+                'present_address', 'billing_address', 'permanent_address','shopping_address', 
+                'mobile_number', 'landline_number', 'office_number', 'is_subscribed']
+        widgets = {
+            'sex' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Male/Female', 'required' : True ,}),
+            'birthday' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Birthday', 'required' : True ,}),
+            'nationality' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'nationality', 'placeholder' : 'Filipino', 'required' : True ,}),
+            'citizenship' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'citizenship', 'placeholder' : 'Filipino', 'required' : True ,}),
+            'present_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'present_address', 'placeholder' : 'Address', 'required' : True ,}),
+            'billing_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'billing_address', 'placeholder' : 'Address', 'required' : True ,}),
+            'permanent_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'permanent_address', 'placeholder' : 'Address',}),
+            'shopping_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'shopping_address', 'placeholder' : 'Address', 'required' : True ,}),
+            'mobile_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'mobile_number', 'placeholder' : 'Number', 'required' : True ,}),
+            'landline_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'landline_number', 'placeholder' : 'Number', 'required' : True ,}),
+            'office_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'office_number', 'placeholder' : 'Number', 'required' : True ,})
             }
