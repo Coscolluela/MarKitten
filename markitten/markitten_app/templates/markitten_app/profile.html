@@ -43,6 +43,61 @@
         </div>
     </nav>
 
+    {% if user.is_superuser %}
+    <div class="container" style="margin-top: 10px;">
+        <div class="row">
+            <div class="col-lg-4" id="fade-in">
+                <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
+                    <img src="{{user.profile.image.url}}" alt="" height="350px" width="auto">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'customersearch' %}" class="simpleLink">
+                                <i class="fa fa-edit"></i>
+                                Customer Search
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'customerlocation' %}" class="simpleLink">
+                                <i class="bi bi-file-earmark-lock"></i>
+                                Change Filter by Location
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'productrating' %}" class="simpleLink">
+                                <i class="bi bi-star-half"></i>
+                                Product Ratings
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'totalcustomers' %}" class="simpleLink">
+                                <i class="bi bi-exclamation-diamond-fill"></i>
+                                Display Customer Count
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="text-align: center;">
+                            <a href="{% url 'logout' %}" class="simpleLink">
+                                <i class="fa fa-sign-out"></i>
+                                Logout
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- <div class="card-body">
+                        <a href="Home.html" class="card-link simpleLink">
+                            < View Monthly Catalog</a>
+                    </div> -->
+                </div>
+                <!-- <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;"> -->
+            </div>
+            <div class="col-lg-8">
+                <h4>Please choose the function you want to do.</h4>
+            </div>
+        </div>
+    </div>
+    {% else %}
     <div class="container" style="margin-top: 30px;">
         <div class="row">
             <div class="col-lg-4" id="fade-in">
@@ -229,6 +284,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <!-- SCROLL ANIMATION -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

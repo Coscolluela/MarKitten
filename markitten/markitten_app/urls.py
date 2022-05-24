@@ -19,6 +19,10 @@ urlpatterns = [
     path('changepassword/', views.changepassword, name="changepassword"),
     path('faq/', views.faq, name="faq"),
     path('about/', views.about, name="about"),
+    path('customersearch/', views.customersearch, name="customersearch"),
+    path('customerlocation/', views.customerlocation, name="customerlocation"),
+    path('productrating/', views.productrating, name="productrating"),
+    path('totalcustomers/', views.totalcustomers, name="totalcustomers"),
 ]
 
 if settings.DEBUG:

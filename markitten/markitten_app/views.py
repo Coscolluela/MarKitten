@@ -67,7 +67,7 @@ def signup(request):
         if(form.is_valid()):
             form.save()
             messages.success(request, "Account was created for " + form.cleaned_data.get("username"))
-            return redirect('login')
+            return redirect('profile')
         
     data = {"form" : form}
     return render(request, 'markitten_app/signup.html', data)
@@ -100,3 +100,15 @@ def about(request):
 
 def changepassword(request):
     return render(request, 'markitten_app/changePassword.html')
+
+def customersearch(request):
+    return render(request, 'markitten_app/customerSearch.html')
+
+def customerlocation(request):
+    return render(request, 'markitten_app/customerLocation.html')
+
+def productrating(request):
+    return render(request, 'markitten_app/productrating.html')
+
+def totalcustomers(request):
+    return render(request, 'markitten_app/totalCustomers.html')
