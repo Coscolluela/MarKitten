@@ -17,6 +17,8 @@ class Profile(models.Model):
     birthday = models.DateField(default=datetime.date.today)
     nationality = models.CharField(max_length=100, default='Filipino')
     citizenship = models.CharField(max_length=100, default='Filipino')
+    personal_email = models.CharField(max_length=100, default='abcd@gmail.com')
+    office_email = models.CharField(max_length=100, default='abcd@gmail.com')
     present_address = models.CharField(max_length=100, default='House No., Street Address, City, State')
     permanent_address = models.CharField(max_length=100, default='House No., Street Address, City, State')
     billing_address = models.CharField(max_length=100, default='House No., Street Address, City, State')
