@@ -106,28 +106,24 @@
                         <div class="card-body">
                             <!-- <h5 class="card-title">Special title treatment</h5                                           > -->
                             <div class="row pt-1">
-                                <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">First Name</label>
-                                    {{u_form.first_name}}
+                                <div class="col-5 mb-2">
+                                    <label for="floating-input" class="form-label">Full Name</label>
+                                    {{u_form.username}}
+                                </div>
+                                <div class="col-3 mb-2">
+                                    <label for="floating-input" class="form-label">Sex</label>
+                                    <p class="text-muted">{{p_form.sex}}</p>
                                 </div>
                                 <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">Last Name</label>
-                                    {{u_form.last_name}}
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">Nationality</label>
+                                    <label for="floating-input" class="form-label">Nationality</label>
                                     {{p_form.nationality}}
                                 </div>
-                                <div class="col-4">
-                                    <label for="inputEmail4" class="form-label">Birthday</label>
+                                <div class="col-6">
+                                    <label for="floating-input" class="form-label">Birthday</label>
                                     {{p_form.birthday}}
                                 </div>
-                                <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">Sex</label>
-                                    {{p_form.sex}}
-                                </div>
-                                <div class="col-4">
-                                    <label for="inputEmail4" class="form-label">Citizenship</label>
+                                <div class="col-6">
+                                    <label for="floating-input" class="form-label">Citizenship</label>
                                     {{p_form.citizenship}}
                                 </div>
                             </div>
@@ -194,11 +190,11 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row pt-1">
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 mb-2">
                                             <label for="floating-input" class="form-label">Mobile Number</label>
                                             {{p_form.mobile_number}}
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 mb-2">
                                             <label for="floating-input" class="form-label">Landline Number</label>
                                             {{p_form.landline_number}}
                                         </div>

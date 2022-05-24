@@ -81,53 +81,39 @@
                         <div class="card-body">
                             <!-- <h5 class="card-title">Special title treatment</h5> -->
                             <div class="row pt-1">
-                                <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">First Name</label>
-                                    {{u_form.first_name}}
+                                <div class="col-5 mb-2">
+                                    <label for="inputEmail4" class="form-label">Full Name</label>
+                                    {{u_form.username}}
                                 </div>
-                                <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">Last Name</label>
-                                    {{u_form.last_name}}
+                                <div class="col-3 mb-2">
+                                    <label for="inputEmail4" class="form-label">Sex</label>
+                                    {{p_form.sex}}
                                 </div>
                                 <div class="col-4 mb-2">
                                     <label for="inputEmail4" class="form-label">Nationality</label>
                                     {{p_form.nationality}}
                                 </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <label for="inputEmail4" class="form-label">Birthday</label>
                                     {{p_form.birthday}}
                                 </div>
-                                <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">Sex</label>
-                                    {{p_form.sex}}
-                                </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <label for="inputEmail4" class="form-label">Citizenship</label>
                                     {{p_form.citizenship}}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                    <div class="card" id="slide-in-left" style="background-color: beige;">
                         <div>
-                            <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
-                                Details</button> -->
-                            <h5 class="card-header">Contact Information</h5>
+                            <h5 class="card-header">Subscription</h5>
                         </div>
                         <div class="card-body">
-                            <div class="row pt-1">
-                                <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">Mobile Number</label>
-                                    {{p_form.mobile_number}}
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label for="inputEmail4" class="form-label">Landline Number</label>
-                                    {{p_form.landline_number}}
-                                </div>
-                                <div class="col-4">
-                                    <label for="inputEmail4" class="form-label">Office Number</label>
-                                    {{p_form.office_number}}
-                                </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Put a check on the box to subscribe to monthly catalog.
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -158,16 +144,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card" id="slide-in-left" style="background-color: beige;">
+                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
                         <div>
-                            <h5 class="card-header">Subscription</h5>
+                            <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                                Details</button> -->
+                            <h5 class="card-header">Contact Information</h5>
                         </div>
                         <div class="card-body">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Put a check on the box to subscribe to monthly catalog.
-                                </label>
+                            <div class="row pt-1">
+                                <div class="col-4">
+                                    <label for="inputEmail4" class="form-label">Mobile Number</label>
+                                    {{p_form.mobile_number}}
+                                </div>
+                                <div class="col-4">
+                                    <label for="inputEmail4" class="form-label">Landline Number</label>
+                                    {{p_form.landline_number}}
+                                </div>
+                                <div class="col-4">
+                                    <label for="inputEmail4" class="form-label">Office Number</label>
+                                    {{p_form.office_number}}
+                                </div>
                             </div>
                         </div>
                     </div>
