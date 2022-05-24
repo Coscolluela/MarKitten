@@ -67,7 +67,7 @@ def signup(request):
         if(form.is_valid()):
             form.save()
             messages.success(request, "Account was created for " + form.cleaned_data.get("username"))
-            return redirect('/')
+            return redirect('login')
         
     data = {"form" : form}
     return render(request, 'markitten_app/signup.html', data)

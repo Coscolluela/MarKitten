@@ -50,7 +50,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div>
-                                <img src="{{user.profile.image.url}}" alt="" width="150px">
+                                <img src="{{user.profile.image.url}}" alt="" width="150px"
+                                    style="margin: 15px auto auto 55px;">
 
                                 <!-- <div class="card-body">
                                     <a href="Home.html" class="card-link simpleLink">
@@ -58,7 +59,7 @@
                                 </div> -->
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="padding: 45px 30px 5px 5px;">
                             {{p_form.image}}
                         </div>
                     </div>
@@ -80,23 +81,27 @@
                         <div class="card-body">
                             <!-- <h5 class="card-title">Special title treatment</h5> -->
                             <div class="row pt-1">
-                                <div class="col-5 mb-2">
-                                    <label for="inputEmail4" class="form-label">Full Name</label>
-                                    {{u_form.username}}
+                                <div class="col-4 mb-2">
+                                    <label for="inputEmail4" class="form-label">First Name</label>
+                                    {{u_form.first_name}}
                                 </div>
-                                <div class="col-3 mb-2">
-                                    <label for="inputEmail4" class="form-label">Sex</label>
-                                    {{p_form.sex}}
+                                <div class="col-4 mb-2">
+                                    <label for="inputEmail4" class="form-label">Last Name</label>
+                                    {{u_form.last_name}}
                                 </div>
                                 <div class="col-4 mb-2">
                                     <label for="inputEmail4" class="form-label">Nationality</label>
                                     {{p_form.nationality}}
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <label for="inputEmail4" class="form-label">Birthday</label>
                                     {{p_form.birthday}}
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4 mb-2">
+                                    <label for="inputEmail4" class="form-label">Sex</label>
+                                    {{p_form.sex}}
+                                </div>
+                                <div class="col-4">
                                     <label for="inputEmail4" class="form-label">Citizenship</label>
                                     {{p_form.citizenship}}
                                 </div>
