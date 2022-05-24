@@ -148,7 +148,13 @@ def changepassword(request):
     return render(request, 'markitten_app/changePassword.html')
 
 def customersearch(request):
-    return render(request, 'markitten_app/customerSearch.html')
+    customer = Profile.objects.all()
+
+    context = {
+        "customer" : customer
+    }
+
+    return render(request, 'markitten_app/customerSearch.html', context)
 
 def customerlocation(request):
     return render(request, 'markitten_app/customerLocation.html')

@@ -112,10 +112,17 @@
                         </div>
                         <div class="card-body">
                             <div class="form-check">
+                                {% if p_form.is_subscribed %}
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     Put a check on the box to subscribe to monthly catalog.
                                 </label>
+                                {% else %}
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Put a check on the box to subscribe to monthly catalog.
+                                </label>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -144,6 +151,10 @@
                                 <label for="inputEmail4" class="form-label">Shopping</label>
                                 {{p_form.shopping_address}}
                             </div>
+                            <div class="col-12 mb-2">
+                                <label for="inputEmail4" class="form-label">Office</label>
+                                {{p_form.office_address}}
+                            </div>
                         </div>
                     </div>
                     <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
@@ -154,7 +165,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row pt-1">
-                                <div class="col-4">
+                                <div class="col-4 mb-2">
                                     <label for="inputEmail4" class="form-label">Mobile Number</label>
                                     {{p_form.mobile_number}}
                                 </div>
@@ -162,9 +173,17 @@
                                     <label for="inputEmail4" class="form-label">Landline Number</label>
                                     {{p_form.landline_number}}
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4 mb-2">
                                     <label for="inputEmail4" class="form-label">Office Number</label>
                                     {{p_form.office_number}}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="floating-input" class="form-label">Personal Email</label>
+                                    {{p_form.personal_email}}
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="floating-input" class="form-label">Office Email</label>
+                                    {{p_form.office_email}}
                                 </div>
                             </div>
                         </div>

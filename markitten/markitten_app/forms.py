@@ -36,19 +36,21 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image', 'sex', 'birthday', 'nationality', 'citizenship', 'office_email',
-                'present_address', 'billing_address', 'permanent_address','shopping_address', 
+        fields = ['image', 'sex', 'birthday', 'nationality', 'citizenship', 'office_email', 'personal_email',
+                'present_address', 'billing_address', 'permanent_address','shopping_address', 'office_address',
                 'mobile_number', 'landline_number', 'office_number', 'is_subscribed']
         widgets = {
             'sex' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Male/Female', 'required' : True ,}),
             'birthday' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Birthday', 'required' : True ,}),
             'nationality' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'nationality', 'placeholder' : 'Filipino', 'required' : True ,}),
             'citizenship' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'citizenship', 'placeholder' : 'Filipino', 'required' : True ,}),
+            'personal_email' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'personal_email', 'placeholder' : 'abcd@gmail.com', 'required' : True ,}),
             'office_email' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'office_email', 'placeholder' : 'abcd@gmail.com', 'required' : True ,}),
             'present_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'present_address', 'placeholder' : 'Address', 'required' : True ,}),
             'billing_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'billing_address', 'placeholder' : 'Address', 'required' : True ,}),
             'permanent_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'permanent_address', 'placeholder' : 'Address',}),
             'shopping_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'shopping_address', 'placeholder' : 'Address', 'required' : True ,}),
+            'office_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'office_address', 'placeholder' : 'Address', 'required' : True ,}),
             'mobile_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'mobile_number', 'placeholder' : 'Number', 'required' : True ,}),
             'landline_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'landline_number', 'placeholder' : 'Number', 'required' : True ,}),
             'office_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'office_number', 'placeholder' : 'Number', 'required' : True ,})
