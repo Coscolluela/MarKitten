@@ -1,6 +1,7 @@
 import email
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
+from numpy import product
 from .models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -13,7 +14,54 @@ from django.contrib.auth.models import User
 # Create your views here.
 @login_required(login_url='/login')
 def home(request):
-    return render(request, 'markitten_app/Home.html')
+    prods = Product.objects.all()
+    items = []
+    for prod in prods:
+        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        items.append({"prod": prod, "form": form})
+
+    data = {"items": items}
+    return render(request, 'markitten_app/Home.html', data)
+
+def peripherals(request):
+    prods = Product.objects.all()
+    items = []
+    for prod in prods:
+        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        items.append({"prod": prod, "form": form})
+
+    data = {"items": items}
+    return render(request, 'markitten_app/Peripherals.html', data)
+
+def phones(request):
+    prods = Product.objects.all()
+    items = []
+    for prod in prods:
+        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        items.append({"prod": prod, "form": form})
+
+    data = {"items": items}
+    return render(request, 'markitten_app/Phones.html', data)
+
+def desktops(request):
+    prods = Product.objects.all()
+    items = []
+    for prod in prods:
+        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        items.append({"prod": prod, "form": form})
+
+    data = {"items": items}
+    return render(request, 'markitten_app/Desktops.html', data)
+
+def laptops(request):
+    prods = Product.objects.all()
+    items = []
+    for prod in prods:
+        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        items.append({"prod": prod, "form": form})
+
+    data = {"items": items}
+    return render(request, 'markitten_app/Laptops.html', data)
 
 def adminpanel(request):
     return render(request, 'markitten_app/adminPanel.html')

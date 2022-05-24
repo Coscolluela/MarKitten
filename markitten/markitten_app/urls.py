@@ -23,6 +23,10 @@ urlpatterns = [
     path('customerlocation/', views.customerlocation, name="customerlocation"),
     path('productrating/', views.productrating, name="productrating"),
     path('totalcustomers/', views.totalcustomers, name="totalcustomers"),
+    path('peripherals/', views.peripherals, name="peripherals"),
+    path('phones/', views.phones, name="phones"),
+    path('desktops/', views.desktops, name="desktops"),
+    path('laptops/', views.laptops, name="laptops"),
 ]
 
 if settings.DEBUG:
