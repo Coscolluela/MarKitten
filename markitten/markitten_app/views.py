@@ -16,53 +16,77 @@ from django.contrib.auth.models import User
 @login_required(login_url='/login')
 def home(request):
     prods = Product.objects.all()
+    categ = Category.objects.all()
     items = []
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
-    data = {"items": items}
+    data = {"items": items, "categ": categ}
     return render(request, 'markitten_app/Home.html', data)
 
-def peripherals(request):
+def accessories(request):
     prods = Product.objects.all()
+    categ = Category.objects.all()
     items = []
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
-    data = {"items": items}
+    data = {"items": items, "categ": categ}
     return render(request, 'markitten_app/Peripherals.html', data)
 
-def phones(request):
+def smartphones(request):
     prods = Product.objects.all()
+    categ = Category.objects.all()
     items = []
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
-    data = {"items": items}
+    data = {"items": items, "categ": categ}
     return render(request, 'markitten_app/Phones.html', data)
 
 def desktops(request):
     prods = Product.objects.all()
+    categ = Category.objects.all()
     items = []
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
-    data = {"items": items}
+    data = {"items": items, "categ": categ}
     return render(request, 'markitten_app/Desktops.html', data)
 
 def laptops(request):
     prods = Product.objects.all()
+    categ = Category.objects.all()
     items = []
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
-    data = {"items": items}
+    data = {"items": items, "categ": categ}
     return render(request, 'markitten_app/Laptops.html', data)
+
+def monthlycatalog(request):
+    prods = Product.objects.all()
+    categ = Category.objects.all()
+    items = []
+    for prod in prods:
+        form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
+        items.append({"prod": prod, "form": form})
+
+    data = {"items": items, "categ": categ}
+    return render(request, 'markitten_app/monthlycatalog.html', data)
+
+def product_details(request, pk):
+    prod = Product.objects.get(id=pk)
+    data = {"prod": prod } 
+    
+    form = ProdDetailsForm({"user": request.user.id, "item": prod.id,})
+    data["form"] = form  
+    return render(request, "markitten_app/productDetails.html", data)
 
 def adminpanel(request):
     return render(request, 'markitten_app/adminPanel.html')

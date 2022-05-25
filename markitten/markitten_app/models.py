@@ -169,9 +169,3 @@ class Complaint(models.Model):
 class ProdDetails(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(
-        null=True,
-        validators=[
-            MinValueValidator(1)
-        ]
-)

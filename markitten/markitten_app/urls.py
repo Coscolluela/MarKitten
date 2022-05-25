@@ -18,7 +18,7 @@ urlpatterns = [
     path('login/', views.signin, name="login"),
     path('signup/', views.signup, name="signup"),
     path('logout/', views.signout, name="logout"),
-    path('productdetails/', views.productdetails, name="productdetails"),
+    path('product_details/<str:pk>/', views.product_details, name="product_details"),
     path('changepassword/', 
         PasswordChangeView.as_view(
 			template_name = 'markitten_app/changePassword.html',
@@ -41,10 +41,11 @@ urlpatterns = [
     path('customerlocation/', views.customerlocation, name="customerlocation"),
     path('productrating/', views.productrating, name="productrating"),
     path('totalcustomers/', views.totalcustomers, name="totalcustomers"),
-    path('peripherals/', views.peripherals, name="peripherals"),
-    path('phones/', views.phones, name="phones"),
+    path('Accessories/', views.accessories, name="Accessories"),
+    path('Smartphones/', views.smartphones, name="Smartphones"),
     path('desktops/', views.desktops, name="desktops"),
-    path('laptops/', views.laptops, name="laptops"),
+    path('Laptop/', views.laptops, name="Laptop"),
+    path('monthlycatalog/', views.monthlycatalog, name="monthlycatalog"),
 ]
 
 if settings.DEBUG:
