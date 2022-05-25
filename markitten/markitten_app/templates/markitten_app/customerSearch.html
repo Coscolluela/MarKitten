@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-{% load crispy_forms_tags %}
 <html lang="en">
 
 <head>
@@ -96,6 +95,55 @@
             </div>
             <div class="col-lg-8">
                 <h4>Find customers here.</h4>
+
+                Customer Count: {{customer|length}}
+                <br>
+                <br>
+                <a href="{% url 'create' %}" class="btn ">
+                    <button class="btn btn-outline-dark">
+                        Create Student</button>
+                </a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                User
+                            </th>
+                            <th scope="col">
+                                Sex
+                            </th>
+                            <th scope="col">
+                                Birthday
+                            </th>
+                            <th scope="col">
+                                Nationality
+                            </th>
+                            <th scope="col">
+                                Citizenship
+                            </th>
+
+                            <th colspan="2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cust in customer %}
+                        <tr>
+                            <td>{{cust.user}}</td>
+                            <td>{{cust.sex}}</td>
+                            <td>{{cust.birthday}}</td>
+                            <td>{{cust.nationality}}</td>
+                            <td>{{cust.citizenship}}</td>
+                            <td>
+                                <a href="{% url 'update' user.id %}" class="btn btn-outline-dark">
+                                    Update Customer
+                                </a>
+                            </td>
+                            <td></td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
