@@ -1,11 +1,13 @@
 from ast import Pass
+from email.policy import default
 from tkinter import DISABLED
-from django.forms import ModelForm, TextInput, PasswordInput, CharField, EmailInput, HiddenInput, NumberInput, widgets
+from django.forms import BooleanField, ModelForm, TextInput, PasswordInput, CharField, EmailInput, HiddenInput, NumberInput, widgets
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
 
 from django.contrib.auth.models import User
 from .models import *
 from django import forms
+from django.forms.widgets import CheckboxInput
 
 class UserForm(UserCreationForm):
     attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Password', 'required' : True ,}
@@ -44,6 +46,7 @@ class ProfileUpdateForm(forms.ModelForm):
             'birthday' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Birthday', 'required' : True ,}),
             'nationality' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'nationality', 'placeholder' : 'Filipino', 'required' : True ,}),
             'citizenship' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'citizenship', 'placeholder' : 'Filipino', 'required' : True ,}),
+            # 'age' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'age', 'placeholder' : '18', 'required' : True ,}),
             'personal_email' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'personal_email', 'placeholder' : 'abcd@gmail.com', 'required' : True ,}),
             'office_email' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'office_email', 'placeholder' : 'abcd@gmail.com', 'required' : True ,}),
             'present_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'present_address', 'placeholder' : 'Address', 'required' : True ,}),
@@ -53,7 +56,8 @@ class ProfileUpdateForm(forms.ModelForm):
             'office_address' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'office_address', 'placeholder' : 'Address', 'required' : True ,}),
             'mobile_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'mobile_number', 'placeholder' : 'Number', 'required' : True ,}),
             'landline_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'landline_number', 'placeholder' : 'Number', 'required' : True ,}),
-            'office_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'office_number', 'placeholder' : 'Number', 'required' : True ,})
+            'office_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'name' : 'office_number', 'placeholder' : 'Number', 'required' : True ,}),
+            'is_subscribed': CheckboxInput(attrs={'class': 'is_subscribed'}),
             }
 class MyPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
