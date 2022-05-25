@@ -47,6 +47,8 @@ urlpatterns = [
     path('phones/', views.phones, name="phones"),
     path('desktops/', views.desktops, name="desktops"),
     path('laptops/', views.laptops, name="laptops"),
+    path('create/', views.create, name="create"),
+    path('update/<str:pk>', views.update, name="update"),
 ]
 
 if settings.DEBUG:
