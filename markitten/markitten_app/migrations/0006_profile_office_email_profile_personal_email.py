@@ -10,14 +10,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='profile',
-            name='office_email',
-            field=models.CharField(default='abcd@gmail.com', max_length=100),
-        ),
-        migrations.AddField(
-            model_name='profile',
-            name='personal_email',
-            field=models.CharField(default='abcd@gmail.com', max_length=100),
-        ),
     ]

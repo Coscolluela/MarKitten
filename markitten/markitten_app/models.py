@@ -30,8 +30,8 @@ class Profile(models.Model):
     office_number = models.CharField(max_length=100, default='09xx xxx xxxx')
     is_subscribed = models.BooleanField(default=False)
 
-    # class Meta:
-    #     db_table="Profiles"
+    class Meta:
+        db_table="Profiles"
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -47,13 +47,15 @@ class BaseSupplier(models.Model):
         return str(self.name)
 
 class Supplier(BaseSupplier):
-    # class Meta:
-    #     db_table="Suppliers"
+    class Meta:
+        managed = False
+        db_table="Suppliers"
     pass
 
 class SupplierArchive(BaseSupplier):
-    # class Meta:
-    #     db_table="SupplierArchives"
+    class Meta:
+        managed = False
+        db_table="SupplierArchives"
     pass
 
 class BaseProduct(models.Model):
@@ -79,18 +81,21 @@ class BaseProduct(models.Model):
         return str(self.name)
 
 class Product(BaseProduct):
-    # class Meta:
-    #     db_table="Products"
+    class Meta:
+        managed = False
+        db_table="Products"
     pass
 
 class ProductArchive(BaseProduct):
-    # class Meta:
-    #     db_table="ProductArchives"
+    class Meta:
+        managed = False
+        db_table="ProductArchives"
     pass
 
 class SupplierProduct(models.Model):
-    # class Meta:
-    #     db_table="SupplierProducts"
+    class Meta:
+        managed = False
+        db_table="SupplierProducts"
 
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -108,9 +113,10 @@ class Category(models.Model):
     parent = models.ForeignKey('self',blank=True, null=True, related_name='child', on_delete=models.CASCADE)
     
     class Meta:
+        managed = False
         unique_together = ('slug', 'parent',)    
         verbose_name_plural = "categories"  
-        # db_table="Categories" 
+        db_table="Categories" 
 
     def __str__(self):                           
         full_path = [self.name]            
@@ -139,8 +145,9 @@ class baseReview(models.Model):
     )
 
 class Comment(baseReview):
-    # class Meta:
-    #     db_table="Comments"
+    class Meta:
+        managed = False
+        db_table="Comments"
     pass
 
 class review(baseReview):
