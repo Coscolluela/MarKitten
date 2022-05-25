@@ -129,12 +129,24 @@
                         <div>
                             <h5 class="card-header">Subscription</h5>
                         </div>
+                        {% if p_form.is_subscribed is True %}
                         <div class="card-body">
                             <div class="form-check">
-                                <input type="checkbox" id="is_subscribed" class="is_subscribed" name="is_subscribed">
+                                <input type="checkbox" id="is_subscribed" class="is_subscribed" name="is_subscribed"
+                                    checked>
                                 Please check the box to subscribe or unsubscribe.
                             </div>
                         </div>
+                        {% else %}
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input type="checkbox" id="is_subscribed" class="is_subscribed" name="is_subscribed">
+                                Please check the box to subscribe or unsubscribe. You can check your subscription status
+                                in your
+                                profile page.
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-lg-6">

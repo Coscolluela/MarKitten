@@ -92,3 +92,7 @@ class ProdDetailsForm(ModelForm):
             'item':  HiddenInput( attrs = {'type':'hidden'} ),
         }
       
+class CustomerForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = "__all__"
