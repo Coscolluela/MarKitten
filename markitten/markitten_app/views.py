@@ -192,3 +192,27 @@ def productrating(request):
 
 def totalcustomers(request):
     return render(request, 'markitten_app/totalCustomers.html')
+
+def create(request):
+    p_form = UserCreationForm()
+
+    if request.method=='POST':
+        p_form = UserCreationForm(request.POST)
+
+        if (p_form.is_valid()):
+            p_form.save()
+            return redirect("customersearch")
+    context = {
+        "p_form" : p_form
+    }
+    return render(request, 'markitten_app/create.html', context)
+
+def update(request, pk):
+    customer = User.objects.get(id=pk)
+    form = ProfileUpdateForm(instance=customer)
+
+    context = {
+        "form" : form
+    }
+
+    return render(request, 'markitten_app/update.html', context)

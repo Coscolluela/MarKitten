@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.urls import path, include, reverse_lazy
 from . import views
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.views import PasswordChangeView, PasswordResetView, PasswordResetConfirmView, PasswordResetCompleteView
 from .forms import MyPasswordChangeForm, MyPasswordResetForm, MyPasswordSentForm
 
 urlpatterns = [
@@ -25,16 +25,18 @@ urlpatterns = [
 			success_url = reverse_lazy('profile'),
 			form_class = MyPasswordChangeForm
         ), name="changepassword"),
-    path('forgotpassword/', auth_views.PasswordResetView.as_view(
+    path('forgotpassword/', PasswordResetView.as_view(
         template_name = 'markitten_app/passchange.html',
 		form_class = MyPasswordResetForm
 	), name = 'reset_password'),
-    path('forgotpassword_sent/', auth_views.PasswordResetDoneView.as_view(
-        template_name = ('markitten_app/forgotsent.html')), name = 'password_reset_done'),
-    path('forgotpassword/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
-        template_name = 'markitten_app/passconfirm.html',
-        form_class = MyPasswordSentForm), name = 'password_reset_confirm'),
-    path('forgotpassword_complete/', auth_views.PasswordResetCompleteView.as_view(), name = 'password_reset_complete'),
+    
+    path('forgotpassword_sent/', PasswordResetView.as_view(
+        template_name = 'markitten_app/forgotsent.html'), name = 'password_reset_done'),
+    
+    path('forgotpassword/<uidb64>/<token>/', PasswordResetConfirmView.as_view(
+        template_name = 'markitten_app/passconfirm.html'), name = 'password_reset_confirm'),
+    path('forgotpassword_complete/', PasswordResetCompleteView.as_view(
+        template_name = 'markitten_app/forgotdone.html'), name = 'password_reset_complete'),
     path('faq/', views.faq, name="faq"),
     path('about/', views.about, name="about"),
     path('customersearch/', views.customersearch, name="customersearch"),
@@ -46,6 +48,8 @@ urlpatterns = [
     path('desktops/', views.desktops, name="desktops"),
     path('Laptop/', views.laptops, name="Laptop"),
     path('monthlycatalog/', views.monthlycatalog, name="monthlycatalog"),
+    path('create/', views.create, name="create"),
+    path('update/<str:pk>', views.update, name="update"),
 ]
 
 if settings.DEBUG:
