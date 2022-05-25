@@ -18,7 +18,7 @@ def home(request):
     prods = Product.objects.all()
     items = []
     for prod in prods:
-        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
     data = {"items": items}
@@ -28,7 +28,7 @@ def peripherals(request):
     prods = Product.objects.all()
     items = []
     for prod in prods:
-        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
     data = {"items": items}
@@ -38,7 +38,7 @@ def phones(request):
     prods = Product.objects.all()
     items = []
     for prod in prods:
-        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
     data = {"items": items}
@@ -48,7 +48,7 @@ def desktops(request):
     prods = Product.objects.all()
     items = []
     for prod in prods:
-        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
     data = {"items": items}
@@ -58,7 +58,7 @@ def laptops(request):
     prods = Product.objects.all()
     items = []
     for prod in prods:
-        form = ShoppingCartForm({"user": request.user.id, "item": prod.id, "quantity": 1})
+        form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
     data = {"items": items}

@@ -82,4 +82,13 @@ class MyPasswordSentForm(forms.ModelForm):
         
         for fieldname in ['new_password1', 'new_password2']:
             self.fields[fieldname].widget=PasswordInput(attrs=attrs)
+
+class ProdDetailsForm(ModelForm):
+    class Meta:
+        model = ProdDetails
+        fields = "__all__"
+        widgets = {
+            'user':  HiddenInput( attrs = {'type':'hidden'} ),
+            'item':  HiddenInput( attrs = {'type':'hidden'} ),
+        }
       

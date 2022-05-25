@@ -165,3 +165,13 @@ class Complaint(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     imageReview = models.ImageField(blank=True)
+
+class ProdDetails(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    item = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(
+        null=True,
+        validators=[
+            MinValueValidator(1)
+        ]
+)
