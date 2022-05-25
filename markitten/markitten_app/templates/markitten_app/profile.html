@@ -319,6 +319,17 @@
                                     Details</button> -->
                                     <h5 class="card-header">Subscription</h5>
                                 </div>
+                                {% if p_form.is_subscribed is True %}
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                            disabled readonly checked>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            This box is checked in order to subscribe to our catalog.
+                                        </label>
+                                    </div>
+                                </div>
+                                {% else %}
                                 <div class="card-body">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
@@ -328,6 +339,7 @@
                                         </label>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

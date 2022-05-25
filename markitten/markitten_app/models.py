@@ -15,6 +15,7 @@ class Profile(models.Model):
     image = models.ImageField(default='default.png', upload_to='profile_pics')
     sex = models.CharField(max_length=100, default='Male/Female')
     birthday = models.DateField(default=datetime.date.today)
+    # age = models.IntegerField(default=18, validators=[MinValueValidator(1), MaxValueValidator(100)])
     nationality = models.CharField(max_length=100, default='Filipino')
     citizenship = models.CharField(max_length=100, default='Filipino')
     personal_email = models.CharField(max_length=100, default='abcd@gmail.com')
@@ -29,12 +30,16 @@ class Profile(models.Model):
     office_number = models.CharField(max_length=100, default='09xx xxx xxxx')
     is_subscribed = models.BooleanField(default=False)
 
+    # class Meta:
+    #     db_table="Profiles"
+
     def __str__(self):
         return f'{self.user.username} Profile'
 
 class BaseSupplier(models.Model):
     class Meta: 
         abstract = True
+
     name = models.CharField(max_length=100, null=True, blank=False)
     supplier_address = models.CharField(max_length=150, null=True, blank=False)
 
@@ -42,9 +47,13 @@ class BaseSupplier(models.Model):
         return str(self.name)
 
 class Supplier(BaseSupplier):
+    # class Meta:
+    #     db_table="Suppliers"
     pass
 
 class SupplierArchive(BaseSupplier):
+    # class Meta:
+    #     db_table="SupplierArchives"
     pass
 
 class BaseProduct(models.Model):
@@ -70,12 +79,19 @@ class BaseProduct(models.Model):
         return str(self.name)
 
 class Product(BaseProduct):
+    # class Meta:
+    #     db_table="Products"
     pass
 
 class ProductArchive(BaseProduct):
+    # class Meta:
+    #     db_table="ProductArchives"
     pass
 
 class SupplierProduct(models.Model):
+    # class Meta:
+    #     db_table="SupplierProducts"
+
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     supplier_price = models.DecimalField(max_digits=8, decimal_places=2, default=0, verbose_name='Supplier Price (in Php)')
@@ -85,6 +101,7 @@ class SupplierProduct(models.Model):
         lead_time = input
 
 class Category(models.Model):
+
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     description = models.TextField(null=True, blank=True)
@@ -92,7 +109,8 @@ class Category(models.Model):
     
     class Meta:
         unique_together = ('slug', 'parent',)    
-        verbose_name_plural = "categories"   
+        verbose_name_plural = "categories"  
+        # db_table="Categories" 
 
     def __str__(self):                           
         full_path = [self.name]            
@@ -121,12 +139,18 @@ class baseReview(models.Model):
     )
 
 class Comment(baseReview):
+    # class Meta:
+    #     db_table="Comments"
     pass
 
 class review(baseReview):
+    # class Meta:
+    #     db_table="Reviews"
     imageReview = models.ImageField(blank=True)
 
 class Complaint(models.Model):
+    # class Meta:
+    #     db_table="Complaints"
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     subject = models.CharField(max_length=100)

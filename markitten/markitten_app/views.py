@@ -106,6 +106,7 @@ def leavecomplaint(request):
     return render(request, 'markitten_app/leaveComplaint.html')
 
 def leavereview(request):
+
     return render(request, 'markitten_app/leaveReview.html')
 
 def signup(request):
