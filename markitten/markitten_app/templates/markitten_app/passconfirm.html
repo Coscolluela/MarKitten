@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load widget_tweaks %}
 <html lang="en">
 
 <head>
@@ -31,37 +32,57 @@
 				<p>Please enter your new password twice so we can verify you typed it in correctly.</p>
                 <br>
 				<div>
-					<form action="{% url 'password_reset_done' %}" method = "post">
+					<form action="" method="post">
 						{% csrf_token %}
 						{% for error in form.non_field_errors %}
 		
 						<div class="alert alert-danger">
 							{{error}}
 						</div>
-							
+		
 						{% endfor %}
 		
 		
 						{% for field in form %}
 		
-							<div class="mb-3">
-								<div class="d-grid gap-2 col-11 d-md-block">
-									{{ field.label }}
-									{{ field }}
-								</div>
+						<div class="mb-3">
+							<div class="d-grid gap-2 col-11 d-md-block">
+								{{ field.label }}
+								{{ field }}
 							</div>
-							
-							{% if field.errors %}
+						</div>
 		
-								<div class="alert alert-danger">
-									{{ field.errors }}
-								</div>
-								
-							{% endif %}
+						{% if field.errors %}
+		
+						<div class="alert alert-danger">
+							{{ field.errors }}
+						</div>
+		
+						{% endif %}
 		
 						{% endfor %}
+		
+						<!--<div class="mb-3">
+							<div class="d-grid gap-2 col-11 d-md-block">
+								<label for="staticEmail" class="col-form-label">Confirm Email</label>
+								<input type="text" class="form-control" id="staticEmail" required>
+							</div>
+						</div>
+						<div class="mb-3">
+							<div class="d-grid gap-2 col-11 d-md-block">
+								<label for="inputPassword" class="col-form-label">New Password</label>
+								<input type="password" class="form-control" id="inputPassword" required>
+							</div>
+						</div>
+						<div class="mb-3">
+							<div class="d-grid gap-2 col-11 d-md-block">
+								<label for="confirmPassword" class="col-form-label">Confirm Password</label>
+								<input type="password" class="form-control" id="confirmPassword" required>
+							</div>
+						</div>
+						<br> -->
 						<div class="d-grid gap-2 col-2 mx-auto">
-							<button type="submit" class="btn btn-primary">Change my password</button>
+							<button type="submit" class="btn btn-primary" style="margin-bottom: 10px">Save</button>
 						</div>
 					</form>
 				</div>
