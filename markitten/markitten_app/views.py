@@ -4,12 +4,13 @@ from django.urls import reverse_lazy
 from numpy import product
 from .models import *
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from .forms import *
 from django.shortcuts import render
 from django.contrib.auth.models import User
+
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -71,6 +72,7 @@ def productdetails(request):
 
 @login_required(login_url='/login')
 def profile(request):
+    # User = get_user_model()
     p_form = Profile.objects.get(user=request.user)
     
     context = {
@@ -78,6 +80,7 @@ def profile(request):
     }
     return render(request, 'markitten_app/profile.html', context)
 
+@login_required(login_url='/login')
 def editprofile(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)

@@ -34,11 +34,19 @@
                     <a class="nav-link simpleLink" href="{% url 'home' %}" style="padding: 15px;">Monthly Catalog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link simpleLink" href="{% url 'home' %}" style="padding: 15px;"><strong>Home</strong></a>
+                    <a class="nav-link simpleLink" href="{% url 'home' %}"
+                        style="padding: 15px;"><strong>Home</strong></a>
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'profile' %}">
-                        <img src="{% static 'images/sampleProfile.png' %}" alt="" width="70px" height="60px">
+                        <div style="padding-top: 10px; padding-right: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </div>
                     </a>
                 </li>
             </ul>
@@ -64,27 +72,27 @@
             <div class="col-lg-3">
                 <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">                    
+                        <li class="list-group-item">
                             <a href="{% url 'home' %}" class="simpleLink">
                                 <strong>Home</strong>
                             </a>
                         </li>
-                        <li class="list-group-item">                    
+                        <li class="list-group-item">
                             <a href="{% url 'peripherals' %}" class="simpleLink">
                                 Peripherals
                             </a>
                         </li>
-                        <li class="list-group-item">                    
+                        <li class="list-group-item">
                             <a href="{% url 'phones' %}" class="simpleLink">
                                 Phones
                             </a>
                         </li>
-                        <li class="list-group-item">                    
+                        <li class="list-group-item">
                             <a href="{% url 'desktops' %}" class="simpleLink">
                                 Desktops
                             </a>
                         </li>
-                        <li class="list-group-item">                    
+                        <li class="list-group-item">
                             <a href="{% url 'laptops' %}" class="simpleLink">
                                 Laptops
                             </a>
@@ -97,106 +105,191 @@
                 <hr>
                 <div class="row">
                     <div class="col-lg-3">
-                        <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;"> 
-                            <div style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                        <div
+                            style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                            <div
+                                style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
                             border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-                                <img src="{% static 'images/iphonex.png' %}"  style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                <img src="{% static 'images/iphonex.png' %}"
+                                    style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
                                 <h3 style="text-align: center;font-size: 24px; margin: 0;padding-top: 10px;">Shoes</h3>
-                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum
+                                    dolor sit amet, consectetur adipisicing elit.</p>
                                 <h6 style="font-size: 20px;text-align: center;color: #222f3e;margin: 0;">$100.00</h6>
-                                <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
+                                <ul
+                                    style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
                                 </ul>
-                                <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
-                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View Product</button>
+                                <button
+                                    style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View
+                                    Product</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;"> 
-                            <div style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                        <div
+                            style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                            <div
+                                style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
                             border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-                                <img src="{% static 'images/iphonex.png' %}"  style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                <img src="{% static 'images/iphonex.png' %}"
+                                    style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
                                 <h3 style="text-align: center;font-size: 24px; margin: 0;padding-top: 10px;">Shoes</h3>
-                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum
+                                    dolor sit amet, consectetur adipisicing elit.</p>
                                 <h6 style="font-size: 20px;text-align: center;color: #222f3e;margin: 0;">$100.00</h6>
-                                <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
+                                <ul
+                                    style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
                                 </ul>
-                                <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
-                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View Product</button>
+                                <button
+                                    style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View
+                                    Product</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;"> 
-                            <div style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                        <div
+                            style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                            <div
+                                style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
                             border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-                                <img src="{% static 'images/iphonex.png' %}"  style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                <img src="{% static 'images/iphonex.png' %}"
+                                    style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
                                 <h3 style="text-align: center;font-size: 24px; margin: 0;padding-top: 10px;">Shoes</h3>
-                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum
+                                    dolor sit amet, consectetur adipisicing elit.</p>
                                 <h6 style="font-size: 20px;text-align: center;color: #222f3e;margin: 0;">$100.00</h6>
-                                <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
+                                <ul
+                                    style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
                                 </ul>
-                                <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
-                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View Product</button>
+                                <button
+                                    style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View
+                                    Product</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;"> 
-                            <div style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                        <div
+                            style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                            <div
+                                style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
                             border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-                                <img src="{% static 'images/iphonex.png' %}"  style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                <img src="{% static 'images/iphonex.png' %}"
+                                    style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
                                 <h3 style="text-align: center;font-size: 24px; margin: 0;padding-top: 10px;">Shoes</h3>
-                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum
+                                    dolor sit amet, consectetur adipisicing elit.</p>
                                 <h6 style="font-size: 20px;text-align: center;color: #222f3e;margin: 0;">$100.00</h6>
-                                <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
+                                <ul
+                                    style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
                                 </ul>
-                                <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
-                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View Product</button>
+                                <button
+                                    style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View
+                                    Product</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;"> 
-                            <div style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                        <div
+                            style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                            <div
+                                style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
                             border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-                                <img src="{% static 'images/iphonex.png' %}"  style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                <img src="{% static 'images/iphonex.png' %}"
+                                    style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
                                 <h3 style="text-align: center;font-size: 24px; margin: 0;padding-top: 10px;">Shoes</h3>
-                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum
+                                    dolor sit amet, consectetur adipisicing elit.</p>
                                 <h6 style="font-size: 20px;text-align: center;color: #222f3e;margin: 0;">$100.00</h6>
-                                <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
+                                <ul
+                                    style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
                                 </ul>
-                                <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
-                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View Product</button>
+                                <button
+                                    style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View
+                                    Product</button>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <br><br>
@@ -205,22 +298,39 @@
                 <hr>
                 <div class="row">
                     <div class="col-lg-3">
-                        <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;"> 
-                            <div style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                        <div
+                            style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                            <div
+                                style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
                             border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-                                <img src="{% static 'images/iphonex.png' %}"  style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                <img src="{% static 'images/iphonex.png' %}"
+                                    style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
                                 <h3 style="text-align: center;font-size: 24px; margin: 0;padding-top: 10px;">Shoes</h3>
-                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p style="text-align: center;font-size: 14px;color: #b2bec3;padding: 0 8px;">Lorem ipsum
+                                    dolor sit amet, consectetur adipisicing elit.</p>
                                 <h6 style="font-size: 20px;text-align: center;color: #222f3e;margin: 0;">$100.00</h6>
-                                <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
+                                <ul
+                                    style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
                                 </ul>
-                                <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
-                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View Product</button>
+                                <button
+                                    style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View
+                                    Product</button>
                             </div>
                         </div>
                     </div>
@@ -232,22 +342,39 @@
                 <hr>
                 <div class="row">
                     <div class="col-lg-3">
-                        <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;"> 
-                            <div style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                        <div
+                            style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                            <div
+                                style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
                             border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-                                <img src="{% static 'images/iphonex.png' %}"  style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                <img src="{% static 'images/iphonex.png' %}"
+                                    style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
                                 <h3 style="text-align: center;font-size: 24px; margin: 0;padding-top: 10px;">Shoes</h3>
-                                <p style="text-align: center;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p style="text-align: center;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit.</p>
                                 <h6 style="font-size: 20px;text-align: center;color: #222f3e;margin: 0;">$100.00</h6>
-                                <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
+                                <ul
+                                    style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
                                 </ul>
-                                <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
-                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View Product</button>
+                                <button
+                                    style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View
+                                    Product</button>
                             </div>
                         </div>
                     </div>
@@ -259,22 +386,39 @@
                 <hr>
                 <div class="row">
                     <div class="col-lg-3">
-                        <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;"> 
-                            <div style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                        <div
+                            style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                            <div
+                                style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
                             border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-                                <img src="{% static 'images/iphonex.png' %}"  style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                <img src="{% static 'images/iphonex.png' %}"
+                                    style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
                                 <h3 style="text-align: center;font-size: 24px; margin: 0;padding-top: 10px;">Shoes</h3>
-                                <p style="text-align: center;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p style="text-align: center;color: #b2bec3;padding: 0 8px;">Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit.</p>
                                 <h6 style="font-size: 20px;text-align: center;color: #222f3e;margin: 0;">$100.00</h6>
-                                <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
-                                  <li style="padding: 5px;"><i class="fa fa-star" style="color: #ff9f43;font-size: 18px;transition: .4s;" aria-hidden="true"></i></li>
+                                <ul
+                                    style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
+                                    <li style="padding: 5px;"><i class="fa fa-star"
+                                            style="color: #ff9f43;font-size: 18px;transition: .4s;"
+                                            aria-hidden="true"></i></li>
                                 </ul>
-                                <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
-                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View Product</button>
+                                <button
+                                    style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;">View
+                                    Product</button>
                             </div>
                         </div>
                     </div>
@@ -338,11 +482,11 @@
                         </a>
                     </div>
                 </div> -->
-    
+
             </div>
         </div>
     </div>
-    
+
     <a href="#" class="scrollup" id="scroll-up">
         <i class="uil uil-angle-double-up scrollup__icon"></i>
     </a>
