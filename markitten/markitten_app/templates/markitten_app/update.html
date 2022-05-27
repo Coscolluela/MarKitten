@@ -38,7 +38,14 @@
                 </li>
                 <li class="nav-item">
                     <a href="{%url 'profile'%}">
-                        <img src="{{user.profile.image.url}}" alt="" width="70px" height="60px">
+                        <div style="padding-top: 10px; padding-right: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </div>
                     </a>
                 </li>
             </ul>
@@ -99,16 +106,166 @@
                         Update Customers
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
+                            <!-- {{u_form}}
+                            {{p_form}} -->
+                            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
+                                <div>
+                                    <button class="btn btn-primary" href="#" type="submit" role="button"
+                                        style="float: right; margin-left: 5px;">Save
+                                        Changes</button>
+                                    <button class="btn btn-primary" role="button" style="float: right; ">
+                                        <a href="{% url 'customersearch' %}" class="simpleLink">
+                                            Cancel
+                                        </a>
+                                    </button>
+                                    <h5 class="card-header">Personal Information</h5>
+                                </div>
 
-                            {{p_form}}
-                            <br>
-                            <button type="submit" class="btn btn-outline-success">Update Customer</button>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div>
+                                                <img src="{{p_form.image.url}}" alt="" width="150px"
+                                                    style="margin: 15px auto auto 55px;">
 
-                            <a href="{% url 'customersearch' %}" class="btn btn-outline-danger">
-                                Cancel
-                            </a>
+                                                <!-- <div class="card-body">
+                                                    <a href="Home.html" class="card-link simpleLink">
+                                                        < View Monthly Catalog</a>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="padding: 45px 30px 5px 5px;">
+                                            {{p_form.image}}
+                                        </div>
+                                    </div>
+                                    <!-- <h5 class="card-title">Special title treatment</h5> -->
+                                    <div class="row pt-1">
+                                        <div class="col-4 mb-2">
+                                            <label for="inputEmail4" class="form-label">First Name</label>
+                                            {{u_form.first_name}}
+                                        </div>
+                                        <div class="col-4 mb-2">
+                                            <label for="inputEmail4" class="form-label">Last Name</label>
+                                            {{u_form.last_name}}
+                                        </div>
+                                        <div class="col-4 mb-2">
+                                            <label for="inputEmail4" class="form-label">Username</label>
+                                            {{u_form.username}}
+                                        </div>
+                                        <div class="col-3 mb-2">
+                                            <label for="inputEmail4" class="form-label">Sex</label>
+                                            {{p_form.sex}}
+                                        </div>
+                                        <div class="col-3 mb-2">
+                                            <label for="inputEmail4" class="form-label">Nationality</label>
+                                            {{p_form.nationality}}
+                                        </div>
+                                        <div class="col-3">
+                                            <label for="inputEmail4" class="form-label">Birthday</label>
+                                            {{p_form.birthday}}
+                                        </div>
+                                        <div class="col-3">
+                                            <label for="inputEmail4" class="form-label">Citizenship</label>
+                                            {{p_form.citizenship}}
+                                        </div>
+                                        <!-- <div class="col-6">
+                                            <label for="inputEmail4" class="form-label">Email</label>
+                                            {{u_form.email}}
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                                <div>
+                                    <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button> -->
+                                    <h5 class="card-header">Addresses</h5>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h5 class="card-title">Special title treatment</h5> -->
+                                    <div class="col-12 mb-2">
+                                        <label for="inputEmail4" class="form-label">Present</label>
+                                        {{p_form.present_address}}
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label for="inputEmail4" class="form-label">Permanent</label>
+                                        {{p_form.permanent_address}}
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label for="inputEmail4" class="form-label">Billing</label>
+                                        {{p_form.billing_address}}
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label for="inputEmail4" class="form-label">Shopping</label>
+                                        {{p_form.shopping_address}}
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label for="inputEmail4" class="form-label">Office</label>
+                                        {{p_form.office_address}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                                <div>
+                                    <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                                                Details</button> -->
+                                    <h5 class="card-header">Contact Information</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row pt-1">
+                                        <div class="col-4 mb-2">
+                                            <label for="inputEmail4" class="form-label">Mobile Number</label>
+                                            {{p_form.mobile_number}}
+                                        </div>
+                                        <div class="col-4">
+                                            <label for="inputEmail4" class="form-label">Landline Number</label>
+                                            {{p_form.landline_number}}
+                                        </div>
+                                        <div class="col-4 mb-2">
+                                            <label for="inputEmail4" class="form-label">Office Number</label>
+                                            {{p_form.office_number}}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="floating-input" class="form-label">Personal
+                                                Email</label>
+                                            {{p_form.personal_email}}
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="floating-input" class="form-label">Office Email</label>
+                                            {{p_form.office_email}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" id="slide-in-left" style="background-color: beige;">
+                                <div>
+                                    <h5 class="card-header">Subscription</h5>
+                                </div>
+                                {% if p_form.is_subscribed is True %}
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input type="checkbox" id="is_subscribed" class="is_subscribed"
+                                            name="is_subscribed" checked>
+                                        Current subscription status is reflected in the <i> Customer Page </i>.
+                                        To
+                                        subscribe this user to monthly catalog, kindly tick
+                                        the box on the left. Otherwise, leave it blank.
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input type="checkbox" id="is_subscribed" class="is_subscribed"
+                                            name="is_subscribed">
+                                        Current subscription status is reflected in the <i> Customer Page </i>.
+                                        To
+                                        subscribe this user to monthly catalog, kindly tick
+                                        the box on the left. Otherwise, leave it blank.
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
                         </form>
                     </div>
                 </div>

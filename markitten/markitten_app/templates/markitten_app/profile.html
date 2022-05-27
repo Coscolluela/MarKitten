@@ -31,7 +31,8 @@
                     <a class="nav-link simpleLink" href="{% url 'about' %}" style="padding: 15px;">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link simpleLink" href="{% url 'monthlycatalog' %}" style="padding: 15px;">Monthly Catalog</a>
+                    <a class="nav-link simpleLink" href="{% url 'monthlycatalog' %}" style="padding: 15px;">Monthly
+                        Catalog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link simpleLink" href="{% url 'home' %}" style="padding: 15px;">Home</a>
@@ -329,20 +330,22 @@
                                 {% if p_form.is_subscribed is True %}
                                 <div class="card-body">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                            disabled readonly checked>
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            This box is checked in order to subscribe to our catalog.
+                                        <input class="form-check-input" type="checkbox" value="" id="is_subscribed"
+                                            readonly checked>
+                                        <label class="form-check-label" for="is_subscribed">
+                                            You are currently subscribed to our monthly catalog. Feel free to edit by
+                                            clicking <i> Edit Profile </i>.
                                         </label>
                                     </div>
                                 </div>
                                 {% else %}
                                 <div class="card-body">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                            disabled readonly>
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            This box is checked in order to subscribe to our catalog.
+                                        <input class="form-check-input" type="checkbox" value="" id="is_unsubscribed"
+                                            readonly>
+                                        <label class="form-check-label" for="is_unsubscribed">
+                                            You are currently unsubscribed to our monthly catalog. If you wish to
+                                            subscribe, click <i> Edit Profile </i>.
                                         </label>
                                     </div>
                                 </div>

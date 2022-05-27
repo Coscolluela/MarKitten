@@ -176,16 +176,24 @@ def changepassword(request):
     return render(request, 'markitten_app/changePassword.html')
 
 def customersearch(request):
+    customerUser = User.objects.all()
+    customer = Profile.objects.all()
+
+    context = {
+        "customer" : customer,
+        "customerUser": customerUser
+    }
+
+    return render(request, 'markitten_app/customerSearch.html', context)
+
+def customerlocation(request):
     customer = Profile.objects.all()
 
     context = {
         "customer" : customer
     }
 
-    return render(request, 'markitten_app/customerSearch.html', context)
-
-def customerlocation(request):
-    return render(request, 'markitten_app/customerLocation.html')
+    return render(request, 'markitten_app/customerLocation.html', context)
 
 def productrating(request):
     return render(request, 'markitten_app/productrating.html')
@@ -208,11 +216,32 @@ def create(request):
     return render(request, 'markitten_app/create.html', context)
 
 def update(request, pk):
-    customer = User.objects.get(id=pk)
-    form = ProfileUpdateForm(instance=customer)
+    customer = Profile.objects.get(id=pk)
+    # customerUser = User.objects.get(id=pk)
 
+    if request.method == 'POST':
+        # u_form = UserUpdateForm(request.POST, instance=customerUser)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=customer)
+
+        if p_form.is_valid():
+            # u_form.save()
+            p_form.save()
+            return redirect('customersearch')
+    else:
+        # u_form = UserUpdateForm(instance=customerUser)
+        p_form = ProfileUpdateForm(instance=customer)
+    
     context = {
-        "form" : form
+        "customer": customer,
+        # "customerUser": customerUser,
+        # "u_form": u_form,
+        "p_form" : p_form
     }
 
     return render(request, 'markitten_app/update.html', context)
+
+def delete(request, pk):
+    customer = Profile.objects.get(id=pk)
+    customer.delete()
+
+    return redirect('customersearch')
