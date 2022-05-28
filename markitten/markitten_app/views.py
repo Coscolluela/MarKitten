@@ -188,6 +188,10 @@ def customersearch(request):
 
 def customerlocation(request):
     customer = Profile.objects.all()
+    permanent_address_query = request.GET.get('permanent_address')
+
+    if permanent_address_query != '' and permanent_address_query is not None:
+        customer = customer.filter(permanent_address__icontains=permanent_address_query)
 
     context = {
         "customer" : customer
