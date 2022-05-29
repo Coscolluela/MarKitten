@@ -10,6 +10,7 @@ from django.contrib.auth.views import PasswordChangeView
 from .forms import *
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.db.models import Count
 
 
 # Create your views here.
@@ -18,11 +19,13 @@ def home(request):
     prods = Product.objects.all()
     categ = Category.objects.all()
     items = []
+    p_form = Profile.objects.get(user=request.user)
+
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
-    data = {"items": items, "categ": categ}
+    data = {"items": items, "categ": categ, "p_form": p_form}
     return render(request, 'markitten_app/Home.html', data)
 
 def accessories(request):
@@ -106,6 +109,7 @@ def profile(request):
 
 @login_required(login_url='/login')
 def editprofile(request):
+    subscriptionTracker = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
@@ -121,7 +125,8 @@ def editprofile(request):
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        "subscription": subscriptionTracker
     }
 
     return render(request, 'markitten_app/editprofile.html', context)
@@ -167,10 +172,22 @@ def signout(request):
     return redirect('/')
 
 def faq(request):
-    return render(request, 'markitten_app/faq.html')
+    p_form = Profile.objects.get(user=request.user)
+
+    context = {
+        "p_form": p_form
+    }
+
+    return render(request, 'markitten_app/faq.html', context)
 
 def about(request):
-    return render(request, 'markitten_app/about.html')
+    p_form = Profile.objects.get(user=request.user)
+
+    context = {
+        "p_form": p_form
+    }
+
+    return render(request, 'markitten_app/about.html', context)
 
 def changepassword(request):
     return render(request, 'markitten_app/changePassword.html')
@@ -203,7 +220,25 @@ def productrating(request):
     return render(request, 'markitten_app/productrating.html')
 
 def totalcustomers(request):
-    return render(request, 'markitten_app/totalCustomers.html')
+    maleCount = Profile.objects.filter(sex='Male').count()
+    femaleCount = Profile.objects.filter(sex='Female').count()
+    otherCount = Profile.objects.filter(sex='Male/Female').count()
+    customer = Profile.objects.all()
+    nationality_query = request.GET.get('nationality')
+    # month = [i.month for i in Profile.objects.values_list('birthday', flat=True)]
+
+    if nationality_query != '' and nationality_query is not None:
+        customer = customer.filter(nationality__icontains=nationality_query)
+
+    context = {
+        "maleCount": maleCount,
+        "femaleCount": femaleCount,
+        "otherCount": otherCount,
+        "customer": customer
+        # "month": month
+    }
+
+    return render(request, 'markitten_app/totalCustomers.html', context)
 
 def create(request):
     p_form = UserCreationForm()
@@ -227,6 +262,7 @@ def update(request, pk):
         # u_form = UserUpdateForm(request.POST, instance=customerUser)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=customer)
 
+        # if u_form.is_valid() and p_form.is_valid():
         if p_form.is_valid():
             # u_form.save()
             p_form.save()

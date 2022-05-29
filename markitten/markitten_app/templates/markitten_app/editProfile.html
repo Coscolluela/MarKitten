@@ -81,23 +81,21 @@
                         <div>
                             <h5 class="card-header">Subscription</h5>
                         </div>
-                        {% if p_form.is_subscribed is True %}
+                        {% if subscription.is_subscribed is True %}
                         <div class="card-body">
                             <div class="form-check">
                                 <input type="checkbox" id="is_subscribed" class="is_subscribed" name="is_subscribed"
                                     checked>
-                                Your subscription status is reflected in your <i> Profile Page </i>. To subscribe to our
-                                monthly catalog, kindly tick
-                                the box on the left. Otherwise, leave it blank.
+                                You are currently subscribed to our monthly catalog. Kindly tick the box to unsubscribe,
+                                otherwise leave it as is to keep the subscription.
                             </div>
                         </div>
                         {% else %}
                         <div class="card-body">
                             <div class="form-check">
                                 <input type="checkbox" id="is_subscribed" class="is_subscribed" name="is_subscribed">
-                                Your subscription status is reflected in your <i> Profile Page </i>. To subscribe to our
-                                monthly catalog, kindly tick
-                                the box on the left. Otherwise, leave it blank.
+                                You are currently unsubscribed to our monthly catalog. Kindly tick the box to subscribe,
+                                otherwise leave it blank.
                             </div>
                         </div>
                         {% endif %}
