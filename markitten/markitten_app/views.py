@@ -19,11 +19,13 @@ def home(request):
     prods = Product.objects.all()
     categ = Category.objects.all()
     items = []
+    p_form = Profile.objects.get(user=request.user)
+
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
 
-    data = {"items": items, "categ": categ}
+    data = {"items": items, "categ": categ, "p_form": p_form}
     return render(request, 'markitten_app/Home.html', data)
 
 def accessories(request):
@@ -107,6 +109,7 @@ def profile(request):
 
 @login_required(login_url='/login')
 def editprofile(request):
+    subscriptionTracker = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
@@ -122,7 +125,8 @@ def editprofile(request):
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        "subscription": subscriptionTracker
     }
 
     return render(request, 'markitten_app/editprofile.html', context)
@@ -168,10 +172,22 @@ def signout(request):
     return redirect('/')
 
 def faq(request):
-    return render(request, 'markitten_app/faq.html')
+    p_form = Profile.objects.get(user=request.user)
+
+    context = {
+        "p_form": p_form
+    }
+
+    return render(request, 'markitten_app/faq.html', context)
 
 def about(request):
-    return render(request, 'markitten_app/about.html')
+    p_form = Profile.objects.get(user=request.user)
+
+    context = {
+        "p_form": p_form
+    }
+
+    return render(request, 'markitten_app/about.html', context)
 
 def changepassword(request):
     return render(request, 'markitten_app/changePassword.html')
@@ -243,7 +259,7 @@ def update(request, pk):
     # customerUser = User.objects.get(id=pk)
 
     if request.method == 'POST':
-        # u_form = UserUpdateForm(request.POST, instance=customer)
+        # u_form = UserUpdateForm(request.POST, instance=customerUser)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=customer)
 
         # if u_form.is_valid() and p_form.is_valid():
@@ -252,7 +268,7 @@ def update(request, pk):
             p_form.save()
             return redirect('customersearch')
     else:
-        # u_form = UserUpdateForm(instance=customer)
+        # u_form = UserUpdateForm(instance=customerUser)
         p_form = ProfileUpdateForm(instance=customer)
     
     context = {

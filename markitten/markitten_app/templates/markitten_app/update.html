@@ -129,15 +129,15 @@
                                     </div>
                                     <!-- <h5 class="card-title">Special title treatment</h5> -->
                                     <div class="row pt-1">
-                                        <!-- <!-- <div class="col-4 mb-2">
+                                        <!-- <div class="col-4 mb-2">
                                             <label for="inputEmail4" class="form-label">First Name</label>
                                             {{u_form.first_name}}
                                         </div>
                                         <div class="col-4 mb-2">
                                             <label for="inputEmail4" class="form-label">Last Name</label>
                                             {{u_form.last_name}}
-                                        </div> -->
-                                        <!-- <div class="col-4 mb-2">
+                                        </div>
+                                        <div class="col-4 mb-2">
                                             <label for="inputEmail4" class="form-label">Username</label>
                                             {{u_form.username}}
                                         </div> -->
@@ -229,15 +229,18 @@
                                 <div>
                                     <h5 class="card-header">Subscription</h5>
                                 </div>
-                                {% if p_form.is_subscribed is True %}
+                                {% if customer.is_subscribed is True %}
                                 <div class="card-body">
                                     <div class="form-check">
                                         <input type="checkbox" id="is_subscribed" class="is_subscribed"
                                             name="is_subscribed" checked>
-                                        Current subscription status is reflected in the <i> Customer Page </i>.
+                                        This user is currently subscribed to our monthly catalog. Kindly tick the box to
+                                        unsubscribe,
+                                        otherwise leave it as is to keep the subscription. Proceed with caution.
+                                        <!-- Current subscription status is reflected in the <i> Customer Page </i>.
                                         To
                                         subscribe this user to monthly catalog, kindly tick
-                                        the box on the left. Otherwise, leave it blank.
+                                        the box on the left. Otherwise, leave it blank. -->
                                     </div>
                                 </div>
                                 {% else %}
@@ -245,10 +248,10 @@
                                     <div class="form-check">
                                         <input type="checkbox" id="is_subscribed" class="is_subscribed"
                                             name="is_subscribed">
-                                        Current subscription status is reflected in the <i> Customer Page </i>.
-                                        To
-                                        subscribe this user to monthly catalog, kindly tick
-                                        the box on the left. Otherwise, leave it blank.
+                                        This user is currently unsubscribed to our monthly catalog. Kindly tick the box
+                                        to
+                                        subscribe,
+                                        otherwise leave it blank. Proceed with caution.
                                     </div>
                                 </div>
                                 {% endif %}
