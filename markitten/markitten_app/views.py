@@ -10,6 +10,7 @@ from django.contrib.auth.views import PasswordChangeView
 from .forms import *
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.db.models import Count
 
 
 # Create your views here.
@@ -203,7 +204,25 @@ def productrating(request):
     return render(request, 'markitten_app/productrating.html')
 
 def totalcustomers(request):
-    return render(request, 'markitten_app/totalCustomers.html')
+    maleCount = Profile.objects.filter(sex='Male').count()
+    femaleCount = Profile.objects.filter(sex='Female').count()
+    otherCount = Profile.objects.filter(sex='Male/Female').count()
+    customer = Profile.objects.all()
+    nationality_query = request.GET.get('nationality')
+    # month = [i.month for i in Profile.objects.values_list('birthday', flat=True)]
+
+    if nationality_query != '' and nationality_query is not None:
+        customer = customer.filter(nationality__icontains=nationality_query)
+
+    context = {
+        "maleCount": maleCount,
+        "femaleCount": femaleCount,
+        "otherCount": otherCount,
+        "customer": customer
+        # "month": month
+    }
+
+    return render(request, 'markitten_app/totalCustomers.html', context)
 
 def create(request):
     p_form = UserCreationForm()
@@ -224,15 +243,16 @@ def update(request, pk):
     # customerUser = User.objects.get(id=pk)
 
     if request.method == 'POST':
-        # u_form = UserUpdateForm(request.POST, instance=customerUser)
+        # u_form = UserUpdateForm(request.POST, instance=customer)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=customer)
 
+        # if u_form.is_valid() and p_form.is_valid():
         if p_form.is_valid():
             # u_form.save()
             p_form.save()
             return redirect('customersearch')
     else:
-        # u_form = UserUpdateForm(instance=customerUser)
+        # u_form = UserUpdateForm(instance=customer)
         p_form = ProfileUpdateForm(instance=customer)
     
     context = {
