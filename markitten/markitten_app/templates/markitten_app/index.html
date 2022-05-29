@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
+		body {
+            font-family: "Open Sans", sans-serif;
+            color: #444444;
+        }
+
 		.navbar {
 			background-color: #EEE4D4;
 			overflow: hidden;
@@ -25,10 +30,7 @@
 		{% if p_form.is_subscribed is True %}
 		<nav id="navbar" class="navbar" >
 			<div class="container-fluid">
-				<a class="navbar-brand" href="{% url 'home' %}" style="padding: 15px;">
-					<!-- <img src="" alt="" width="70" height="24" class="d-inline-block align-text-top"> -->
-					markitten
-				</a>
+				<a href="{% url 'home' %}"><img src="{% static 'images/markittenlogo.png' %}" alt="" class="img-fluid" style="width: 50%"></a>
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
 						<a class="nav-link active simpleLink aria-current=" page" href="{% url 'faq' %}"
@@ -47,7 +49,7 @@
 					<li class="nav-item">
 						<a href="{%url 'profile'%}">
 							<div style="padding-top: 10px; padding-right: 10px;">
-								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
 									class="bi bi-person-circle" viewBox="0 0 16 16">
 									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
 									<path fill-rule="evenodd"
@@ -62,10 +64,7 @@
 		{% else %}
 		<nav id="navbar" class="navbar" >
 			<div class="container-fluid">
-				<a class="navbar-brand" href="{% url 'home' %}" style="padding: 15px;">
-					<!-- <img src="" alt="" width="70" height="24" class="d-inline-block align-text-top"> -->
-					markitten
-				</a>
+				<a href="{% url 'home' %}"><img src="{% static 'images/markittenlogo.png' %}" alt="" class="img-fluid" style="width: 50%"></a>
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
 						<a class="nav-link active simpleLink aria-current=" page" href="{% url 'faq' %}"
@@ -80,7 +79,7 @@
 					<li class="nav-item">
 						<a href="{%url 'profile'%}">
 							<div style="padding-top: 10px; padding-right: 10px;">
-								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
 									class="bi bi-person-circle" viewBox="0 0 16 16">
 									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
 									<path fill-rule="evenodd"
