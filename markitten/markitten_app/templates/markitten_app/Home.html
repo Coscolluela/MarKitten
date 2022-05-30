@@ -1,147 +1,143 @@
 {% extends 'markitten_app/index.html' %}
-{% load static %} 
+{% load static %}
 
 {% block content %}
 
-    <br>
+<br>
 
-    <div class="container" style="margin-top: 30px;">
-        <div align="right">
-            <div class="col-lg-3">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+<div class="container" style="margin-top: 30px;">
+    <div align="right">
+        <div class="col-lg-3">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" name="name" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </div>
+</div>
 
-    <div class="container" style="margin-top: 30px;">
-        <hr>
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <a href="{% url 'home' %}" class="simpleLink">
-                                <strong>Home</strong>
-                            </a>
-                        </li>
-                        {% for cat in categ %}
-							{% if cat.parent is None %}
-							<li class="list-group-item">
-								<a href="{% url cat.name %}" class="simpleLink">
-									{{ cat.name }}
-								</a>
-							</li>
-							{% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
+<div class="container" style="margin-top: 30px;">
+    <hr>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="{% url 'home' %}" class="simpleLink">
+                            <strong>Home</strong>
+                        </a>
+                    </li>
+                    {% for cat in categ %}
+                    {% if cat.parent is None %}
+                    <li class="list-group-item">
+                        <a href="{% url cat.name %}" class="simpleLink">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
             </div>
-            <div class="col-lg-9">
-                {% for cat in categ %}
-					{% if cat.parent is None %}
-						<h4>{{cat.name}}</h4>
-						<hr>
-						<div class="row">
-							{% for item in items %}
-								{% if item.prod.category.parent.name == cat.name %}
-								<div class="col-lg-3">
-									<div
-										style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
-										<div
-											style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+        </div>
+        <div class="col-lg-9">
+            {% for cat in categ %}
+            {% if cat.parent is None %}
+            <h4>{{cat.name}}</h4>
+            <hr>
+            <div class="row">
+                {% for item in items %}
+                {% if item.prod.category.parent.name == cat.name %}
+                <div class="col-lg-3">
+                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                        <div
+                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
 															border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-											<img src="{{item.prod.carousel_image_1.url}}"
-												style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
-											<div style="height:60px; width: 100%; border: 1px transparent">
-												<h3
-													style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
-													{{item.prod.name}}</h3>
-											</div>
-											<h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
-												${{item.prod.selling_price}}</h6>
-											<ul
-												style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-												<li style="padding: 5px;"><i class="fa fa-star"
-														style="color: #ff9f43;font-size: 12px;transition: .4s;"
-														aria-hidden="true"></i></li>
-												<li style="padding: 5px;"><i class="fa fa-star"
-														style="color: #ff9f43;font-size: 12px;transition: .4s;"
-														aria-hidden="true"></i></li>
-												<li style="padding: 5px;"><i class="fa fa-star"
-														style="color: #ff9f43;font-size: 12px;transition: .4s;"
-														aria-hidden="true"></i></li>
-												<li style="padding: 5px;"><i class="fa fa-star"
-														style="color: #ff9f43;font-size: 12px;transition: .4s;"
-														aria-hidden="true"></i></li>
-												<li style="padding: 5px;"><i class="fa fa-star"
-														style="color: #ff9f43;font-size: 12px;transition: .4s;"
-														aria-hidden="true"></i></li>
-											</ul>
-											<button
-												style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                            <img src="{{item.prod.carousel_image_1.url}}"
+                                style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                            <div style="height:60px; width: 100%; border: 1px transparent">
+                                <h3
+                                    style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                    {{item.prod.name}}</h3>
+                            </div>
+                            <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                ${{item.prod.selling_price}}</h6>
+                            <ul
+                                style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                            </ul>
+                            <button style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
 															border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
-													href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
-													Product</a></button>
-										</div>
-									</div>
-								</div>
-								{% elif item.prod.category.parent is None %}
-									{% if item.prod.category.name == cat.name %}
-										<div class="col-lg-3">
-											<div
-												style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
-												<div
-													style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                                    href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                    Product</a></button>
+                        </div>
+                    </div>
+                </div>
+                {% elif item.prod.category.parent is None %}
+                {% if item.prod.category.name == cat.name %}
+                <div class="col-lg-3">
+                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                        <div
+                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
 																		border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
-													<img src="{{item.prod.carousel_image_1.url}}"
-														style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
-													<div style="height:60px; width: 100%; border: 1px transparent">
-														<h3
-															style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
-															{{item.prod.name}}</h3>
-													</div>
-													<h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
-														${{item.prod.selling_price}}</h6>
-													<ul
-														style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
-														<li style="padding: 5px;"><i class="fa fa-star"
-																style="color: #ff9f43;font-size: 12px;transition: .4s;"
-																aria-hidden="true"></i></li>
-														<li style="padding: 5px;"><i class="fa fa-star"
-																style="color: #ff9f43;font-size: 12px;transition: .4s;"
-																aria-hidden="true"></i></li>
-														<li style="padding: 5px;"><i class="fa fa-star"
-																style="color: #ff9f43;font-size: 12px;transition: .4s;"
-																aria-hidden="true"></i></li>
-														<li style="padding: 5px;"><i class="fa fa-star"
-																style="color: #ff9f43;font-size: 12px;transition: .4s;"
-																aria-hidden="true"></i></li>
-														<li style="padding: 5px;"><i class="fa fa-star"
-																style="color: #ff9f43;font-size: 12px;transition: .4s;"
-																aria-hidden="true"></i></li>
-													</ul>
-													<button
-														style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                            <img src="{{item.prod.carousel_image_1.url}}"
+                                style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                            <div style="height:60px; width: 100%; border: 1px transparent">
+                                <h3
+                                    style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                    {{item.prod.name}}</h3>
+                            </div>
+                            <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                ${{item.prod.selling_price}}</h6>
+                            <ul
+                                style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                                <li style="padding: 5px;"><i class="fa fa-star"
+                                        style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                </li>
+                            </ul>
+                            <button style="  text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
 																		border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
-															href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
-															Product</a></button>
-												</div>
-											</div>
-										</div>
-									{% endif %}
-								{% endif %}
-							{% endfor %}
-						</div>
-					{% endif %}
-				{% endfor %}
-				<br><br>
-			</div>
-		</div>
-	</div>
-                <!-- 
+                                    href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                    Product</a></button>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            <br><br>
+        </div>
+    </div>
+</div>
+<!-- 
                 <h4>Phones</h4>
                 <hr>
                 <div class="row">
@@ -272,7 +268,7 @@
                     </div>
                 </div> -->
 
-                <!-- {% if prods %}
+<!-- {% if prods %}
                     <h4>Laptops</h4>
                     <hr>
                     <div class="row">
@@ -307,7 +303,7 @@
                     <div class="row"></div>
                 {% endif %} -->
 
-                <!-- <div class="row" style="margin-bottom: 40px;">
+<!-- <div class="row" style="margin-bottom: 40px;">
                     <div class="col-md-3 col-sm-4">
                         <a href="#" class="simpleLink">
                             <div class="card" style="background-color: hsl(60, 35%, 94%);">
@@ -335,7 +331,7 @@
         </div>
     </div> -->
 
-    <!-- <a href="#" class="scrollup" id="scroll-up">
+<!-- <a href="#" class="scrollup" id="scroll-up">
         <i class="uil uil-angle-double-up scrollup__icon"></i>
     </a>
 

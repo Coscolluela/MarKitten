@@ -20,6 +20,12 @@ def home(request):
     prods = Product.objects.all()
     categ = Category.objects.all()
     items = []
+
+    name_query = request.GET.get('name')
+
+    if name_query != '' and name_query is not None:
+        prods = prods.filter(name__icontains=name_query)
+
     p_form = Profile.objects.get(user=request.user)
 
     for prod in prods:

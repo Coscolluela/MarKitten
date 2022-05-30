@@ -88,9 +88,12 @@
                         <th scope="col">
                             Birthday
                         </th>
-                        <!-- <th scope="col">
+                        <th scope="col">
                             Age
-                        </th> -->
+                        </th>
+                        <th scope="col">
+                            Classification
+                        </th>
                         <th scope="col" style="text-align: center;">
                             Birthday this Month?
                         </th>
@@ -114,17 +117,31 @@
                         <td>{{cust.sex}}</td>
                         <td>{{cust.nationality}}</td>
                         <td>{{cust.birthday}}</td>
-                        <!-- <td>
-                            age({{cust.birthday}})
-                        </td> -->
-                        {% if cust.birthday.month == 6 %}
-                        <td style="text-align: center;">
-                            <button class="btn btn-outline-dark">Yes. Send Greetings!</button>
-                        </td>
-                        {% else %}
-                        <td style="text-align: center;">No</td>
-                        {% endif %}
-                        <td></td>
+                        <td>{{cust.age}}</td>
+                        {% if cust.age >= 18 and cust.age <= 40 %} <td>
+                            Young Adult
+                            </td>
+                            {% elif cust.age >= 39 and cust.age <= 59 %} <td>
+                                Adult
+                                </td>
+                                {% elif cust.age >= 60}
+                                <td>
+                                    Senior Citizen
+                                </td>
+                                {% else %}
+                                <td>
+                                    <i>Need Update</i>
+                                </td>
+                                {% endif %}
+
+                                {% if cust.birthday.month == 6 %}
+                                <td style="text-align: center;">
+                                    <button class="btn btn-outline-dark">Yes. Send Greetings!</button>
+                                </td>
+                                {% else %}
+                                <td style="text-align: center;">No</td>
+                                {% endif %}
+                                <td></td>
                     </tr>
                     {% endfor %}
                 </tbody>

@@ -8,6 +8,7 @@ from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
+from datetime import date
 
 # Create your models here.
 class Profile(models.Model):
@@ -33,8 +34,11 @@ class Profile(models.Model):
     class Meta:
         db_table="Profiles"
 
-    def __str__(self):
-        return f'{self.user.username} Profile'
+    @property
+    def age(self):
+        today = date.today()
+        return today.year - self.birthday.year - ((today.month, today.day) < (self.birthday.month, self.birthday.day))
+        # return today.year
 
 class BaseSupplier(models.Model):
     class Meta: 
