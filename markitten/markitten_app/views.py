@@ -233,15 +233,81 @@ def totalcustomers(request):
     customer = Profile.objects.all()
     nationality_query = request.GET.get('nationality')
     # month = [i.month for i in Profile.objects.values_list('birthday', flat=True)]
+    youngadult = 0
+    maleyoungadult = 0
+    femaleyoungadult = 0
+    pendingyoungadult = 0
+    adult = 0
+    maleadult = 0
+    femaleadult = 0
+    pendingadult = 0
+    senior = 0
+    malesenior = 0
+    femalesenior = 0
+    pendingsenior = 0
+    pending = 0
+    malepending = 0
+    femalepending = 0
+    pendingunknown = 0
 
     if nationality_query != '' and nationality_query is not None:
         customer = customer.filter(nationality__icontains=nationality_query)
+
+    for cust in customer:
+        if cust.age >= 18 and cust.age <= 39:
+            youngadult = youngadult + 1
+            if cust.sex == 'Male':
+                maleyoungadult = maleyoungadult + 1
+            elif cust.sex == 'Female':
+                femaleyoungadult = femaleyoungadult + 1
+            else:
+                pendingyoungadult = pendingyoungadult + 1
+        elif cust.age >= 40 and cust.age <= 59:
+            adult = adult + 1
+            if cust.sex == 'Male':
+                maleadult = maleadult + 1
+            elif cust.sex == 'Female':
+                femaleadult = femaleadult + 1
+            else:
+                pendingadult = pendingadult + 1
+        elif cust.age > 60:
+            senior = senior + 1
+            if cust.sex == 'Male':
+                malesenior = malesenior + 1
+            elif cust.sex == 'Female':
+                femalesenior = femalesenior + 1
+            else:
+                pendingsenior = pendingsenior + 1
+        else:
+            pending = pending + 1
+            if cust.sex == 'Male':
+                malepending = malepending + 1
+            elif cust.sex == 'Female':
+                femalepending = femalepending + 1
+            else:
+                pendingunknown = pendingunknown + 1
 
     context = {
         "maleCount": maleCount,
         "femaleCount": femaleCount,
         "otherCount": otherCount,
-        "customer": customer
+        "customer": customer,
+        "youngadult": youngadult,
+        "adult": adult,
+        "senior": senior,
+        "pending": pending,
+        "maleyoungadult": maleyoungadult,
+        "femaleyoungadult": femaleyoungadult,
+        "pendingyoungadult": pendingyoungadult,
+        "maleadult": maleadult,
+        "femaleadult": femaleadult,
+        "pendingadult": pendingadult,
+        "malesenior": malesenior,
+        "femalesenior": femalesenior,
+        "pendingsenior": pendingsenior,
+        "malepending": malepending,
+        "femalepending": femalepending,
+        "pendingunknown": pendingunknown
         # "month": month
     }
 
@@ -270,25 +336,25 @@ def create(request):
 
 def update(request, pk):
     customer = Profile.objects.get(id=pk)
-    customerUser = User.objects.get(id=pk)
+    # customerUser = User.objects.get(id=pk)
 
     if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=customerUser)
+        # u_form = UserUpdateForm(request.POST, instance=customerUser)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=customer)
 
-        if u_form.is_valid() and p_form.is_valid():
-        # if p_form.is_valid():
-            u_form.save()
+        # if u_form.is_valid() and p_form.is_valid():
+        if p_form.is_valid():
+            # u_form.save()
             p_form.save()
             return redirect('customersearch')
     else:
-        u_form = UserUpdateForm(instance=customerUser)
+        # u_form = UserUpdateForm(instance=customerUser)
         p_form = ProfileUpdateForm(instance=customer)
     
     context = {
         "customer": customer,
-        "customerUser": customerUser,
-        "u_form": u_form,
+        # "customerUser": customerUser,
+        # "u_form": u_form,
         "p_form" : p_form
     }
 
