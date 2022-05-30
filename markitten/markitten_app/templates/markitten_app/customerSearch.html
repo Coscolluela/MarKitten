@@ -70,9 +70,6 @@
                 <thead>
                     <tr>
                         <th scope="col">
-                            User ID
-                        </th>
-                        <th scope="col">
                             User
                         </th>
                         <th scope="col">
@@ -95,15 +92,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for cust in customer %}
+                    {% for cust in customerUser %}
                     <tr>
-                        <td>{{cust.id}}</td>
-                        <td>{{cust.user}}</td>
-                        <td>{{cust.sex}}</td>
-                        <td>{{cust.birthday}}</td>
-                        <td>{{cust.nationality}}</td>
-                        <td>{{cust.citizenship}}</td>
-                        <td>{{cust.is_subscribed}}</td>
+                        <td>{{cust.username}}</td>
+                        <td>{{cust.profile.sex}}</td>
+                        <td>{{cust.profile.birthday}}</td>
+                        <td>{{cust.profile.nationality}}</td>
+                        <td>{{cust.profile.citizenship}}</td>
+                        <td>{{cust.profile.is_subscribed}}</td>
                         <td>
                             <a href="{% url 'update' cust.id %}" class="btn btn-outline-dark">
                                 Update

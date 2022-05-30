@@ -436,26 +436,25 @@ def create(request):
     return render(request, 'markitten_app/create.html', context)
 
 def update(request, pk):
-    customer = Profile.objects.get(id=pk)
-    # customerUser = User.objects.get(id=pk)
+    customer = Profile.objects.get(user_id=pk)
+    customerUser = User.objects.get(id =pk)
 
     if request.method == 'POST':
-        # u_form = UserUpdateForm(request.POST, instance=customerUser)
+        u_form = UserUpdateForm(request.POST, instance=customerUser)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=customer)
 
-        # if u_form.is_valid() and p_form.is_valid():
-        if p_form.is_valid():
-            # u_form.save()
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
             p_form.save()
             return redirect('customersearch')
     else:
-        # u_form = UserUpdateForm(instance=customerUser)
+        u_form = UserUpdateForm(instance=customerUser)
         p_form = ProfileUpdateForm(instance=customer)
     
     context = {
         "customer": customer,
-        # "customerUser": customerUser,
-        # "u_form": u_form,
+        "customerUser": customerUser,
+        "u_form": u_form,
         "p_form" : p_form
     }
 
