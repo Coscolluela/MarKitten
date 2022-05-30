@@ -11,7 +11,8 @@ from .forms import *
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.db.models import Count
-
+from datetime import date
+from django.db.models.expressions import RawSQL
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -238,6 +239,13 @@ def totalcustomers(request):
         # "month": month
     }
 
+    # def age(birthday):
+    #     today_date = date.today()
+    #     age = today_date.year - birthday.year - ((today_date.month, today_date.day) < (birthday.month, birthday.day))
+    #     return age
+
+    # raw = 'Select DATEDIFF(CURDATE(), 'markitten_app_profiles.birthday' from 'markitten_app')'
+
     return render(request, 'markitten_app/totalCustomers.html', context)
 
 def create(request):
@@ -256,25 +264,25 @@ def create(request):
 
 def update(request, pk):
     customer = Profile.objects.get(id=pk)
-    # customerUser = User.objects.get(id=pk)
+    customerUser = User.objects.get(id=pk)
 
     if request.method == 'POST':
-        # u_form = UserUpdateForm(request.POST, instance=customerUser)
+        u_form = UserUpdateForm(request.POST, instance=customerUser)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=customer)
 
-        # if u_form.is_valid() and p_form.is_valid():
-        if p_form.is_valid():
-            # u_form.save()
+        if u_form.is_valid() and p_form.is_valid():
+        # if p_form.is_valid():
+            u_form.save()
             p_form.save()
             return redirect('customersearch')
     else:
-        # u_form = UserUpdateForm(instance=customerUser)
+        u_form = UserUpdateForm(instance=customerUser)
         p_form = ProfileUpdateForm(instance=customer)
     
     context = {
         "customer": customer,
-        # "customerUser": customerUser,
-        # "u_form": u_form,
+        "customerUser": customerUser,
+        "u_form": u_form,
         "p_form" : p_form
     }
 
