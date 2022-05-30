@@ -1,4 +1,5 @@
 import email
+import math
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from numpy import product
@@ -28,55 +29,142 @@ def home(request):
 
     p_form = Profile.objects.get(user=request.user)
 
+    prodrating = {}
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
+        
+        comments = prod.comment_set.all().order_by("-created_at")
+        if ( len(comments) != 0 ):
+            overall_rating = 0
+            for comment in comments:
+                overall_rating += comment.rating 
+            overall_rating = overall_rating/len(comments)
+            prodrating[prod.id] = round(overall_rating)
+        else: 
+            prodrating[prod.id] = 0
 
-    data = {"items": items, "categ": categ, "p_form": p_form}
+    data = {"items": items, "categ": categ, "p_form": p_form, "prodrating": prodrating}
     return render(request, 'markitten_app/Home.html', data)
 
 def accessories(request):
     prods = Product.objects.all()
     categ = Category.objects.all()
     items = []
+
+    name_query = request.GET.get('name')
+
+    if name_query != '' and name_query is not None:
+        prods = prods.filter(name__icontains=name_query)
+
+    p_form = Profile.objects.get(user=request.user)
+
+    prodrating = {}
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
+        
+        comments = prod.comment_set.all().order_by("-created_at")
+        if ( len(comments) != 0 ):
+            overall_rating = 0
+            for comment in comments:
+                overall_rating += comment.rating 
+            overall_rating = overall_rating/len(comments)
+            prodrating[prod.id] = round(overall_rating)
+        else: 
+            prodrating[prod.id] = 0
 
-    data = {"items": items, "categ": categ}
+    data = {"items": items, "categ": categ, "p_form": p_form, "prodrating": prodrating}
     return render(request, 'markitten_app/Peripherals.html', data)
 
 def smartphones(request):
     prods = Product.objects.all()
     categ = Category.objects.all()
     items = []
+
+    name_query = request.GET.get('name')
+
+    if name_query != '' and name_query is not None:
+        prods = prods.filter(name__icontains=name_query)
+
+    p_form = Profile.objects.get(user=request.user)
+
+    prodrating = {}
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
+        
+        comments = prod.comment_set.all().order_by("-created_at")
+        if ( len(comments) != 0 ):
+            overall_rating = 0
+            for comment in comments:
+                overall_rating += comment.rating 
+            overall_rating = overall_rating/len(comments)
+            prodrating[prod.id] = round(overall_rating)
+        else: 
+            prodrating[prod.id] = 0
 
-    data = {"items": items, "categ": categ}
+    data = {"items": items, "categ": categ, "p_form": p_form, "prodrating": prodrating}
     return render(request, 'markitten_app/Phones.html', data)
 
 def desktops(request):
     prods = Product.objects.all()
     categ = Category.objects.all()
     items = []
+
+    name_query = request.GET.get('name')
+
+    if name_query != '' and name_query is not None:
+        prods = prods.filter(name__icontains=name_query)
+
+    p_form = Profile.objects.get(user=request.user)
+
+    prodrating = {}
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
+        
+        comments = prod.comment_set.all().order_by("-created_at")
+        if ( len(comments) != 0 ):
+            overall_rating = 0
+            for comment in comments:
+                overall_rating += comment.rating 
+            overall_rating = overall_rating/len(comments)
+            prodrating[prod.id] = round(overall_rating)
+        else: 
+            prodrating[prod.id] = 0
 
-    data = {"items": items, "categ": categ}
+    data = {"items": items, "categ": categ, "p_form": p_form, "prodrating": prodrating}
     return render(request, 'markitten_app/Desktops.html', data)
 
 def laptops(request):
     prods = Product.objects.all()
     categ = Category.objects.all()
     items = []
+
+    name_query = request.GET.get('name')
+
+    if name_query != '' and name_query is not None:
+        prods = prods.filter(name__icontains=name_query)
+
+    p_form = Profile.objects.get(user=request.user)
+
+    prodrating = {}
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
+        
+        comments = prod.comment_set.all().order_by("-created_at")
+        if ( len(comments) != 0 ):
+            overall_rating = 0
+            for comment in comments:
+                overall_rating += comment.rating 
+            overall_rating = overall_rating/len(comments)
+            prodrating[prod.id] = round(overall_rating)
+        else: 
+            prodrating[prod.id] = 0
 
-    data = {"items": items, "categ": categ}
+    data = {"items": items, "categ": categ, "p_form": p_form, "prodrating": prodrating}
     return render(request, 'markitten_app/Laptops.html', data)
 
 def monthlycatalog(request):
@@ -92,7 +180,20 @@ def monthlycatalog(request):
 
 def product_details(request, pk):
     prod = Product.objects.get(id=pk)
-    data = {"prod": prod } 
+
+    comments = prod.comment_set.all().order_by("-created_at")
+    if ( len(comments) != 0 ):
+        overall_rating = 0
+        for comment in comments:
+            overall_rating += comment.rating 
+        overall_rating = overall_rating/len(comments)
+        data = {'prod': prod, 'comments':comments, 'overall_rating': round(overall_rating), "rating_floor": math.floor(overall_rating), 'rating_float': not overall_rating.is_integer(),}
+    else: 
+        data = {'prod': prod, 'rating_floor' : 0 }
+
+    # commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
+    # data["commentform"] = commentform
+    data["totalreviews"] = len(comments)
     
     form = ProdDetailsForm({"user": request.user.id, "item": prod.id,})
     data["form"] = form  
