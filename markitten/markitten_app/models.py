@@ -161,7 +161,7 @@ class baseReview(models.Model):
 
 class Comment(baseReview):
     class Meta:
-        managed = False
+        #managed = False
         db_table="Comments"
     pass
 
