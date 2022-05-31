@@ -31,22 +31,22 @@
                 <br>
                 <form action="" method="post">
                     {% csrf_token %}
-                    <div class="row mb-4">
+                    <div class="row mb-3">
                         <div class="d-grid gap-2 col-6 d-md-block">
                             <label for="floatingInput">First Name</label>
-                            {{form.first_name}} 
+                            {{form.first_name}}
                             <!-- <label for="staticEmail" class="col-form-label">Email</label> -->
                         </div>
-                        <div class="d-grid gap-2 col-6 d-md-block">
+                        <div class="d-grid gap-2 col-5 d-md-block">
                             <label for="floatingInput">Last Name</label>
-                            {{form.last_name}} 
+                            {{form.last_name}}
                             <!-- <label for="staticEmail" class="col-form-label">Email</label> -->
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="d-grid gap-2 col-11 d-md-block">
                             <label for="inputName" class="col-form-label">Name</label>
-                            {{form.username}} 
+                            {{form.username}}
                         </div>
                     </div>
                     <div class="mb-3">
@@ -74,15 +74,15 @@
                         </label>
                     </div> -->
                     <br>
-					{% if form.errors %}
-						{% for key, value in form.errors.items %}
-						<!-- Alert -->
-						<div class="alert alert-danger alert-dismissible fade show" role="alert">
-							<strong>Error!</strong> {{value | striptags}}
-							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-						</div>
-						{% endfor %}
-					{% endif %}
+                    {% if form.errors %}
+                    {% for key, value in form.errors.items %}
+                    <!-- Alert -->
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> {{value | striptags}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
                     <div class="d-grid gap-2 col-2 mx-auto">
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </div>
