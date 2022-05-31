@@ -355,7 +355,7 @@ def totalcustomers(request):
         customer = customer.filter(nationality__icontains=nationality_query)
 
     for cust in customer:
-        if cust.age >= 18 and cust.age <= 39:
+        if cust.classification == 'Young Adult':
             youngadult = youngadult + 1
             if cust.sex == 'Male':
                 maleyoungadult = maleyoungadult + 1
@@ -363,7 +363,7 @@ def totalcustomers(request):
                 femaleyoungadult = femaleyoungadult + 1
             else:
                 pendingyoungadult = pendingyoungadult + 1
-        elif cust.age >= 40 and cust.age <= 59:
+        elif cust.classification == 'Adult':
             adult = adult + 1
             if cust.sex == 'Male':
                 maleadult = maleadult + 1
@@ -371,7 +371,7 @@ def totalcustomers(request):
                 femaleadult = femaleadult + 1
             else:
                 pendingadult = pendingadult + 1
-        elif cust.age > 60:
+        elif cust.classification == 'Senior Citizen':
             senior = senior + 1
             if cust.sex == 'Male':
                 malesenior = malesenior + 1
@@ -387,6 +387,12 @@ def totalcustomers(request):
                 femalepending = femalepending + 1
             else:
                 pendingunknown = pendingunknown + 1
+
+    # sex_query = request.GET.get('sex')
+    # classification_query = request.GET.get('classification')
+
+    # if classification_query != '' and classification_query is not None:
+    #     customer = customer.filter(permanent_address__icontains=classification_query)
 
     context = {
         "maleCount": maleCount,
@@ -411,13 +417,6 @@ def totalcustomers(request):
         "pendingunknown": pendingunknown
         # "month": month
     }
-
-    # def age(birthday):
-    #     today_date = date.today()
-    #     age = today_date.year - birthday.year - ((today_date.month, today_date.day) < (birthday.month, birthday.day))
-    #     return age
-
-    # raw = 'Select DATEDIFF(CURDATE(), 'markitten_app_profiles.birthday' from 'markitten_app')'
 
     return render(request, 'markitten_app/totalCustomers.html', context)
 

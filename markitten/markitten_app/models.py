@@ -38,6 +38,17 @@ class Profile(models.Model):
     def age(self):
         today = date.today()
         return today.year - self.birthday.year - ((today.month, today.day) < (self.birthday.month, self.birthday.day))
+    
+    @property
+    def classification(self):
+        if self.age >= 18 and self.age <=39:
+           return 'Young Adult'
+        elif self.age >= 40 and self.age <=59:
+            return 'Adult'
+        elif self.age >= 60:
+            return 'Senior Citizen'
+        else:
+            return 'Unclassified'
         # return today.year
 
 class BaseSupplier(models.Model):

@@ -81,7 +81,7 @@
                     <br>
                     <p style="text-align: center;">Young Adults ({{youngadult}})</p>
                     <hr>
-                    <p style="text-align: center;">M: ({{maleyoungadult}}) F: ({{femaleyoungadult}}) Unupdated:
+                    <p style="text-align: center;">M: ({{maleyoungadult}}) | F: ({{femaleyoungadult}}) Unupdated:
                         ({{pendingyoungadult}})</p>
                 </div>
                 <div class="col-3">
@@ -92,7 +92,7 @@
                     <br>
                     <p style="text-align: center;"> Adults ({{adult}})</p>
                     <hr>
-                    <p style="text-align: center;">M: ({{maleadult}}) F: ({{femaleadult}}) Unupdated:
+                    <p style="text-align: center;">M: ({{maleadult}}) | F: ({{femaleadult}}) Unupdated:
                         ({{pendingadult}})</p>
                 </div>
                 <div class="col-3">
@@ -103,7 +103,7 @@
                     <br>
                     <p style="text-align: center;">Senior Citizen ({{senior}})</p>
                     <hr>
-                    <p style="text-align: center;">M: ({{malesenior}}) F: ({{femalesenior}}) Unupdated:
+                    <p style="text-align: center;">M: ({{malesenior}}) | F: ({{femalesenior}}) Unupdated:
                         ({{pendingsenior}})</p>
                 </div>
                 <div class="col-3">
@@ -114,7 +114,7 @@
                     <br>
                     <p style="text-align: center;">Unclassified ({{pending}})</p>
                     <hr>
-                    <p style="text-align: center;">M: ({{malepending}}) F: ({{femalepending}}) Unupdated:
+                    <p style="text-align: center;">M: ({{malepending}}) | F: ({{femalepending}}) Unupdated:
                         ({{pendingunknown}})</p>
                 </div>
             </div>
@@ -127,6 +127,20 @@
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="radio" value="Male" name="gender"> Male | <input type="radio" value="Female" name="gender">
+                Female
+                <select name="classification" id="">
+                    <option selected disabled="true">Select Classification</option>
+                    <option>Young Adult</option>
+                    <option> Adult</option>
+                    <option>Senior Citizen</option>
+                    <option>Unclassified</option>
+                </select>
+                <input type="submit" value="Search">
+            </form>
             <br>
             <table class="table table-striped">
                 <thead>
@@ -173,30 +187,15 @@
                         <td>{{cust.nationality}}</td>
                         <td>{{cust.birthday}}</td>
                         <td>{{cust.age}}</td>
-                        {% if cust.age >= 18 and cust.age <= 40 %} <td>
-                            Young Adult
-                            </td>
-                            {% elif cust.age >= 39 and cust.age <= 59 %} <td>
-                                Adult
-                                </td>
-                                {% elif cust.age >= 60}
-                                <td>
-                                    Senior Citizen
-                                </td>
-                                {% else %}
-                                <td>
-                                    <i>Need Update</i>
-                                </td>
-                                {% endif %}
-
-                                {% if cust.birthday.month == 6 %}
-                                <td style="text-align: center;">
-                                    <button class="btn btn-outline-dark">Yes. Send Greetings!</button>
-                                </td>
-                                {% else %}
-                                <td style="text-align: center;">No</td>
-                                {% endif %}
-                                <td></td>
+                        <td>{{cust.classification}}</td>
+                        {% if cust.birthday.month == 6 %}
+                        <td style="text-align: center;">
+                            <button class="btn btn-outline-dark">Yes. Send Greetings!</button>
+                        </td>
+                        {% else %}
+                        <td style="text-align: center;">No</td>
+                        {% endif %}
+                        <td></td>
                     </tr>
                     {% endfor %}
                 </tbody>
