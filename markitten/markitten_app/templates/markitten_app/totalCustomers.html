@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<br><br>
 <div class="container" style="margin-top: 10px;">
     <div class="row">
         <div class="col-lg-4" id="fade-in">
@@ -13,9 +14,9 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" style="text-align: center;">
-                        <a href="{% url 'customersearch' %}" class="simpleLink">
+                        <a href="{% url 'editprofile' %}" class="simpleLink">
                             <i class="fa fa-edit"></i>
-                            Customer Search
+                            Edit Profile
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
@@ -25,9 +26,15 @@
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
+                        <a href="{% url 'customersearch' %}" class="simpleLink">
+                            <i class="fa fa-edit"></i>
+                            Customer Search
+                        </a>
+                    </li>
+                    <li class="list-group-item" style="text-align: center;">
                         <a href="{% url 'customerlocation' %}" class="simpleLink">
                             <i class="bi bi-file-earmark-lock"></i>
-                            Change Filter by Location
+                            Location-Based Customer Filter
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
@@ -48,7 +55,6 @@
                             Logout
                         </a>
                     </li>
-
                 </ul>
                 <!-- <div class="card-body">
                         <a href="Home.html" class="card-link simpleLink">
@@ -65,8 +71,10 @@
                 Guide
             </button>
             <h4>Displaying total customers</h4>
+            <hr>
 
-            <br>
+            <h5>By Sex</h5>
+            <hr>
             <div class="row">
                 <div class="col-4">
                     Total Male (<i class="bi bi-gender-male"></i>): {{maleCount}}
@@ -78,53 +86,77 @@
                     Unupdated Profile (Sex): {{otherCount}}
                 </div>
             </div>
-            <br>
+
+            <br><br>
+            <h5>By Age</h5>
+            <hr>
             <div class="row">
                 <div class="col-3">
-                    <img src="{% static 'images/teen.png'%}" alt="" width="100" style="display: block;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 50%;">
-                    <br>
-                    <p style="text-align: center;">Young Adults ({{youngadult}})</p>
-                    <hr>
-                    <p style="text-align: center;">M: ({{maleyoungadult}}) | F: ({{femaleyoungadult}}) Unupdated:
-                        ({{pendingyoungadult}})</p>
+                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                        <div
+                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px; padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                            <img src="{% static 'images/teen.png'%}" alt="" width="100" style="display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 50%;">
+                            <br>
+                            <p style="text-align: center;">Young Adults ({{youngadult}})</p>
+                            <hr>
+                            <p style="text-align: center; font-size:14px;">M: ({{maleyoungadult}}) | F: ({{femaleyoungadult}}) Unupdated:
+                                ({{pendingyoungadult}})</p>
+                        </div> 
+                    </div>
                 </div>
                 <div class="col-3">
-                    <img src="{% static 'images/adult.png'%}" alt="" width="100" style="display: block;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 50%;">
-                    <br>
-                    <p style="text-align: center;"> Adults ({{adult}})</p>
-                    <hr>
-                    <p style="text-align: center;">M: ({{maleadult}}) | F: ({{femaleadult}}) Unupdated:
-                        ({{pendingadult}})</p>
+                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                        <div
+                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px; padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                            <img src="{% static 'images/adult.png'%}" alt="" width="100" style="display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 50%;">
+                            <br>
+                            <p style="text-align: center;"> Adults ({{adult}})</p>
+                            <hr>
+                            <p style="text-align: center; font-size:14px;">M: ({{maleadult}}) | F: ({{femaleadult}}) Unupdated:
+                                ({{pendingadult}})</p>
+                        </div> 
+                    </div>
                 </div>
                 <div class="col-3">
-                    <img src="{% static 'images/senior.png'%}" alt="" width="100" style="display: block;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 50%;">
-                    <br>
-                    <p style="text-align: center;">Senior Citizen ({{senior}})</p>
-                    <hr>
-                    <p style="text-align: center;">M: ({{malesenior}}) | F: ({{femalesenior}}) Unupdated:
-                        ({{pendingsenior}})</p>
+                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                        <div
+                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px; padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                            <img src="{% static 'images/senior.png'%}" alt="" width="100" style="display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 50%;">
+                            <br>
+                            <p style="text-align: center;">Senior Citizen ({{senior}})</p>
+                            <hr>
+                            <p style="text-align: center; font-size:14px;">M: ({{malesenior}}) | F: ({{femalesenior}}) Unupdated:
+                                ({{pendingsenior}})</p>
+                        </div> 
+                    </div>
                 </div>
                 <div class="col-3">
-                    <img src="{% static 'images/unknown.png'%}" alt="" width="100" style="display: block;
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 50%;">
-                    <br>
-                    <p style="text-align: center;">Unclassified ({{pending}})</p>
-                    <hr>
-                    <p style="text-align: center;">M: ({{malepending}}) | F: ({{femalepending}}) Unupdated:
-                        ({{pendingunknown}})</p>
+                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                        <div
+                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px; padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                            <img src="{% static 'images/unknown.png'%}" alt="" width="100" style="display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 50%;">
+                            <br>
+                            <p style="text-align: center;">Unclassified ({{pending}})</p>
+                            <hr>
+                            <p style="text-align: center; font-size:14px;">M: ({{malepending}}) | F: ({{femalepending}}) Unupdated:
+                                ({{pendingunknown}})</p>
+                        </div> 
+                    </div>
                 </div>
             </div>
+            <br><br><hr><br><br>
             <script type="text/javascript">
                 function searchdata() {
                     var input, table, tr, td, filter, i, displaydata;

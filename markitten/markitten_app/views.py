@@ -191,8 +191,8 @@ def product_details(request, pk):
     else: 
         data = {'prod': prod, 'overall_rating' : 0 }
 
-    # commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
-    # data["commentform"] = commentform
+    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
+    data["commentform"] = commentform
     data["totalreviews"] = len(comments)
     
     p_form = Profile.objects.get(user=request.user)

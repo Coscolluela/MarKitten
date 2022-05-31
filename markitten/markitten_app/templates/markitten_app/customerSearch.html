@@ -13,9 +13,9 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" style="text-align: center;">
-                        <a href="{% url 'customersearch' %}" class="simpleLink">
+                        <a href="{% url 'editprofile' %}" class="simpleLink">
                             <i class="fa fa-edit"></i>
-                            Customer Search
+                            Edit Profile
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
@@ -25,9 +25,15 @@
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
+                        <a href="{% url 'customersearch' %}" class="simpleLink">
+                            <i class="fa fa-edit"></i>
+                            Customer Search
+                        </a>
+                    </li>
+                    <li class="list-group-item" style="text-align: center;">
                         <a href="{% url 'customerlocation' %}" class="simpleLink">
                             <i class="bi bi-file-earmark-lock"></i>
-                            Location-based Customer Filter
+                            Location-Based Customer Filter
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
@@ -48,7 +54,6 @@
                             Logout
                         </a>
                     </li>
-
                 </ul>
                 <!-- <div class="card-body">
                         <a href="Home.html" class="card-link simpleLink">
