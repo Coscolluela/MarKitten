@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<br><br>
 <div class="container" style="margin-top: 10px;">
     <div class="row">
         <div class="col-lg-4" id="fade-in">
@@ -52,8 +53,411 @@
             <!-- <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;"> -->
         </div>
         <div class="col-lg-8">
-            <br>
-            <h4>Product/s with high rating (5 stars).</h4>
+            <form class="d-flex">
+                <input class="form-control me-2" type="submit" name="name" value="Show all" aria-label="Search">
+                <input class="form-control me-2" type="submit" name="name" value="No ratings" aria-label="Search">
+                <input class="form-control me-2" type="submit" name="name" value="Low ratings" aria-label="Search">
+                <input class="form-control me-2" type="submit" name="name" value="High ratings" aria-label="Search">
+                <input class="form-control me-2" type="submit" name="name" value="With complaints" aria-label="Search">
+            </form>
+            <br><br>
+            {% if filterlabel == 'Show all' %}
+                <h4>Showing products with no ratings (0 star)</h4>
+                <hr>
+                <div class="row">
+                    {% for item in items %}
+                        {% for key, value in prodratingfiltered.items %}
+                            {% if item.prod.id == key and value == 0 %}
+                                <div class="col-lg-3">
+                                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                                        <div
+                                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                                                                            border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                                            <img src="{{item.prod.carousel_image_1.url}}"
+                                                style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                            <div style="height:60px; width: 100%; border: 1px transparent">
+                                                <h3
+                                                    style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                                    {{item.prod.name}}</h3>
+                                            </div>
+                                            <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                                Php {{item.prod.selling_price}}</h6>
+                                            <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                            </ul>
+                                            <button style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                                                            border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
+                                                    href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                                    Product</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+
+                <br><br>
+
+                <h4>Showing products with low ratings (1 star)</h4>
+                <hr>
+                <div class="row">
+                    {% for item in items %}
+                        {% for key, value in prodratingfiltered.items %}
+                            {% if item.prod.id == key and value == 1 %}
+                                <div class="col-lg-3">
+                                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                                        <div
+                                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                                                                            border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                                            <img src="{{item.prod.carousel_image_1.url}}"
+                                                style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                            <div style="height:60px; width: 100%; border: 1px transparent">
+                                                <h3
+                                                    style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                                    {{item.prod.name}}</h3>
+                                            </div>
+                                            <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                                Php {{item.prod.selling_price}}</h6>
+                                            <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                            </ul>
+                                            <button style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                                                            border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
+                                                    href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                                    Product</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+
+                <br><br>
+
+                <h4>Showing products with high ratings (5 stars)</h4>
+                <hr>
+                <div class="row">
+                    {% for item in items %}
+                        {% for key, value in prodratingfiltered.items %}
+                            {% if item.prod.id == key and value == 5 %}
+                                <div class="col-lg-3">
+                                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                                        <div
+                                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                                                                            border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                                            <img src="{{item.prod.carousel_image_1.url}}"
+                                                style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                            <div style="height:60px; width: 100%; border: 1px transparent">
+                                                <h3
+                                                    style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                                    {{item.prod.name}}</h3>
+                                            </div>
+                                            <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                                Php {{item.prod.selling_price}}</h6>
+                                            <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                            </ul>
+                                            <button style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                                                            border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
+                                                    href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                                    Product</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+
+                <br><br>
+
+                <h4>Showing products with complaints</h4>
+                <hr>
+
+                <br><br>
+
+            {% elif filterlabel == 'No ratings' %}
+                <h4>Showing products with no ratings (0 star)</h4>
+                <hr>
+                <div class="row">
+                    {% for item in items %}
+                        {% for key, value in prodratingfiltered.items %}
+                            {% if item.prod.id == key and value == 0 %}
+                                <div class="col-lg-3">
+                                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                                        <div
+                                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                                                                            border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                                            <img src="{{item.prod.carousel_image_1.url}}"
+                                                style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                            <div style="height:60px; width: 100%; border: 1px transparent">
+                                                <h3
+                                                    style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                                    {{item.prod.name}}</h3>
+                                            </div>
+                                            <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                                Php {{item.prod.selling_price}}</h6>
+                                            <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                            </ul>
+                                            <button style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                                                            border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
+                                                    href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                                    Product</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <br><br>
+
+            {% elif filterlabel == 'Low ratings' %}
+                <h4>Showing products with low ratings (1 star)</h4>
+                <hr>
+                <div class="row">
+                    {% for item in items %}
+                        {% for key, value in prodratingfiltered.items %}
+                            {% if item.prod.id == key and value == 1 %}
+                                <div class="col-lg-3">
+                                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                                        <div
+                                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                                                                            border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                                            <img src="{{item.prod.carousel_image_1.url}}"
+                                                style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                            <div style="height:60px; width: 100%; border: 1px transparent">
+                                                <h3
+                                                    style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                                    {{item.prod.name}}</h3>
+                                            </div>
+                                            <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                                Php {{item.prod.selling_price}}</h6>
+                                            <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                                <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                    style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                            </ul>
+                                            <button style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                                                            border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
+                                                    href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                                    Product</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+
+                <br><br>
+            {% elif filterlabel == 'High ratings' %}
+                <h4>Showing products with high ratings (5 stars)</h4>
+                <hr>
+                <div class="row">
+                    {% for item in items %}
+                        {% for key, value in prodratingfiltered.items %}
+                            {% if item.prod.id == key and value == 5 %}
+                                <div class="col-lg-3">
+                                    <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                                        <div
+                                            style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                                                                            border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                                            <img src="{{item.prod.carousel_image_1.url}}"
+                                                style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                            <div style="height:60px; width: 100%; border: 1px transparent">
+                                                <h3
+                                                    style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                                    {{item.prod.name}}</h3>
+                                            </div>
+                                            <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                                Php {{item.prod.selling_price}}</h6>
+                                            <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                    style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                </li>
+                                            </ul>
+                                            <button style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                                                            border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
+                                                    href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                                    Product</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+
+                <br><br>
+            {% endif %}
+
+
+
+
+
+            <!-- <div class="row">
+                {% for item in items %}
+                    {% for key, value in prodratingfiltered.items %}
+                        {% if item.prod.id == key %}
+                            <div class="col-lg-3">
+                                <div style="display: flex;flex-wrap: wrap;width: 100%;justify-content: center;align-items: center;">
+                                    <div
+                                        style="width:100%;box-sizing: border-box;float: left;text-align:center;margin:0 0 20px 0; border-radius:10px;border-top-right-radius:10px;
+                                                                        border-bottom-right-radius:10px;padding-top: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);transition: .4s;">
+                                        <img src="{{item.prod.carousel_image_1.url}}"
+                                            style="width: 150px;height: 150px;text-align: center;margin: 0 auto;display: block;">
+                                        <div style="height:60px; width: 100%; border: 1px transparent">
+                                            <h3
+                                                style="text-align: center; font-size: 16px; margin: 0px; padding-left: 5px; padding-right: 5px">
+                                                {{item.prod.name}}</h3>
+                                        </div>
+                                        <h6 style="font-size: 14px;text-align: center;color: #222f3e;margin: 0;">
+                                            Php {{item.prod.selling_price}}</h6>
+                                        
+                                                {% if value == 0 %}
+                                                    <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                    </ul>
+                                                {% elif value == 1 %}
+                                                    <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                            style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star-o"
+                                                            style="font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                    </ul>
+                                                {% elif value == 5 %}
+                                                    <ul style="list-style-type: none;display: flex; justify-content: center; align-items: center; padding: 0px;">
+                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                            style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                            style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                            style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                            style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                        <li style="padding: 5px;"><i class="fa fa-star"
+                                                            style="color: #ff9f43;font-size: 12px;transition: .4s;" aria-hidden="true"></i>
+                                                        </li>
+                                                    </ul>
+                                                {% endif %}
+                                        <button style="text-align: center;font-size: 18px;color: #fff;width: 100%;padding:8px;border:0px;outline: none;cursor: pointer;margin-top: 5px;
+                                                                        border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;background-color:powderblue;"><a
+                                                href="{% url 'product_details' item.prod.id %}" class="simpleLink">View
+                                                Product</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div> -->
+            
+            <!-- <h4>Product/s with high rating (5 stars).</h4>
             <hr>
             <p>Output here.</p>
             <h4>Product/s with low rating (0-1 star).</h4>
@@ -64,7 +468,7 @@
             <p>Output here.</p>
             <h4>Product/s with complaints.</h4>
             <hr>
-            <p>Output here.</p>
+            <p>Output here.</p> -->
         </div>
     </div>
 </div>
