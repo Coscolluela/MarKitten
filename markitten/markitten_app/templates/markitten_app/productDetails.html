@@ -72,12 +72,14 @@
                     <p>File your complaint here.</p>
                     <hr>
                     {% if request.user.is_authenticated %}
-                    <form action="{% url 'addcomplaint' prod.id %}" method="post">
+                    <form class="review-form" action="{% url 'addcomplaint' prod.id %}" method="post">
                         {% csrf_token %}
-                        {{complaintform.user}}
-                        {{complaintform.prod}}
-                        {{complaintform.complaint}}
-                        {{complaintform.subject}}
+                        {% for prod in product %}
+						<input type="hidden" name="prod_id" id="prod_id" value="{{prod.id}}"/>
+						{%endfor%}
+
+                        <textarea class="input" id="subject" name="subject" placeholder="Enter Subject"></textarea>
+                        <textarea class="input" id="complaint" name="complaint" placeholder="Enter Complaint"></textarea>
                         <button type="submit" class="btn btn-primary float-end">Submit</button>
                         <br>
                     </form>

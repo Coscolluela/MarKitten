@@ -174,14 +174,18 @@ class review(baseReview):
     imageReview = models.ImageField(blank=True)
 
 class Complaint(models.Model):
-    # class Meta:
-    #     db_table="Complaints"
+    class Meta:
+        db_table = "Complaints"
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    subject = models.CharField(max_length=100)
-    complaint = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100, null=True)
+    complaint = models.CharField(max_length=100, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.id)
 
 class ProdDetails(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

@@ -290,12 +290,13 @@ def addreview(request,pk):
         
 @login_required(login_url='/login')
 def addcomplaint(request, pk):
-    form = ComplaintForm(request.POST)
-
-    if (form.is_valid()):
-        form.save()
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        #return redirect('product_details')
+    if request.method == 'POST':
+        product = Product.objects.get(id = pk)
+        complaint = request.POST.get('complaint')
+        subject = request.POST.get('subject')
+        user = request.user
+        Complaint(user=user, product=product, complaint=complaint, subject=subject).save()
+        return redirect('product_details', pk)
 
 def signup(request):
     form = UserForm()
