@@ -179,12 +179,28 @@ def monthlycatalog(request, year = datetime.datetime.now().year, month=datetime.
 		created_at__year = datetime.datetime.now().year,
 		created_at__month = month_number
 		)
+    items = []
+    prodrating = {}
+    for prod in product_list:
+        form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
+        items.append({"prod": prod, "form": form})
+        
+        comments = prod.comment_set.all().order_by("-created_at")
+        if ( len(comments) != 0 ):
+            overall_rating = 0
+            for comment in comments:
+                overall_rating += comment.rating 
+            overall_rating = overall_rating/len(comments)
+            prodrating[prod.id] = round(overall_rating)
+        else: 
+            prodrating[prod.id] = 0
     
     data = {
 		"year": year,
 		"month": month,
 		"month_number": month_number,
 		"product_list": product_list,
+		"prodrating": prodrating
 	}
 
     
@@ -203,8 +219,8 @@ def product_details(request, pk):
     else: 
         data = {'prod': prod, 'overall_rating' : 0 }
 
-    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
-    data["commentform"] = commentform
+    # commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
+    # data["commentform"] = commentform
     data["totalreviews"] = len(comments)
     
     p_form = Profile.objects.get(user=request.user)
