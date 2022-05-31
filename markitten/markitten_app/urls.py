@@ -15,6 +15,7 @@ urlpatterns = [
     path('adminpanel/', views.adminpanel, name="adminpanel"),
     path('editprofile/', views.editprofile, name="editprofile"),
     path('leavecomplaint/', views.leavecomplaint, name="leavecomplaint"),
+    path('leavereview/', views.leavereview, name="leavereview"),
     path('login/', views.signin, name="login"),
     path('signup/', views.signup, name="signup"),
     path('logout/', views.signout, name="logout"),
@@ -51,7 +52,8 @@ urlpatterns = [
     path('create/', views.create, name="create"),
     path('update/<str:pk>', views.update, name="update"),
     path('delete/<str:pk>', views.delete, name="delete"),
-    path('review/add/<str:pk>/', views.addreview, name="addreview"),
+    path('addreview/<str:pk>/', views.addreview, name="addreview"),
+    path('addcomplaint/<str:pk>/', views.addcomplaint, name="addcomplaint"),
 ]
 
 if settings.DEBUG:

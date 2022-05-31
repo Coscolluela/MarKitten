@@ -105,4 +105,16 @@ class CommentForm(ModelForm):
             'user' : HiddenInput(attrs = {'type' : 'hidden'}),
             'product' : HiddenInput(attrs = {'type' : 'hidden'}),
             'comment' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Comment', 'required' : True ,}),
+            'rating' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max' : '5', 'required': True})
+        }
+
+class ComplaintForm(ModelForm):
+    class Meta:
+        model = Complaint
+        fields = ['user', 'product', 'subject', 'complaint']
+        widgets = {
+            'user' : HiddenInput(attrs = {'type' : 'hidden'}),
+            'product' : HiddenInput(attrs = {'type' : 'hidden'}),
+            'subject' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Subject', 'required' : True ,}),
+            'complaint' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Complaint', 'required' : True ,}),
         }

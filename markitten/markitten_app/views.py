@@ -221,7 +221,9 @@ def product_details(request, pk):
         data = {'prod': prod, 'overall_rating' : 0 }
 
     commentform = CommentForm({"user" : request.user.id, "prod" : prod.id, "comment" : "", "rating" : "0"})
+    complaintform = ComplaintForm({"user" : request.user.id, "prod" : prod.id, "subject" : "", "complaint" : ""})
     data["commentform"] = commentform
+    data["complaintform"] = complaintform
     data["totalreviews"] = len(comments)
     
     p_form = Profile.objects.get(user=request.user)
@@ -273,6 +275,9 @@ def editprofile(request):
 def leavecomplaint(request):
     return render(request, 'markitten_app/leaveComplaint.html')
 
+def leavereview(request):
+    return render(request, 'markitten_app/leaveReview.html')
+
 @login_required(login_url='/login')
 def addreview(request,pk):
     if request.method == 'POST':
@@ -283,7 +288,14 @@ def addreview(request,pk):
         Comment(user=user, product=product, comment=comment, rating=rating).save()
         return redirect('product_details', pk)
         
+@login_required(login_url='/login')
+def addcomplaint(request, pk):
+    form = ComplaintForm(request.POST)
 
+    if (form.is_valid()):
+        form.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        #return redirect('product_details')
 
 def signup(request):
     form = UserForm()
