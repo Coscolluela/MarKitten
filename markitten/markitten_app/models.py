@@ -91,6 +91,7 @@ class BaseProduct(models.Model):
     
     carousel_video_1 = models.FileField(upload_to='product_videos',null=True, blank=True, validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
     carousel_video_2 = models.FileField(upload_to='product_videos',null=True, blank=True, validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
+    created_at = models.DateTimeField(auto_now_add=True,null=True)
 
     def __str__(self):
         return str(self.name)

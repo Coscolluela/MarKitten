@@ -1,3 +1,4 @@
+import calendar
 import email
 import math
 from django.shortcuts import render,redirect
@@ -167,15 +168,26 @@ def laptops(request):
     data = {"items": items, "categ": categ, "p_form": p_form, "prodrating": prodrating}
     return render(request, 'markitten_app/Laptops.html', data)
 
-def monthlycatalog(request):
-    prods = Product.objects.all()
-    categ = Category.objects.all()
-    items = []
-    for prod in prods:
-        form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
-        items.append({"prod": prod, "form": form})
+def monthlycatalog(request, year = datetime.datetime.now().year, month=datetime.datetime.now().strftime('%B')):
+    month = month.capitalize()
+    # Convert month from name to number
+    month_number = list(calendar.month_name).index(month)
+    month_number = int(month_number)
+    
+    # Query the Events Model For Dates
+    product_list = Product.objects.filter(
+		created_at__year = datetime.datetime.now().year,
+		created_at__month = month_number
+		)
+    
+    data = {
+		"year": year,
+		"month": month,
+		"month_number": month_number,
+		"product_list": product_list,
+	}
 
-    data = {"items": items, "categ": categ}
+    
     return render(request, 'markitten_app/monthlycatalog.html', data)
 
 def product_details(request, pk):
