@@ -1,27 +1,84 @@
 {% extends 'markitten_app/index.html' %}
-{% load static %} 
+{% load static %}
 
 {% block content %}
 
-    {% if user.is_superuser %}
-    <div class="container" style="margin-top: 10px;">
-        <div class="row">
-            <div class="col-lg-4" id="fade-in">
-                <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
-                    <img src="{{user.profile.image.url}}" alt="" height="350px" width="auto">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
-                    </div>
-                    <!-- <div class="card-body">
+{% if user.is_superuser %}
+<div class="container" style="margin-top: 10px;">
+    <div class="row">
+        <div class="col-lg-4" id="fade-in">
+            <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
+                <img src="{{user.profile.image.url}}" alt="" height="350px" width="auto">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
+                </div>
+                <!-- <div class="card-body">
                         <a href="Home.html" class="card-link simpleLink">
                             < View Monthly Catalog</a>
                     </div> -->
-                </div>
-                <!-- <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;"> -->
             </div>
-            <div class="col-lg-8">
-                <h4 style="text-align: center; padding-top: 40px;">Please choose the function you want to do.</h4>
-                <br>
+            <!-- <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;"> -->
+        </div>
+        <div class="col-lg-8">
+            <h4 style="text-align: center; padding-top: 40px;">Please choose the function you want to do.</h4>
+            <br>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="text-align: center;">
+                    <a href="{% url 'editprofile' %}" class="simpleLink">
+                        <i class="fa fa-edit"></i>
+                        Edit Profile
+                    </a>
+                </li>
+                <li class="list-group-item" style="text-align: center;">
+                    <a href="{% url 'changepassword' %}" class="simpleLink">
+                        <i class="bi bi-file-earmark-lock"></i>
+                        Change Password
+                    </a>
+                </li>
+                <li class="list-group-item" style="text-align: center;">
+                    <a href="{% url 'customersearch' %}" class="simpleLink">
+                        <i class="fa fa-edit"></i>
+                        Customer Search
+                    </a>
+                </li>
+                <li class="list-group-item" style="text-align: center;">
+                    <a href="{% url 'customerlocation' %}" class="simpleLink">
+                        <i class="bi bi-file-earmark-lock"></i>
+                        Change Filter by Location
+                    </a>
+                </li>
+                <li class="list-group-item" style="text-align: center;">
+                    <a href="{% url 'productrating' %}" class="simpleLink">
+                        <i class="bi bi-star-half"></i>
+                        Product Ratings
+                    </a>
+                </li>
+                <li class="list-group-item" style="text-align: center;">
+                    <a href="{% url 'totalcustomers' %}" class="simpleLink">
+                        <i class="bi bi-exclamation-diamond-fill"></i>
+                        Display Customer Count
+                    </a>
+                </li>
+                <li class="list-group-item" style="text-align: center;">
+                    <a href="{% url 'logout' %}" class="simpleLink">
+                        <i class="fa fa-sign-out"></i>
+                        Logout
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container" style="margin-top: 30px;">
+    <div class="row">
+        <div class="col-lg-4" id="fade-in">
+            <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
+                <img src="{{user.profile.image.url}}" alt="" height="350px" width="auto">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
+                </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" style="text-align: center;">
                         <a href="{% url 'editprofile' %}" class="simpleLink">
@@ -30,27 +87,21 @@
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
-                        <a href="{% url 'customersearch' %}" class="simpleLink">
-                            <i class="fa fa-edit"></i>
-                            Customer Search
-                        </a>
-                    </li>
-                    <li class="list-group-item" style="text-align: center;">
-                        <a href="{% url 'customerlocation' %}" class="simpleLink">
+                        <a href="{% url 'changepassword' %}" class="simpleLink">
                             <i class="bi bi-file-earmark-lock"></i>
-                            Change Filter by Location
+                            Change Password
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
-                        <a href="{% url 'productrating' %}" class="simpleLink">
+                        <a href="{% url 'leavereview' %}" class="simpleLink">
                             <i class="bi bi-star-half"></i>
-                            Product Ratings
+                            Review Section
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
-                        <a href="{% url 'totalcustomers' %}" class="simpleLink">
+                        <a href="{% url 'leavecomplaint' %}" class="simpleLink">
                             <i class="bi bi-exclamation-diamond-fill"></i>
-                            Display Customer Count
+                            Complaint Section
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
@@ -61,124 +112,79 @@
                     </li>
 
                 </ul>
-            </div>
-        </div>
-    </div>
-    {% else %}
-    <div class="container" style="margin-top: 30px;">
-        <div class="row">
-            <div class="col-lg-4" id="fade-in">
-                <div class="card" style="width: 20rem; background-color: beige; margin-left: 20px;">
-                    <img src="{{user.profile.image.url}}" alt="" height="350px" width="auto">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align: center;">Hello, {{user.username}}!</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="text-align: center;">
-                            <a href="{% url 'editprofile' %}" class="simpleLink">
-                                <i class="fa fa-edit"></i>
-                                Edit Profile
-                            </a>
-                        </li>
-                        <li class="list-group-item" style="text-align: center;">
-                            <a href="{% url 'changepassword' %}" class="simpleLink">
-                                <i class="bi bi-file-earmark-lock"></i>
-                                Change Password
-                            </a>
-                        </li>
-                        <li class="list-group-item" style="text-align: center;">
-                            <a href="{% url 'leavereview' %}" class="simpleLink">
-                                <i class="bi bi-star-half"></i>
-                                Submit a Review
-                            </a>
-                        </li>
-                        <li class="list-group-item" style="text-align: center;">
-                            <a href="{% url 'leavecomplaint' %}" class="simpleLink">
-                                <i class="bi bi-exclamation-diamond-fill"></i>
-                                Submit a Complaint
-                            </a>
-                        </li>
-                        <li class="list-group-item" style="text-align: center;">
-                            <a href="{% url 'logout' %}" class="simpleLink">
-                                <i class="fa fa-sign-out"></i>
-                                Logout
-                            </a>
-                        </li>
-
-                    </ul>
-                    <!-- <div class="card-body">
+                <!-- <div class="card-body">
                         <a href="Home.html" class="card-link simpleLink">
                             < View Monthly Catalog</a>
                     </div> -->
-                </div>
-                <!-- <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;"> -->
             </div>
-            <div class="col-lg-8">
-                <form action="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
-                        <div>
-                            <!-- <button class="btn btn-primary" role="button" style="float: right; ">
+            <!-- <img src="{% static 'images/waiting.png' %}" alt="" width="80%" style="margin-left: 10%;"> -->
+        </div>
+        <div class="col-lg-8">
+            <form action="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px;">
+                    <div>
+                        <!-- <button class="btn btn-primary" role="button" style="float: right; ">
                                 <a href="{% url 'editprofile' %}" class="simpleLink">Edit
                                     Details</a>
                             </button> -->
-                            <h5 class="card-header">Personal Information</h5>
-                        </div>
+                        <h5 class="card-header">Personal Information</h5>
+                    </div>
 
-                        <div class="card-body">
-                            <!-- <h5 class="card-title">Special title treatment</h5                                           > -->
-                            <div class="row pt-1">
-                                <div class="col-4 mb-2">
-                                    <label for="floating-input" class="form-label">First Name</label>
-                                    <input class="form-control" type="text" value="{{user.first_name}}"
-                                        placeholder="Full Name" aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-3 mb-2">
-                                    <label for="floating-input" class="form-label">Last Name</label>
-                                    <input class="form-control" type="text" value="{{user.last_name}}"
-                                        placeholder="Full Name" aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-3 mb-2">
-                                    <label for="floating-input" class="form-label">Username</label>
-                                    <input class="form-control" type="text" value="{{user.username}}"
-                                        placeholder="Username" aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-2 mb-2">
-                                    <label for="floating-input" class="form-label">Sex</label>
-                                    <input class="form-control" type="text" value="{{p_form.sex}}" placeholder="Sex"
-                                        aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-2 mb-2">
-                                    <label for="floating-input" class="form-label">Nationality</label>
-                                    <input class="form-control" type="text" value="{{p_form.nationality}}"
-                                        placeholder="Nationality" aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-3">
-                                    <label for="floating-input" class="form-label">Birthday</label>
-                                    <input class="form-control" type="text" value="{{p_form.birthday}}"
-                                        placeholder="Birthday" aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-3">
-                                    <label for="floating-input" class="form-label">Citizenship</label>
-                                    <input class="form-control" type="text" value="{{p_form.citizenship}}"
-                                        placeholder="Citizenship" aria-label="Disabled input example" disabled readonly>
-                                </div>
-                                <div class="col-4">
-                                    <label for="floating-input" class="form-label">Email</label>
-                                    <input class="form-control" type="text" value="{{user.email}}"
-                                        placeholder="Citizenship" aria-label="Disabled input example" disabled readonly>
-                                </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5                                           > -->
+                        <div class="row pt-1">
+                            <div class="col-4 mb-2">
+                                <label for="floating-input" class="form-label">First Name</label>
+                                <input class="form-control" type="text" value="{{user.first_name}}"
+                                    placeholder="Full Name" aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-3 mb-2">
+                                <label for="floating-input" class="form-label">Last Name</label>
+                                <input class="form-control" type="text" value="{{user.last_name}}"
+                                    placeholder="Full Name" aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-3 mb-2">
+                                <label for="floating-input" class="form-label">Username</label>
+                                <input class="form-control" type="text" value="{{user.username}}" placeholder="Username"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-2 mb-2">
+                                <label for="floating-input" class="form-label">Sex</label>
+                                <input class="form-control" type="text" value="{{p_form.sex}}" placeholder="Sex"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-2 mb-2">
+                                <label for="floating-input" class="form-label">Nationality</label>
+                                <input class="form-control" type="text" value="{{p_form.nationality}}"
+                                    placeholder="Nationality" aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-3">
+                                <label for="floating-input" class="form-label">Birthday</label>
+                                <input class="form-control" type="text" value="{{p_form.birthday}}"
+                                    placeholder="Birthday" aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-3">
+                                <label for="floating-input" class="form-label">Citizenship</label>
+                                <input class="form-control" type="text" value="{{p_form.citizenship}}"
+                                    placeholder="Citizenship" aria-label="Disabled input example" disabled readonly>
+                            </div>
+                            <div class="col-4">
+                                <label for="floating-input" class="form-label">Email</label>
+                                <input class="form-control" type="text" value="{{user.email}}" placeholder="Citizenship"
+                                    aria-label="Disabled input example" disabled readonly>
                             </div>
                         </div>
                     </div>
-                    <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                        <div>
-                            <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button> -->
-                            <h5 class="card-header">Addresses</h5>
-                        </div>
-                        <div class="card-body">
-                            <!-- <h5 class="card-title">Special title treatment</h5> -->
-                            <!-- <div class="col-12 mb-2">
+                </div>
+                <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                    <div>
+                        <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit Details</button> -->
+                        <h5 class="card-header">Addresses</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <!-- <div class="col-12 mb-2">
                             <h6 style="display: inline;">Present: </h6>
                             <p class="text-muted" style="display: inline;">{{user.present_address}}</p>
                         </div>
@@ -198,115 +204,115 @@
                             <h6 style="display: inline;">Office: </h6>
                             <p class="text-muted" style="display: inline;">{{user.office_address}}</p>
                         </div> -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="col-12 mb-2">
-                                        <label for="floating-input" class="form-label">Present</label>
-                                        <input class="form-control" type="text" value="{{p_form.present_address}}"
-                                            aria-label="Disabled input example" disabled readonly>
-                                    </div>
-                                    <div class="col-12 mb-2">
-                                        <label for="floating-input" class="form-label">Permanent</label>
-                                        <input class="form-control" type="text" value="{{p_form.permanent_address}}"
-                                            aria-label="Disabled input example" disabled readonly>
-                                    </div>
-                                    <div class="col-12 mb-2">
-                                        <label for="floating-input" class="form-label">Office</label>
-                                        <input class="form-control" type="text" value="{{p_form.office_address}}"
-                                            aria-label="Disabled input example" disabled readonly>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-12 mb-2">
+                                    <label for="floating-input" class="form-label">Present</label>
+                                    <input class="form-control" type="text" value="{{p_form.present_address}}"
+                                        aria-label="Disabled input example" disabled readonly>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="col-12 mb-2">
-                                        <label for="floating-input" class="form-label">Billing</label>
-                                        <input class="form-control" type="text" value="{{p_form.billing_address}}"
+                                <div class="col-12 mb-2">
+                                    <label for="floating-input" class="form-label">Permanent</label>
+                                    <input class="form-control" type="text" value="{{p_form.permanent_address}}"
+                                        aria-label="Disabled input example" disabled readonly>
+                                </div>
+                                <div class="col-12 mb-2">
+                                    <label for="floating-input" class="form-label">Office</label>
+                                    <input class="form-control" type="text" value="{{p_form.office_address}}"
+                                        aria-label="Disabled input example" disabled readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-12 mb-2">
+                                    <label for="floating-input" class="form-label">Billing</label>
+                                    <input class="form-control" type="text" value="{{p_form.billing_address}}"
+                                        aria-label="Disabled input example" disabled readonly>
+                                </div>
+                                <div class="col-12 mb-2">
+                                    <label for="floating-input" class="form-label">Shopping</label>
+                                    <input class="form-control" type="text" value="{{p_form.shopping_address}}"
+                                        aria-label="Disabled input example" disabled readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                            <div>
+                                <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                                    Details</button> -->
+                                <h5 class="card-header">Contact Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row pt-1">
+                                    <div class="col-md-4 mb-2">
+                                        <label for="floating-input" class="form-label">Mobile Number</label>
+                                        <input class="form-control" type="text" value="{{p_form.mobile_number}}"
                                             aria-label="Disabled input example" disabled readonly>
                                     </div>
-                                    <div class="col-12 mb-2">
-                                        <label for="floating-input" class="form-label">Shopping</label>
-                                        <input class="form-control" type="text" value="{{p_form.shopping_address}}"
+                                    <div class="col-md-4 mb-2">
+                                        <label for="floating-input" class="form-label">Landline Number</label>
+                                        <input class="form-control" type="text" value="{{p_form.landline_number}}"
+                                            aria-label="Disabled input example" disabled readonly>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="floating-input" class="form-label">Office Number</label>
+                                        <input class="form-control" type="text" value="{{p_form.office_number}}"
+                                            aria-label="Disabled input example" disabled readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="floating-input" class="form-label">Personal Email</label>
+                                        <input class="form-control" type="text" value="{{p_form.personal_email}}"
+                                            aria-label="Disabled input example" disabled readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="floating-input" class="form-label">Office Email</label>
+                                        <input class="form-control" type="text" value="{{p_form.office_email}}"
                                             aria-label="Disabled input example" disabled readonly>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                                <div>
-                                    <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
+                    <div class="col-md-4">
+                        <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
+                            <div>
+                                <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
                                     Details</button> -->
-                                    <h5 class="card-header">Contact Information</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row pt-1">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="floating-input" class="form-label">Mobile Number</label>
-                                            <input class="form-control" type="text" value="{{p_form.mobile_number}}"
-                                                aria-label="Disabled input example" disabled readonly>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="floating-input" class="form-label">Landline Number</label>
-                                            <input class="form-control" type="text" value="{{p_form.landline_number}}"
-                                                aria-label="Disabled input example" disabled readonly>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="floating-input" class="form-label">Office Number</label>
-                                            <input class="form-control" type="text" value="{{p_form.office_number}}"
-                                                aria-label="Disabled input example" disabled readonly>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="floating-input" class="form-label">Personal Email</label>
-                                            <input class="form-control" type="text" value="{{p_form.personal_email}}"
-                                                aria-label="Disabled input example" disabled readonly>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="floating-input" class="form-label">Office Email</label>
-                                            <input class="form-control" type="text" value="{{p_form.office_email}}"
-                                                aria-label="Disabled input example" disabled readonly>
-                                        </div>
-                                    </div>
+                                <h5 class="card-header">Subscription</h5>
+                            </div>
+                            {% if p_form.is_subscribed is True %}
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="is_subscribed" disabled
+                                        readonly checked>
+                                    <label class="form-check-label" for="is_subscribed">
+                                        You are currently subscribed to our monthly catalog. Feel free to edit by
+                                        clicking <i> Edit Profile </i>.
+                                    </label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card" id="slide-in-left" style="background-color: beige; padding: 10px">
-                                <div>
-                                    <!-- <button class="btn btn-primary" href="#" role="button" style="float: right; ">Edit
-                                    Details</button> -->
-                                    <h5 class="card-header">Subscription</h5>
+                            {% else %}
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="is_unsubscribed"
+                                        disabled readonly>
+                                    <label class="form-check-label" for="is_unsubscribed">
+                                        You are currently unsubscribed to our monthly catalog. If you wish to
+                                        subscribe, click <i> Edit Profile </i>.
+                                    </label>
                                 </div>
-                                {% if p_form.is_subscribed is True %}
-                                <div class="card-body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="is_subscribed"
-                                            readonly checked>
-                                        <label class="form-check-label" for="is_subscribed">
-                                            You are currently subscribed to our monthly catalog. Feel free to edit by
-                                            clicking <i> Edit Profile </i>.
-                                        </label>
-                                    </div>
-                                </div>
-                                {% else %}
-                                <div class="card-body">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="is_unsubscribed"
-                                            readonly>
-                                        <label class="form-check-label" for="is_unsubscribed">
-                                            You are currently unsubscribed to our monthly catalog. If you wish to
-                                            subscribe, click <i> Edit Profile </i>.
-                                        </label>
-                                    </div>
-                                </div>
-                                {% endif %}
                             </div>
+                            {% endif %}
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
-    {% endif %}
+</div>
+{% endif %}
 
 {% endblock content %}

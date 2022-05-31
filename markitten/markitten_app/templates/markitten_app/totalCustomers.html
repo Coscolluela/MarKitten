@@ -19,6 +19,12 @@
                         </a>
                     </li>
                     <li class="list-group-item" style="text-align: center;">
+                        <a href="{% url 'changepassword' %}" class="simpleLink">
+                            <i class="bi bi-file-earmark-lock"></i>
+                            Change Password
+                        </a>
+                    </li>
+                    <li class="list-group-item" style="text-align: center;">
                         <a href="{% url 'customerlocation' %}" class="simpleLink">
                             <i class="bi bi-file-earmark-lock"></i>
                             Change Filter by Location
@@ -59,6 +65,7 @@
                 Guide
             </button>
             <h4>Displaying total customers</h4>
+
             <br>
             <div class="row">
                 <div class="col-4">
@@ -121,11 +128,23 @@
 
 
             <div class="col-5" style="padding-top: 25px;">
+                <div class="row">
+
+                </div>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Nationality" name="nationality"
                         aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                <!-- <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Sex" name="sex" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Classification" name="classification"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> -->
             </div>
             <br>
             <form method="POST">
