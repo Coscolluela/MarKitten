@@ -42,7 +42,7 @@ class Profile(models.Model):
     @property
     def classification(self):
         if self.age >= 18 and self.age <=39:
-           return 'Young Adult'
+           return 'Young adult'
         elif self.age >= 40 and self.age <=59:
             return 'Adult'
         elif self.age >= 60:

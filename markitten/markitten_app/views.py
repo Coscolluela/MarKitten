@@ -383,7 +383,8 @@ def totalcustomers(request):
     otherCount = Profile.objects.filter(sex='Male/Female').count()
     customer = Profile.objects.all()
     nationality_query = request.GET.get('nationality')
-    # month = [i.month for i in Profile.objects.values_list('birthday', flat=True)]
+    sex_query = request.GET.get('sex')
+    classification_query = request.GET.get('classification')
     youngadult = 0
     maleyoungadult = 0
     femaleyoungadult = 0
@@ -404,8 +405,14 @@ def totalcustomers(request):
     if nationality_query != '' and nationality_query is not None:
         customer = customer.filter(nationality__icontains=nationality_query)
 
+    if sex_query != '' and sex_query is not None:
+        customer = customer.filter(sex__iexact=sex_query)
+
+    if classification_query != '' and classification_query is not None:
+        customer = customer.filter(classification__icontains=classification_query)
+
     for cust in customer:
-        if cust.classification == 'Young Adult':
+        if cust.classification == 'Young adult':
             youngadult = youngadult + 1
             if cust.sex == 'Male':
                 maleyoungadult = maleyoungadult + 1
