@@ -105,5 +105,4 @@ class CommentForm(ModelForm):
             'user' : HiddenInput(attrs = {'type' : 'hidden'}),
             'product' : HiddenInput(attrs = {'type' : 'hidden'}),
             'comment' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Comment', 'required' : True ,}),
-            'rating' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max' : '5', 'required': True})
         }

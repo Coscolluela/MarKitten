@@ -192,20 +192,25 @@
             <div class="col-4">
                 <div class="card">
                     {% if request.user.is_authenticated %}
-                    <form action="{% url 'addreview' prod.id %}" method="post">
+                    <form class="review-form" action="{% url 'addreview' prod.id %}" method="post">
                         {% csrf_token %}
-                        {{commentform.user}}
-                        {{commentform.prod}}
+						{% for prod in product %}
+						<input type="hidden" name="prod_id" id="prod_id" value="{{prod.id}}"/>
+						{%endfor%}
+                        
                         <h5 class="card-title">Rate the Product</h5>
                         <div class="container">
                             <div class="input-group">
                                 <span class="col-sm-8">
-                                    {{commentform.comment}}
+                                    <textarea class="input" id="comment" name="comment" placeholder="Your Comment"></textarea>
                                 </span>
                                 <span class="input-group-text"><i
                                         class="fa-solid fa-star"></i></span>
-                                    {{commentform.rating}}
-                                
+                                    <input type="radio" id="star-1" name="rating" value="1"/><label for="star-1"class='fa fa-star-o'></label>
+									<input type="radio" id="star-2" name="rating" value="2"/><label for="star-2"class='fa fa-star-o'></label>
+									<input type="radio" id="star-3" name="rating" value="3"/><label for="star-3"class='fa fa-star-o'></label>
+									<input type="radio" id="star-4" name="rating" value="4"/><label for="star-4"class='fa fa-star-o'></label>
+									<input type="radio" id="star-5" name="rating" value="5"/><label for="star-5"class='fa fa-star-o'></label>
                             </div>
                         </div>
                         <div id="passwordHelpBlock" class="form-text" style="text-align:center;">

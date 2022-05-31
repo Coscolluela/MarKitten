@@ -159,6 +159,8 @@ class baseReview(models.Model):
             MinValueValidator(0)
         ]
     )
+    def __str__(self):
+        return str(self.id)
 
 class Comment(baseReview):
     class Meta:

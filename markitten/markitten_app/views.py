@@ -274,13 +274,16 @@ def leavecomplaint(request):
     return render(request, 'markitten_app/leaveComplaint.html')
 
 @login_required(login_url='/login')
-def addreview(request, pk):
-    form = CommentForm(request.POST)
+def addreview(request,pk):
+    if request.method == 'POST':
+        product = Product.objects.get(id = pk)
+        comment = request.POST.get('comment')
+        rating = request.POST.get('rating')
+        user = request.user
+        Comment(user=user, product=product, comment=comment, rating=rating).save()
+        return redirect('product_details', pk)
+        
 
-    if (form.is_valid()):
-        form.save()
-        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        return redirect('product_details')
 
 def signup(request):
     form = UserForm()
