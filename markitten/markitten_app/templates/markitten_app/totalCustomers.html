@@ -127,10 +127,8 @@
             </div>
             <script type="text/javascript">
                 function searchdata() {
-                    console.log('helloo');
                     var input, table, tr, td, filter, i, displaydata;
                     input = document.getElementById("sexFilter");
-                    console.log(input.value);
                     filter = input.value;
                     table = document.getElementById("table1");
                     tr = table.getElementsByTagName("tr");
@@ -138,7 +136,6 @@
                         td = tr[i].getElementsByTagName("td")[1];
                         if (td) {
                             displaydata = td.innerText;
-                            console.log(displaydata);
                             if (displaydata.indexOf(filter) > -1) {
                                 tr[i].style.display = "";
                             }
@@ -150,10 +147,8 @@
                 }
 
                 function classify() {
-                    console.log('helloo');
                     var input, table, tr, td, filter, i, displaydata;
                     input = document.getElementById("classificationFilter");
-                    console.log(input.value);
                     filter = input.value;
                     table = document.getElementById("table1");
                     tr = table.getElementsByTagName("tr");
@@ -161,7 +156,6 @@
                         td = tr[i].getElementsByTagName("td")[5];
                         if (td) {
                             displaydata = td.innerText;
-                            console.log(displaydata);
                             if (displaydata.indexOf(filter) > -1) {
                                 tr[i].style.display = "";
                             }
@@ -182,22 +176,25 @@
                     </form>
                 </div>
                 <div class="col-3">
-                    <select id="sexFilter" onclick="searchdata();">
-                        <option disabled="true" selected>Sex</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Male/Female">Unupdated Profile</option>
-                    </select>
-
+                    <div style="margin: 7px">
+                        <select id="sexFilter" onclick="searchdata();">
+                            <option disabled="true" selected>Sex</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Male/Female">Unupdated Profile</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-3">
-                    <select id="classificationFilter" onclick="classify();">
-                        <option disabled="true" selected>Age Classification</option>
-                        <option value="Young adult">Young Adult</option>
-                        <option value="Adult">Adult</option>
-                        <option value="Senior Citizen">Senior Citizen</option>
-                        <option value="Unclassified">Unclassified</option>
-                    </select>
+                    <div style="margin: 7px">
+                        <select id="classificationFilter" onclick="classify();">
+                            <option disabled="true" selected>Age Classification</option>
+                            <option value="Young adult">Young Adult</option>
+                            <option value="Adult">Adult</option>
+                            <option value="Senior Citizen">Senior Citizen</option>
+                            <option value="Unclassified">Unclassified</option>
+                        </select>
+                    </div>
                 </div>
 
                 <!-- <form class=" d-flex">
