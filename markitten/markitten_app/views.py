@@ -15,6 +15,7 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from datetime import date
 from django.db.models.expressions import RawSQL
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -219,8 +220,8 @@ def product_details(request, pk):
     else: 
         data = {'prod': prod, 'overall_rating' : 0 }
 
-    # commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
-    # data["commentform"] = commentform
+    commentform = CommentForm({"user" : request.user.id, "prod" : prod.id, "comment" : "", "rating" : "0"})
+    data["commentform"] = commentform
     data["totalreviews"] = len(comments)
     
     p_form = Profile.objects.get(user=request.user)
@@ -272,9 +273,14 @@ def editprofile(request):
 def leavecomplaint(request):
     return render(request, 'markitten_app/leaveComplaint.html')
 
-def leavereview(request):
+@login_required(login_url='/login')
+def addreview(request, pk):
+    form = CommentForm(request.POST)
 
-    return render(request, 'markitten_app/leaveReview.html')
+    if (form.is_valid()):
+        form.save()
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return redirect('product_details')
 
 def signup(request):
     form = UserForm()
