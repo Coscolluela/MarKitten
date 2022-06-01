@@ -365,6 +365,9 @@
                         <th scope="col">
                             Classification
                         </th>
+                        <th scope="col" style="text-align: center;">
+                            Birthday this Month?
+                        </th>
 
                         <th colspan="2"></th>
                     </tr>
@@ -387,6 +390,13 @@
                         <td>{{cust.birthday}}</td>
                         <td>{{cust.age}}</td>
                         <td>{{cust.classification}}</td>
+                        {% if cust.birthday.month == 6 %}
+                        <td style="text-align: center;">
+                            <button class="btn">Yes</button>
+                        </td>
+                        {% else %}
+                        <td style="text-align: center;">No</td>
+                        {% endif %}
                         <td></td>
                     </tr>
                     {% endfor %}
