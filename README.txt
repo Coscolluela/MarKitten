@@ -1,6 +1,1 @@
-TO DO!!
-
-(1) Finalize Figma Prototype
-(2) Documentation of System Requirements (thru diagrams, explanations, etc)
-(3) Create individual webpages
-(4) Manage database
+Markitten is a Customer Relationship Management System that goes hand in hand with CATalog, a Product Catalog System. Specifically, Markitten allows customers to view and manage their personal information and subscribe to a monthly catalog of products and reviews. It serves as a platform not only for customers to personalize their profiles but also for the system admin, Customer Relationship Manager, to oversee customer information.
