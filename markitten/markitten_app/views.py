@@ -428,9 +428,9 @@ def productrating(request):
     return render(request, 'markitten_app/productrating.html', data)
 
 def totalcustomers(request):
-    maleCount = Profile.objects.filter(sex='Male').count()
-    femaleCount = Profile.objects.filter(sex='Female').count()
-    otherCount = Profile.objects.filter(sex='Male/Female').count()
+    maleCount = 0
+    femaleCount = 0
+    otherCount = 0
     customer = Profile.objects.all()
     nationality_query = request.GET.get('nationality')
     sex_query = request.GET.get('sex')
@@ -462,6 +462,12 @@ def totalcustomers(request):
         customer = customer.filter(classification__icontains=classification_query)
 
     for cust in customer:
+        if cust.sex == 'Male':
+            maleCount = maleCount + 1
+        if cust.sex == 'Female':
+            femaleCount = femaleCount + 1
+        if cust.sex == 'Male/Female':
+            otherCount = otherCount + 1
         if cust.classification == 'Young adult':
             youngadult = youngadult + 1
             if cust.sex == 'Male':
