@@ -70,7 +70,7 @@
                 style="float: right;">
                 Guide
             </button>
-            <h4>Displaying total customers</h4>
+            <h4>Displaying total Markitten users</h4>
             <hr>
 
             <h5>By Sex</h5>
@@ -102,9 +102,12 @@
                             <br>
                             <p style="text-align: center;">Young Adults ({{youngadult}})</p>
                             <hr>
-                            <p style="text-align: center; font-size:14px;">M: ({{maleyoungadult}}) | F: ({{femaleyoungadult}}) Unupdated:
-                                ({{pendingyoungadult}})</p>
-                        </div> 
+                            <p style="text-align: center; font-size:14px;">M: ({{maleyoungadult}}) | F:
+                                ({{femaleyoungadult}})
+                                <br> Unupdated:
+                                ({{pendingyoungadult}})
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-3">
@@ -118,9 +121,12 @@
                             <br>
                             <p style="text-align: center;"> Adults ({{adult}})</p>
                             <hr>
-                            <p style="text-align: center; font-size:14px;">M: ({{maleadult}}) | F: ({{femaleadult}}) Unupdated:
-                                ({{pendingadult}})</p>
-                        </div> 
+                            <p style="text-align: center; font-size:14px;">M: ({{maleadult}}) | F: ({{femaleadult}})
+                                <br>
+                                Unupdated:
+                                ({{pendingadult}})
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-3">
@@ -134,9 +140,12 @@
                             <br>
                             <p style="text-align: center;">Senior Citizen ({{senior}})</p>
                             <hr>
-                            <p style="text-align: center; font-size:14px;">M: ({{malesenior}}) | F: ({{femalesenior}}) Unupdated:
-                                ({{pendingsenior}})</p>
-                        </div> 
+                            <p style="text-align: center; font-size:14px;">M: ({{malesenior}}) | F: ({{femalesenior}})
+                                <br>
+                                Unupdated:
+                                ({{pendingsenior}})
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-3">
@@ -150,25 +159,42 @@
                             <br>
                             <p style="text-align: center;">Unclassified ({{pending}})</p>
                             <hr>
-                            <p style="text-align: center; font-size:14px;">M: ({{malepending}}) | F: ({{femalepending}}) Unupdated:
-                                ({{pendingunknown}})</p>
-                        </div> 
+                            <p style="text-align: center; font-size:14px;">M: ({{malepending}}) | F: ({{femalepending}})
+                                <br>
+                                Unupdated:
+                                ({{pendingunknown}})
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <br><br><hr><br><br>
+            <br><br>
+            <hr><br><br>
             <script type="text/javascript">
                 function searchdata() {
-                    var input, table, tr, td, filter, i, displaydata;
+                    var input, table, tr, td, filter, i, displaydata, displaydata2;
                     input = document.getElementById("sexFilter");
+                    input2 = document.getElementById("classificationFilter");
                     filter = input.value;
+                    filter2 = input2.value;
                     table = document.getElementById("table1");
                     tr = table.getElementsByTagName("tr");
                     for (i = 0; i < tr.length; i++) {
                         td = tr[i].getElementsByTagName("td")[1];
-                        if (td) {
+                        td2 = tr[i].getElementsByTagName("td")[5];
+                        // if (td) {
+                        //     displaydata = td.innerText;
+                        //     if (displaydata.indexOf(filter) > -1) {
+                        //         tr[i].style.display = "";
+                        //     }
+                        //     else {
+                        //         tr[i].style.display = "none";
+                        //     }
+                        // }
+                        if (td && td2) {
                             displaydata = td.innerText;
-                            if (displaydata.indexOf(filter) > -1) {
+                            displaydata2 = td2.innerText;
+                            if (displaydata.indexOf(filter) > -1 && displaydata2.indexOf(filter2) > -1) {
                                 tr[i].style.display = "";
                             }
                             else {
@@ -179,13 +205,16 @@
                 }
 
                 function classify() {
-                    var input, table, tr, td, filter, i, displaydata;
+                    var input, table, tr, td, filter, i, displaydata, displaydata2;
                     input = document.getElementById("classificationFilter");
+                    input2 = document.getElementById("sexFilter");
                     filter = input.value;
+                    filter2 = input2.value;
                     table = document.getElementById("table1");
                     tr = table.getElementsByTagName("tr");
                     for (i = 0; i < tr.length; i++) {
                         td = tr[i].getElementsByTagName("td")[5];
+                        td2 = tr[i].getElementsByTagName("td")[1];
                         if (td) {
                             displaydata = td.innerText;
                             if (displaydata.indexOf(filter) > -1) {
@@ -195,6 +224,16 @@
                                 tr[i].style.display = "none";
                             }
                         }
+                        // if (td && td2) {
+                        //     displaydata = td.innerText;
+                        //     displaydata2 = td2.innerText;
+                        //     if (displaydata.indexOf(filter) > -1 && displaydata2.indexOf(filter2) > -1) {
+                        //         tr[i].style.display = "";
+                        //     }
+                        //     else {
+                        //         tr[i].style.display = "none";
+                        //     }
+                        // }
                     }
                 }
             </script>
@@ -204,18 +243,11 @@
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Nationality" name="nationality"
                             aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-outline-success" type="submit" data-bs-toggle="tooltip"
+                            data-bs-placement="right"
+                            title="Please be guided to click Search without any entry/input to remove filters (i.e., show all)."
+                            style="float: right;">Search</button>
                     </form>
-                </div>
-                <div class="col-3">
-                    <div style="margin: 7px">
-                        <select id="sexFilter" onclick="searchdata();">
-                            <option disabled="true" selected>Sex</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Male/Female">Unupdated Profile</option>
-                        </select>
-                    </div>
                 </div>
                 <div class="col-3">
                     <div style="margin: 7px">
@@ -228,16 +260,16 @@
                         </select>
                     </div>
                 </div>
-
-                <!-- <form class=" d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Sex" name="sex" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
-                <!-- <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Classification" name="classification"
-                        aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
+                <div class="col-3">
+                    <div style="margin: 7px">
+                        <select id="sexFilter" onclick="searchdata();">
+                            <option disabled="true" selected>Sex</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Male/Female">Unupdated Profile</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <br>
             <table class="table table-striped" id="table1">
