@@ -54,6 +54,7 @@ urlpatterns = [
     path('delete/<str:pk>', views.delete, name="delete"),
     path('addreview/<str:pk>/', views.addreview, name="addreview"),
     path('addcomplaint/<str:pk>/', views.addcomplaint, name="addcomplaint"),
+    path('product_complaints/<str:pk>/', views.product_complaints, name="product_complaints"),
 ]
 
 if settings.DEBUG:

@@ -232,6 +232,28 @@ def product_details(request, pk):
     data["p_form"] = p_form
     return render(request, "markitten_app/productDetails.html", data)
 
+def product_complaints(request, pk):
+    prod = Product.objects.get(id=pk)
+
+    comments = prod.comment_set.all().order_by("-created_at")
+    if ( len(comments) != 0 ):
+        overall_rating = 0
+        for comment in comments:
+            overall_rating += comment.rating 
+        overall_rating = overall_rating/len(comments)
+        data = {'prod': prod, 'comments':comments, 'overall_rating': round(overall_rating), "rating_floor": math.floor(overall_rating), 'rating_float': not overall_rating.is_integer(),}
+    else: 
+        data = {'prod': prod, 'overall_rating' : 0 }
+    
+    complaints = prod.complaint_set.all().order_by("-created_at")
+    p_form = Profile.objects.get(user=request.user)
+    form = ProdDetailsForm({"user": request.user.id, "item": prod.id,})
+    data["complaints"] = complaints
+    data["form"] = form
+    data["p_form"] = p_form
+    return render(request, "markitten_app/productComplaint.html", data)
+
+
 def adminpanel(request):
     return render(request, 'markitten_app/adminPanel.html')
 
@@ -384,11 +406,13 @@ def productrating(request):
     p_form = Profile.objects.get(user=request.user)
 
     prodrating = {}
+    prodcomplaint = []
     for prod in prods:
         form = ProdDetailsForm({"user": request.user.id, "item": prod.id})
         items.append({"prod": prod, "form": form})
         
         comments = prod.comment_set.all().order_by("-created_at")
+        complaints = prod.complaint_set.all().order_by("-created_at")
         if ( len(comments) != 0 ):
             overall_rating = 0
             for comment in comments:
@@ -398,7 +422,11 @@ def productrating(request):
         else: 
             prodrating[prod.id] = 0
 
+        if ( len(complaints) != 0):
+            prodcomplaint.append(prod)
+
     prodratingfiltered = {}
+    startlabel = "Show all"
     filterlabel = ""
     name_query = request.GET.get('name')
 
@@ -421,10 +449,16 @@ def productrating(request):
         for key,value in prodrating.items():
             if value == 5:
                 prodratingfiltered[key] = 5
-    #elif name_query == 'With complaints':
+    elif name_query == 'With complaints':
+        filterlabel = "With complaints"
+    elif startlabel == 'Show all':
+        filterlabel = "Show all"
+        for key,value in prodrating.items():
+            prodratingfiltered[key] = value
 
 
-    data = {"items": items, "categ": categ, "p_form": p_form, "prodrating": prodrating, "prodratingfiltered": prodratingfiltered, "filterlabel": filterlabel}
+
+    data = {"items": items, "categ": categ, "p_form": p_form, "prodrating": prodrating, "prodratingfiltered": prodratingfiltered, "filterlabel": filterlabel, "prodcomplaint": prodcomplaint}
     return render(request, 'markitten_app/productrating.html', data)
 
 def totalcustomers(request):
